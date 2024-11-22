@@ -23,5 +23,15 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	virtual void Shrink(FVector cameraLocation) override;
+	virtual void Increase() override;
+	virtual void NewRotation(FRotator objectRotation) override;
+	virtual void clicable() override;
+	FVector inialLocation;
+	FRotator initialRotation;
+	UPROPERTY(EditAnywhere, Category="Components")
+	UTexture2D* ImageReference;
+	
+	
 
 };
