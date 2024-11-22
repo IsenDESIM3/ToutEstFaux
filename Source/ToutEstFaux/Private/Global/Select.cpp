@@ -3,6 +3,8 @@
 
 #include "Global/Select.h"
 
+#include "Kismet/KismetMathLibrary.h"
+
 // Sets default values
 ASelect::ASelect()
 {
@@ -23,5 +25,32 @@ void ASelect::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ASelect::Shrink(FVector cameraLocation)
+{
+	inialLocation = GetActorLocation();
+	initialRotation = GetActorRotation();
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Turquoise, "Shrinking");
+	SetActorScale3D(GetActorScale()*0.1);
+	SetActorLocation(cameraLocation);
+}
+
+void ASelect::Increase()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Purple, "increasing");
+	SetActorScale3D(GetActorScale()*10);
+	SetActorLocation(inialLocation);
+	SetActorRotation(initialRotation);
+}
+
+void ASelect::NewRotation(FRotator objectRotation)
+{
+	SetActorRotation(UKismetMathLibrary::ComposeRotators(GetActorRotation(), objectRotation));
+}
+
+void ASelect::clicable()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Yellow, "clicable");
 }
 

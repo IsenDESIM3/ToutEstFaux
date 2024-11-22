@@ -8,6 +8,8 @@ public class ToutEstFaux : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
+		PublicIncludePaths.AddRange(new string[] {"ToutEstFaux/Public" });
+		PrivateIncludePaths.AddRange(new string[]{"ToutEstFaux/Private"});
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput",
 			"OnlineSubsystem", "OnlineSubsystemSteam" });
 
