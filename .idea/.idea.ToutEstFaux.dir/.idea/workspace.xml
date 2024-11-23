@@ -7,54 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/ABP_Teletubbies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/ABP_Teletubbies.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/A_Teletubbies_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/A_Teletubbies_Idle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_All_Poses.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_All_Poses.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_3.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_4.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Dipsy_Pose_5.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_All_Pose.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_All_Pose.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_3.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_4.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_5.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_All_Pose.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_All_Pose.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_3.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_4.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_5.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_All_Pose.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_All_Pose.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_3.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_4.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_5.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Level/L_Cosplayer.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Level/L_Cosplayer.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/PA_Teletubbies.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SKM_Teletubbies.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SK_Antenna_Dispy.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SK_Antenna_Laalaa.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SK_Antenna_Po.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SK_Antenna_Tinkywinky.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SK_Teletubbies.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SM_PhotoFrame.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SM_PhotoFrame.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SM_Plinth.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/SM_Plinth.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Images/Point.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Images/Point.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_InteractionMappingContext.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_InteractionMappingContext.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Plinth.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Plinth.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Plinth.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Plinth.h" afterDir="false" />
-    </list>
+    <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,7 +129,7 @@
       <workItem from="1731655451532" duration="1329000" />
       <workItem from="1731664230605" duration="9310000" />
       <workItem from="1732118019002" duration="609000" />
-      <workItem from="1732365510185" duration="12371000" />
+      <workItem from="1732365510185" duration="12715000" />
     </task>
     <servers />
   </component>
