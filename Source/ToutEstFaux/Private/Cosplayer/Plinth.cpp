@@ -4,6 +4,7 @@
 #include "Cosplayer/Plinth.h"
 
 #include "Cosplayer/Figurine.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 APlinth::APlinth()
@@ -23,6 +24,12 @@ APlinth::APlinth()
 void APlinth::BeginPlay()
 {
 	Super::BeginPlay();
+
+	_mainGameMode = Cast<AMainGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+	if(_mainGameMode)
+	{
+		_mainGameMode->SetPlinths(this);
+	}
 	
 }
 
@@ -33,31 +40,32 @@ void APlinth::Tick(float DeltaTime)
 
 }
 
+bool APlinth::GetIsComplete()
+{
+	if(_figurine)
+	{
+		return _myTeletubbiesType==_figurine->GetTeletubbiesType() && _figurine->GetIfFigurineIsInRightPose();
+	}
+	return false;
+	
+}
+
 void APlinth::CheckIfFigurineIsGood()
 {
-	if(_myTeletubbiesType==_figurine->GetTeletubbiesType())
+	if(GetIsComplete())
 	{
-		
-		if(_figurine->GetIfFigurineIsInRightPose())
+		if(_mainGameMode)
 		{
-			GEngine->AddOnScreenDebugMessage(-1,1, FColor::Green, "Parfait");
-		}
-		else
-		{
-			GEngine->AddOnScreenDebugMessage(-1,1, FColor::Red,"Pas la bonne pose");
+			_mainGameMode->CheckIfCosplayerEnigmaFinish();
 		}
 		
 	}
-	else
-	{
-		GEngine->AddOnScreenDebugMessage(-1,1,FColor::Orange,"Pas Bon");
-	}
+	
 }
 
 void APlinth::RemoveFigurine()
 {
 	_figurine=nullptr;
-	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Red,"Ciao");
 }
 
 

@@ -3,6 +3,8 @@
 
 #include "Cosplayer/Figurine.h"
 
+#include "Kismet/GameplayStatics.h"
+
 
 // Sets default values
 AFigurine::AFigurine()
@@ -27,7 +29,12 @@ AFigurine::AFigurine()
 void AFigurine::BeginPlay()
 {
 	Super::BeginPlay();
-	SetUpTeletubbies();
+	
+	_mainGameMode = Cast<AMainGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+	if(_mainGameMode)
+	{
+		SetUpTeletubbies();
+	}
 	
 }
 
@@ -40,35 +47,31 @@ void AFigurine::Tick(float DeltaTime)
 
 void AFigurine::SetUpTeletubbies()
 {
-	if(!_listOfTeletubbiesMatData.IsEmpty())
-	{
-		for(int i=0;i<_listOfTeletubbiesMatData.Num();i++)
-		{
-			if(_listOfTeletubbiesMatData[i].teletubbies==_myTeletubbies)
-			{
-				mesh->SetMaterial(0,_listOfTeletubbiesMatData[i].bodyMat);
-				mesh->SetMaterial(3,_listOfTeletubbiesMatData[i].faceMat);
-				mesh->SetMaterial(4,_listOfTeletubbiesMatData[i].earMat);
-				antMesh->SetStaticMesh(_listOfTeletubbiesMatData[i].teletubbiesAntMesh);
-				_rightPose=_listOfTeletubbiesMatData[i].goodPoseNumber;
-				break;
-			}
-		}
-	}
+	FTeletubbiesMatData Data = _mainGameMode->GetTeletubbiesRightData(_myTeletubbies);
+	
+	mesh->SetMaterial(0,Data.bodyMat);
+	mesh->SetMaterial(3,Data.faceMat);
+	mesh->SetMaterial(4,Data.earMat);
+	antMesh->SetStaticMesh(Data.teletubbiesAntMesh);
+	_rightPose=Data.goodPoseNumber;
 	antMesh->SetMaterial(0,mesh->GetMaterial(0));
 }
 
 void AFigurine::ChangeAnimation()
 {
-	_poseIndex++;
-	if(_poseIndex>=6)
+	if(bCanMove)
 	{
-		_poseIndex=1;
+		_poseIndex++;
+		if(_poseIndex>=6)
+		{
+			_poseIndex=1;
+		}
+		bCanMove=false;
+		GetWorldTimerManager().SetTimer(TimerBeforeNextMove,this,&AFigurine::ChangeCanMove,0.5f);
 	}
+	
 
 }
-
-
 
 int AFigurine::GetAnimationNumberToPlay()
 {
@@ -80,7 +83,6 @@ ETeletubbies AFigurine::GetMyTeletubbiesType()
 	return _myTeletubbies;
 }
 
-
 ETeletubbies AFigurine::GetTeletubbiesType()
 {
 	return _myTeletubbies;
@@ -89,6 +91,16 @@ ETeletubbies AFigurine::GetTeletubbiesType()
 bool AFigurine::GetIfFigurineIsInRightPose()
 {
 	return _rightPose==_poseIndex;
+}
+
+void AFigurine::clicable()
+{
+	ChangeAnimation();
+}
+
+void AFigurine::ChangeCanMove()
+{
+	bCanMove=true;
 }
 
 

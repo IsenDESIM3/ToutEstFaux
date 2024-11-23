@@ -3,47 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Plinth.h"
 #include "Teletubbies.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
+#include "Global/Select.h"
 #include "Figurine.generated.h"
 
-//Put in Game Mode
-UENUM(BlueprintType)
-enum class ETeletubbies : uint8
-{
-	E_Po UMETA(DisplayName="Po_Red"),
-	E_Dispy UMETA(DisplayName="Dispy_Green"),
-	E_Laalaa UMETA(DisplayName="Laalaa_Yellow"),
-	E_Tinkywinky UMETA(DisplayName="Tinkywinky")
-};
 
-//Put in Game Mode
-USTRUCT(BlueprintType)
-struct FTeletubbiesMatData
-{
-	GENERATED_BODY()
-	UPROPERTY(EditDefaultsOnly)
-	ETeletubbies teletubbies=ETeletubbies::E_Po;
-
-	UPROPERTY(EditDefaultsOnly)
-	UMaterialInstance* bodyMat=nullptr;
-
-	UPROPERTY(EditDefaultsOnly)
-	UMaterialInstance* earMat=nullptr;
-
-	UPROPERTY(EditDefaultsOnly)
-	UMaterialInstance* faceMat=nullptr;
-
-	UPROPERTY(EditAnywhere)
-	UStaticMesh* teletubbiesAntMesh=nullptr;
-
-	UPROPERTY(EditAnywhere)
-	int32 goodPoseNumber;
-	
-};
 UCLASS()
-class TOUTESTFAUX_API AFigurine : public AActor, public ITeletubbies
+class TOUTESTFAUX_API AFigurine : public ASelect, public ITeletubbies
 {
 	GENERATED_BODY()
 	
@@ -82,19 +51,21 @@ public:
 	//Interface
 	virtual ETeletubbies GetTeletubbiesType() override;
 	virtual bool GetIfFigurineIsInRightPose() override;
+	virtual void clicable() override;
 
 private:
-	
-	//Put in Game Mode
-	UPROPERTY(EditDefaultsOnly,Category="All Teletubbies Configuration",meta=(AllowPrivateAccess))
-	TArray<FTeletubbiesMatData> _listOfTeletubbiesMatData{};
+	UPROPERTY()
+	AMainGameMode* _mainGameMode=nullptr;
 	
 	UPROPERTY(EditAnywhere,Category="Type of Teletubbies",meta=(AllowPrivateAccess))
 	ETeletubbies _myTeletubbies = ETeletubbies::E_Po;
-
 	int32 _poseIndex=0;
-
 	int32 _rightPose;
+
+	FTimerHandle TimerBeforeNextMove;
+	bool bCanMove=true;
 	
+	UFUNCTION()
+	void ChangeCanMove();
 };
 
