@@ -3,9 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Teletubbies.h"
+#include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
 #include "Figurine.generated.h"
 
+//Put in Game Mode
 UENUM(BlueprintType)
 enum class ETeletubbies : uint8
 {
@@ -15,31 +18,32 @@ enum class ETeletubbies : uint8
 	E_Tinkywinky UMETA(DisplayName="Tinkywinky")
 };
 
+//Put in Game Mode
 USTRUCT(BlueprintType)
 struct FTeletubbiesMatData
 {
 	GENERATED_BODY()
 	UPROPERTY(EditDefaultsOnly)
-	ETeletubbies Teletubbies=ETeletubbies::E_Po;
+	ETeletubbies teletubbies=ETeletubbies::E_Po;
 
 	UPROPERTY(EditDefaultsOnly)
-	UMaterialInstance* BodyMat=nullptr;
+	UMaterialInstance* bodyMat=nullptr;
 
 	UPROPERTY(EditDefaultsOnly)
-	UMaterialInstance* EarMat=nullptr;
+	UMaterialInstance* earMat=nullptr;
 
 	UPROPERTY(EditDefaultsOnly)
-	UMaterialInstance* FaceMat=nullptr;
+	UMaterialInstance* faceMat=nullptr;
 
 	UPROPERTY(EditAnywhere)
-	UStaticMesh* Teletubbies_Ant_Mesh=nullptr;
+	UStaticMesh* teletubbiesAntMesh=nullptr;
 
 	UPROPERTY(EditAnywhere)
-	int32 GoodPoseNumber;
+	int32 goodPoseNumber;
 	
 };
 UCLASS()
-class TOUTESTFAUX_API AFigurine : public AActor
+class TOUTESTFAUX_API AFigurine : public AActor, public ITeletubbies
 {
 	GENERATED_BODY()
 	
@@ -48,10 +52,13 @@ public:
 	AFigurine();
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
-	USkeletalMeshComponent* Mesh;
+	USkeletalMeshComponent* mesh;
 
 	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* Ant_Mesh;
+	UStaticMeshComponent* antMesh;
+
+	UPROPERTY(EditAnywhere)
+	UBoxComponent* myPhysicCollider;
 
 protected:
 	// Called when the game starts or when spawned
@@ -69,20 +76,25 @@ public:
 	UFUNCTION(BlueprintCallable,Category="Animations")
 	int GetAnimationNumberToPlay();
 
+	UFUNCTION(BlueprintCallable,Category="Animations")
+	ETeletubbies GetMyTeletubbiesType();
+
+	//Interface
+	virtual ETeletubbies GetTeletubbiesType() override;
+	virtual bool GetIfFigurineIsInRightPose() override;
+
 private:
+	
+	//Put in Game Mode
 	UPROPERTY(EditDefaultsOnly,Category="All Teletubbies Configuration",meta=(AllowPrivateAccess))
-	TArray<FTeletubbiesMatData> ListOfTeletubbiesMatData{};
+	TArray<FTeletubbiesMatData> _listOfTeletubbiesMatData{};
 	
 	UPROPERTY(EditAnywhere,Category="Type of Teletubbies",meta=(AllowPrivateAccess))
-	ETeletubbies MyTeletubbies = ETeletubbies::E_Po;
+	ETeletubbies _myTeletubbies = ETeletubbies::E_Po;
 
-	UPROPERTY()
-	TArray<int32> AllAnimationsPosible{1,2,3,4};
+	int32 _poseIndex=0;
 
-	int32 ActualAnimationNumber=-1;
-
-	int32 index=-1;
-
-	int32 RightPose;
+	int32 _rightPose;
+	
 };
 
