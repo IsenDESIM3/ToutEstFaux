@@ -6,6 +6,7 @@
 #include "Teletubbies.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
+#include "Global/MainGameMode.h"
 #include "Plinth.generated.h"
 
 enum class ETeletubbies : uint8;
@@ -32,8 +33,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	bool GetIsComplete();
+
 private:
 
+	UPROPERTY()
+	AMainGameMode* _mainGameMode=nullptr;
+	
 	//Put in Game Mode
 	void CheckIfFigurineIsGood();
 
