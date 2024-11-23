@@ -8,9 +8,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/ToutEstFaux.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/ToutEstFaux.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/ABP_Teletubbies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/ABP_Teletubbies.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/AM_Cosp1_GoodPose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/AM_Cosp2_GoodPose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/AM_Cosp3_GoodPose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/AM_Cosp4_GoodPose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/A_Cosp1_GoodPose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/A_Cosp2_GoodPose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/A_Cosp3_GoodPose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/A_Cosp4_GoodPose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/A_Cosp_Idle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Dipsy/A_Teletubbies.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Laalaa/A_Laalaa_Pose_Anim.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/Po/A_PO_Pose_Anim.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Animations/TinkyWinky/A_Tinkywinky_Pose_Anim.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Level/CosplayersMap.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Images/Point.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +150,7 @@
       <workItem from="1731655451532" duration="1329000" />
       <workItem from="1731664230605" duration="9310000" />
       <workItem from="1732118019002" duration="609000" />
+      <workItem from="1732365510185" duration="7242000" />
     </task>
     <servers />
   </component>

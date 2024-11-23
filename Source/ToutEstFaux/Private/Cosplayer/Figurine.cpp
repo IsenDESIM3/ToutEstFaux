@@ -3,19 +3,21 @@
 
 #include "Cosplayer/Figurine.h"
 
-#include "IndexTypes.h"
 
 // Sets default values
 AFigurine::AFigurine()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	
+	myPhysicCollider=CreateDefaultSubobject<UBoxComponent>(TEXT("my Physic Colliders"));
+	myPhysicCollider->SetupAttachment(RootComponent);
+	
+	mesh=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Skeletal Mesh Component"));
+	mesh->SetupAttachment(myPhysicCollider);
 
-	Mesh=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Skeletal Mesh Component"));
-	Mesh->SetupAttachment(RootComponent);
-
-	Ant_Mesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Ant Mesh"));
-	Ant_Mesh->SetupAttachment(Mesh,FName("Ant_Socket"));
+	antMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Ant Mesh"));
+	antMesh->SetupAttachment(mesh,FName("Ant_Socket"));
 	
 	
 
@@ -38,49 +40,55 @@ void AFigurine::Tick(float DeltaTime)
 
 void AFigurine::SetUpTeletubbies()
 {
-	if(!ListOfTeletubbiesMatData.IsEmpty())
+	if(!_listOfTeletubbiesMatData.IsEmpty())
 	{
-		for(int i=0;i<ListOfTeletubbiesMatData.Num();i++)
+		for(int i=0;i<_listOfTeletubbiesMatData.Num();i++)
 		{
-			if(ListOfTeletubbiesMatData[i].Teletubbies==MyTeletubbies)
+			if(_listOfTeletubbiesMatData[i].teletubbies==_myTeletubbies)
 			{
-				Mesh->SetMaterial(0,ListOfTeletubbiesMatData[i].BodyMat);
-				Mesh->SetMaterial(3,ListOfTeletubbiesMatData[i].FaceMat);
-				Mesh->SetMaterial(4,ListOfTeletubbiesMatData[i].EarMat);
-				Ant_Mesh->SetStaticMesh(ListOfTeletubbiesMatData[i].Teletubbies_Ant_Mesh);
-				RightPose=ListOfTeletubbiesMatData[i].GoodPoseNumber;
+				mesh->SetMaterial(0,_listOfTeletubbiesMatData[i].bodyMat);
+				mesh->SetMaterial(3,_listOfTeletubbiesMatData[i].faceMat);
+				mesh->SetMaterial(4,_listOfTeletubbiesMatData[i].earMat);
+				antMesh->SetStaticMesh(_listOfTeletubbiesMatData[i].teletubbiesAntMesh);
+				_rightPose=_listOfTeletubbiesMatData[i].goodPoseNumber;
 				break;
 			}
 		}
 	}
-	Ant_Mesh->SetMaterial(0,Mesh->GetMaterial(0));
+	antMesh->SetMaterial(0,mesh->GetMaterial(0));
 }
 
 void AFigurine::ChangeAnimation()
 {
-	if(ActualAnimationNumber!=RightPose)
+	_poseIndex++;
+	if(_poseIndex>=6)
 	{
-		if(ActualAnimationNumber>0)
-		{
-			ActualAnimationNumber=0;
-			return;
-		}
-	
-		index++;
-		if(index>=AllAnimationsPosible.Num())
-		{
-			index=0;
-		}
-
-		ActualAnimationNumber=AllAnimationsPosible[index];
+		_poseIndex=1;
 	}
+
 }
 
 
 
 int AFigurine::GetAnimationNumberToPlay()
 {
-	return ActualAnimationNumber!=-1?ActualAnimationNumber:0;
+	return _poseIndex;
+}
+
+ETeletubbies AFigurine::GetMyTeletubbiesType()
+{
+	return _myTeletubbies;
+}
+
+
+ETeletubbies AFigurine::GetTeletubbiesType()
+{
+	return _myTeletubbies;
+}
+
+bool AFigurine::GetIfFigurineIsInRightPose()
+{
+	return _rightPose==_poseIndex;
 }
 
 
