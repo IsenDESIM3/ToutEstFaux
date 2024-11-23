@@ -7,6 +7,9 @@ public class ToutEstFaux : ModuleRules
 	public ToutEstFaux(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+        
+		PublicIncludePaths.AddRange(new string[] {"ToutEstFaux/Public" });
+		PrivateIncludePaths.AddRange(new string[]{"ToutEstFaux/Private"});
 	
 		PublicIncludePaths.AddRange(new string[] {"ToutEstFaux/Public" });
 		PrivateIncludePaths.AddRange(new string[]{"ToutEstFaux/Private"});
