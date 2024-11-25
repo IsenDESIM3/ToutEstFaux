@@ -7,7 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="" />
+    <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu_MultiplayerWidget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu_MultiplayerWidget.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/ServerSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/ServerSlot.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/TeFGameInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/TeFGameInstance.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +25,18 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Plinth.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Select.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Plinth.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/MyCharacters.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameMode.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/Select.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Menu/MenuWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/TeFGameInstance.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/ToutEstFaux.Build.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -39,7 +56,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Uproject.ToutEstFaux.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/CosplayerPuzzle&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/GameMenu&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -129,7 +146,11 @@
       <workItem from="1731655451532" duration="1329000" />
       <workItem from="1731664230605" duration="9310000" />
       <workItem from="1732118019002" duration="609000" />
-      <workItem from="1732365510185" duration="12715000" />
+      <workItem from="1732365510185" duration="13105000" />
+      <workItem from="1732437505460" duration="825000" />
+      <workItem from="1732439168798" duration="1684000" />
+      <workItem from="1732452282831" duration="10004000" />
+      <workItem from="1732521654144" duration="2136000" />
     </task>
     <servers />
   </component>

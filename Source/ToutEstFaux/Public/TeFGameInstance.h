@@ -8,6 +8,8 @@
 #include "TeFGameInstance.generated.h"
 
 
+class AMenuGameMode;
+
 USTRUCT(BlueprintType)
 struct  FServerInfo
 {
@@ -51,8 +53,6 @@ protected:
 	
 	FName MySessionName;
 
-	
-
 	UPROPERTY(BlueprintAssignable)
 	FServerDel ServerListDel;
 
@@ -67,7 +67,7 @@ protected:
 	virtual void OnFindSessionsComplete(bool Succeeded);
 	virtual void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 	
-
+public:
 	UFUNCTION(BlueprintCallable)
 	void CreateServer(FString ServerName, FString HostName);
 
@@ -75,7 +75,14 @@ protected:
 	void FindServer();
 	UFUNCTION(BlueprintCallable)
 	void JoinServer(int32 ArrayIndex);
+	
+	void SetGameMode(AMenuGameMode* GameMode);
 private:
 	FName SessionName = FName("MySessionName");
+
+	TArray<FServerInfo> AllServers{};
+
+	UPROPERTY()
+	AMenuGameMode* _gameMode=nullptr;
 };
 

@@ -6,6 +6,7 @@
 #include "OnlineSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "OnlineSessionSettings.h"
+#include "Menu/MenuGameMode.h"
 #include "Online/OnlineSessionNames.h"
 
 UTeFGameInstance::UTeFGameInstance()
@@ -49,7 +50,9 @@ void UTeFGameInstance::OnFindSessionsComplete(bool Succeeded)
 	
 		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), SessionSearch->SearchResults.Num());
 		int8 ArrayIndex = -1;
-	
+
+		AllServers.Empty();
+		
 		for (FOnlineSessionSearchResult Result : SessionSearch->SearchResults)
 		{
 			++ArrayIndex;
@@ -66,9 +69,16 @@ void UTeFGameInstance::OnFindSessionsComplete(bool Succeeded)
 			Info.CurrentPlayers = Info.MaxPlayers - Result.Session.NumOpenPublicConnections;
 			Info.ServerArrayIndex = ArrayIndex;
 			Info.SetPlayerCount();
+
+			AllServers.Add(Info);
 			ServerListDel.Broadcast(Info);
 			
 	    }
+
+		if(_gameMode)
+		{
+			_gameMode->ReceiveServers(AllServers);
+		}
 
 	}
 	
@@ -137,4 +147,10 @@ void UTeFGameInstance::JoinServer(int32 ArrayIndex)
   {
 	  UE_LOG(LogTemp, Warning, TEXT("Failed to join server at index: %d"), ArrayIndex);
   }
+}
+
+
+void UTeFGameInstance::SetGameMode(AMenuGameMode* GameMode)
+{
+	_gameMode=GameMode;
 }
