@@ -27,6 +27,7 @@ void UTeFGameInstance::Init()
 			SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UTeFGameInstance::OnCreateSessionComplete);
 			SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UTeFGameInstance::OnFindSessionsComplete);
 			SessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UTeFGameInstance::OnJoinSessionComplete);
+			SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this, &UTeFGameInstance::OnDestroySessionComplete);
 		}
 	}
 }
@@ -147,6 +148,27 @@ void UTeFGameInstance::JoinServer(int32 ArrayIndex)
   {
 	  UE_LOG(LogTemp, Warning, TEXT("Failed to join server at index: %d"), ArrayIndex);
   }
+}
+void UTeFGameInstance::LeaveSession()
+{
+	if (SessionInterface.IsValid())
+	{
+		
+		SessionInterface->DestroySession(MySessionName);
+	}
+
+	
+	if (APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+	{
+		PlayerController->ClientTravel("Game/Assets/Multijoueur/Menu", ETravelType::TRAVEL_Absolute);
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Left session and returned to main menu."));
+	
+}
+void UTeFGameInstance::OnDestroySessionComplete(FName SessionName, bool Succeeded)
+{
+	UE_LOG(LogTemp, Warning, TEXT("OnDestroySessionComplete: %s, Succeeded: %d"), *SessionName.ToString(), Succeeded);
 }
 
 
