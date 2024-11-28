@@ -66,8 +66,9 @@ protected:
 	virtual void OnCreateSessionComplete(FName SessionName, bool Succeeded);
 	virtual void OnFindSessionsComplete(bool Succeeded);
 	virtual void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
+	virtual void OnDestroySessionComplete(FName SessionName, bool Succeeded);
 	
-public:
+
 	UFUNCTION(BlueprintCallable)
 	void CreateServer(FString ServerName, FString HostName);
 
@@ -75,6 +76,9 @@ public:
 	void FindServer();
 	UFUNCTION(BlueprintCallable)
 	void JoinServer(int32 ArrayIndex);
+	UFUNCTION(BlueprintCallable)
+	void LeaveSession();
+
 	
 	void SetGameMode(AMenuGameMode* GameMode);
 private:
