@@ -31,7 +31,7 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	UFUNCTION(BlueprintCallable)
 	void SwitchMappingContext(bool bIsOpen);
 	UFUNCTION(BlueprintCallable)
-	void Selection();
+	void Grab();
 	UFUNCTION(BlueprintCallable)
 	void Interactor();
 	UFUNCTION(BlueprintCallable)
@@ -44,6 +44,8 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	void HoldingKey();
 	UFUNCTION()
 	void ClicInInteraction();
+	UFUNCTION()
+	void putDown();
 	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
@@ -53,24 +55,28 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
 	FVector2D Result = FVector2D( 1, 1 );
 	bool bCanRotate = false;
+	bool bHandEmpty = true;
+	bool bInputSwitched = false;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputMappingContext* DefaultMappingContext;
+	UInputMappingContext* defaultMappingContext;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputMappingContext* InteractionMappingContext;
+	UInputMappingContext* interactionMappingContext;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputAction* MouseSelection;
+	UInputAction* mouseSelection;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputAction* HoldingRotation;
+	UInputAction* holdingRotation;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* clicInteraction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputAction* Interaction;
+	UInputAction* interaction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* releaseInteraction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Reference, meta=(AllowPrivateAccess = "true"))
-	AMyCharacters* MyCharacters;
+	AMyCharacters* myCharacters;
 	virtual void OnPossess(APawn* InPawn) override;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	TScriptInterface<IISelectable> Selected;
+	TScriptInterface<IISelectable> selected;
 	
 	
 	

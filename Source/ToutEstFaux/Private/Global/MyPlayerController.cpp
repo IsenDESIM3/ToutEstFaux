@@ -3,6 +3,7 @@
 
 #include "Global/MyPlayerController.h"
 
+#include "ViewportInteractionTypes.h"
 #include "Global/ISelectable.h"
 
 void AMyPlayerController::BeginPlay()
@@ -13,7 +14,7 @@ void AMyPlayerController::BeginPlay()
 	WidgetUse->AddToViewport(0);
 	if(UEnhancedInputLocalPlayerSubsystem* Subsystem= ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 	{
-		Subsystem->AddMappingContext(DefaultMappingContext, 0);
+		Subsystem->AddMappingContext(defaultMappingContext, 0);
 		bShowMouseCursor = false;
 	}
 	APlayerController* MyController = GetWorld()->GetFirstPlayerController();
@@ -24,24 +25,27 @@ void AMyPlayerController::SetupInputComponent()
 	Super::SetupInputComponent();
 	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
 	{
-		EnhancedInputComponent->BindAction(Interaction, ETriggerEvent::Started, this , &AMyPlayerController::Interactor);
+		EnhancedInputComponent->BindAction(interaction, ETriggerEvent::Started, this , &AMyPlayerController::Interactor);
 	}
-	
-	Super::SetupInputComponent();
-	// if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
-	// {
-	// 	EnhancedInputComponent->BindAction(MouseSelection, ETriggerEvent::Started, this , &AMyPlayerController::Selection);
-	// }
 	
 	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
 	{
-		EnhancedInputComponent->BindAction(HoldingRotation,ETriggerEvent::Started, this , &AMyPlayerController::HoldingKey);
-		EnhancedInputComponent->BindAction(HoldingRotation,ETriggerEvent::Completed, this , &AMyPlayerController::HoldingKey);
-		EnhancedInputComponent->BindAction(HoldingRotation,ETriggerEvent::Canceled, this , &AMyPlayerController::HoldingKey);
+		EnhancedInputComponent->BindAction(mouseSelection, ETriggerEvent::Started, this , &AMyPlayerController::Grab);
+	}
+	
+	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
+	{
+		EnhancedInputComponent->BindAction(holdingRotation,ETriggerEvent::Started, this , &AMyPlayerController::HoldingKey);
+		EnhancedInputComponent->BindAction(holdingRotation,ETriggerEvent::Completed, this , &AMyPlayerController::HoldingKey);
+		EnhancedInputComponent->BindAction(holdingRotation,ETriggerEvent::Canceled, this , &AMyPlayerController::HoldingKey);
 	}
 	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
 	{
 		EnhancedInputComponent->BindAction(clicInteraction,ETriggerEvent::Started, this , &AMyPlayerController::ClicInInteraction);
+	}
+	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
+	{
+		EnhancedInputComponent->BindAction(releaseInteraction,ETriggerEvent::Started,this,&AMyPlayerController::putDown);
 	}
 }
 
@@ -52,8 +56,8 @@ void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 	{
 		if(bIsOpen)
 		{
-			Subsystem->AddMappingContext(InteractionMappingContext, 0);
-			Subsystem->RemoveMappingContext(DefaultMappingContext);
+			Subsystem->AddMappingContext(interactionMappingContext, 0);
+			Subsystem->RemoveMappingContext(defaultMappingContext);
 			if (IsValid(interactionWidget))
 			{
 				bShowMouseCursor = true;
@@ -64,8 +68,8 @@ void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 		}
 		else
 		{
-			Subsystem->AddMappingContext(DefaultMappingContext,0);
-			Subsystem->RemoveMappingContext(InteractionMappingContext);
+			Subsystem->AddMappingContext(defaultMappingContext,0);
+			Subsystem->RemoveMappingContext(interactionMappingContext);
 			if (IsValid(defaultWidget))
 			{
 				bShowMouseCursor = false;
@@ -77,32 +81,58 @@ void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 	}
 }
 
-void AMyPlayerController::Selection()
+void AMyPlayerController::Grab()
 {
-	
 	// 	TODO : mettre l'objet dans la main via une socket et faire la gestion d'inventaire
-	if(Raycast()!=nullptr)
+	if(!selected)
+	selected = Raycast();
+	if(selected!=nullptr && bHandEmpty)
+	{
 		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Interactable");
-	else
-		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Not Interactable");
+		selected->Grabed(myCharacters->itemPos);
+		selected->SetInTheHand();
+		bHandEmpty = false;
+	}
+	
 }
 
 void AMyPlayerController::Interactor()
 {
-	if(!Selected)
+	if(!selected)
 	{
-		Selected = Raycast();
-		if(Selected!=nullptr)
+		selected = Raycast();
+		if(selected!=nullptr)
 		{
 			SwitchMappingContext(true);
-			Selected->Shrink(MyCharacters->GetCameraLocation()+MyCharacters->GetCameraForward()*100);
+			selected->Shrink();
+			selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*70);
 		}
 	}
 	else
 	{
-		SwitchMappingContext(false);
-		Selected->Increase();
-		Selected = nullptr;
+		if(bHandEmpty)
+		{
+			SwitchMappingContext(false);
+			selected->Increase();
+			selected = nullptr;
+		}
+		else
+		{
+			if(!bInputSwitched)
+			{
+				SwitchMappingContext(true);
+				selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*70);
+				bInputSwitched = !bInputSwitched;
+				myCharacters->SetActorRotation(FRotator(0,50,0));
+			}
+			else
+			{
+				SwitchMappingContext(false);
+				selected->SetInTheHand();
+				bInputSwitched = !bInputSwitched;
+			}
+		}
+		
 	}
 		
 }
@@ -122,7 +152,7 @@ TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 	if(GetWorld()->LineTraceSingleByChannel(HitResult,MouseLocation,EndRay,ECC_Visibility,Params))
 	{
 		AActor* target = HitResult.GetActor();
-		if (target->Implements<UISelectable>() && MyCharacters)
+		if (target->Implements<UISelectable>() && myCharacters)
 		{
 			// GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, "beginning Shrink");
 			return  TScriptInterface<IISelectable>(target);
@@ -134,9 +164,9 @@ TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 
 void AMyPlayerController::GetMouseXYInfo(float mousex, float mousey)
 {
-	if(Selected && bCanRotate)
+	if(selected && bCanRotate)
 	{
-		Selected->NewRotation(FRotator(mousey,mousex,0)*-2);
+		selected->NewRotation(FRotator(mousey,mousex,0)*-2);
 		
 	}
 }
@@ -148,14 +178,47 @@ void AMyPlayerController::HoldingKey()
 
 void AMyPlayerController::ClicInInteraction()
 {
-	if(Selected)
-		Selected->clicable();
+	if(selected)
+		selected->clicable();
+}
+
+void AMyPlayerController::putDown()
+{
+	GetGameResolution();
+	SetMouseLocation(Result.X, Result.Y);
+	FVector MouseLocation, MouseForward;
+	DeprojectMousePositionToWorld(MouseLocation, MouseForward);
+	FHitResult HitResult;
+	FVector EndRay = MouseLocation + MouseForward * 500.0f;
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(GetPawn());
+	FVector newpos;
+
+	if(!bHandEmpty)
+	{
+		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Main occupé");
+		if(GetWorld()->LineTraceSingleByChannel(HitResult,MouseLocation,EndRay,ECC_Visibility,Params))
+		{
+			if(selected == nullptr)
+			GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
+				
+			GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
+			if(selected && HitResult.Distance<500.f)
+			{
+				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
+				newpos = HitResult.Location;
+				selected->Release(newpos);
+				bHandEmpty = true;
+				selected = nullptr;
+			}
+		}
+	}
 }
 
 void AMyPlayerController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-	MyCharacters = Cast<AMyCharacters>(InPawn);
+	myCharacters = Cast<AMyCharacters>(InPawn);
 }
 
 

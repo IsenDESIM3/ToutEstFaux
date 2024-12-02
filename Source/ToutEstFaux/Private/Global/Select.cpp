@@ -3,6 +3,8 @@
 
 #include "Global/Select.h"
 
+#include "GameFramework/SpringArmComponent.h"
+#include "Gameplay/MyCharacters.h"
 #include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
@@ -27,13 +29,12 @@ void ASelect::Tick(float DeltaTime)
 
 }
 
-void ASelect::Shrink(FVector cameraLocation)
+void ASelect::Shrink()
 {
 	inialLocation = GetActorLocation();
 	initialRotation = GetActorRotation();
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Turquoise, "Shrinking");
 	SetActorScale3D(GetActorScale()*0.1);
-	SetActorLocation(cameraLocation);
 }
 
 void ASelect::Increase()
@@ -52,5 +53,32 @@ void ASelect::NewRotation(FRotator objectRotation)
 void ASelect::clicable()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Yellow, "clicable");
+}
+
+void ASelect::Grabed(UStaticMeshComponent* mesh)
+{
+	initialRotation = GetActorRotation();
+	AttachToComponent(mesh, FAttachmentTransformRules::KeepWorldTransform, NAME_None);
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, "grabbing");	
+	SetActorScale3D(GetActorScale()*0.1);
+
+}
+void ASelect::Release(FVector newpos)
+{
+	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);		
+	SetActorScale3D(GetActorScale()*10);
+	SetActorLocation(newpos+FVector(0, 0, 10));
+	SetActorRotation(initialRotation);
+}
+
+void ASelect::SetFrontCamera(FVector camera)
+{
+	// DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+	SetActorLocation(camera);
+}
+
+void ASelect::SetInTheHand()
+{
+	SetActorRelativeLocation(FVector(0,0,0));
 }
 

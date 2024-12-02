@@ -4,22 +4,25 @@
 #include "Gameplay/MyCharacters.h"
 
 #include "Camera/CameraActor.h"
+#include "Components/BoxComponent.h"
 #include "GameFramework/InputSettings.h"
 
 // Sets default values
 AMyCharacters::AMyCharacters()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
 	CameraComp->SetupAttachment(GetMesh());
+	itemPos = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ItemPos"));
+	itemPos->SetupAttachment(CameraComp);
+	itemPos->SetRelativeLocation(FVector(70,50,-20));
 }
 
 // Called when the game starts or when spawned
 void AMyCharacters::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 FVector AMyCharacters::GetCameraLocation()

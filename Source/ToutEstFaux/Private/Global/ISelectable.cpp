@@ -4,7 +4,26 @@
 #include "Global/ISelectable.h"
 
 
-void IISelectable::Shrink(FVector cameraLocation)
+void IISelectable::Shrink()
+{
+	
+}
+
+void IISelectable::Grabed(UStaticMeshComponent* mesh)
+{
+	
+}
+
+void IISelectable::Release(FVector newpos)
+{
+	
+}
+
+void IISelectable::SetFrontCamera(FVector camera)
+{
+}
+
+void IISelectable::SetInTheHand()
 {
 	
 }
