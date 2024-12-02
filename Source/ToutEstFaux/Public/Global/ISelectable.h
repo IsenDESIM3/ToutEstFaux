@@ -19,10 +19,14 @@ class UISelectable : public UInterface
 class TOUTESTFAUX_API IISelectable
 {
 	GENERATED_BODY()
-	public:
+public:
 	
 	
-	virtual void Shrink(FVector cameraLocation);
+	virtual void Shrink();
+	virtual void Grabed(UStaticMeshComponent* mesh);
+	virtual void Release(FVector newpos);
+	virtual void SetFrontCamera(FVector camera);
+	virtual void SetInTheHand();
 	virtual void Increase();
 	virtual void NewRotation(FRotator objectRotation);
 	virtual void clicable();

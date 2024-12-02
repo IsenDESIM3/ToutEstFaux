@@ -19,9 +19,11 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+public:
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* itemPos;
 	UPROPERTY(EditAnywhere)
 	UCameraComponent* CameraComp;
-public:
 	FVector GetCameraLocation();
 	FVector GetCameraForward();
 	// Called every frame
