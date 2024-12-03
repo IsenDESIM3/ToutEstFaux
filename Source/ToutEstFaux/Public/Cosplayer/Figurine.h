@@ -51,7 +51,7 @@ public:
 	//Interface
 	virtual ETeletubbies GetTeletubbiesType() override;
 	virtual bool GetIfFigurineIsInRightPose() override;
-	virtual void clicable() override;
+	virtual void Clikcable() override;
 
 private:
 	UPROPERTY()

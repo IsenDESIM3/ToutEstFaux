@@ -39,7 +39,7 @@ void IISelectable::NewRotation(FRotator objectRotation)
 	
 }
 
-void IISelectable::clicable()
+void IISelectable::Clikcable()
 {
 	
 }

@@ -29,7 +29,7 @@ public:
 	virtual void SetInTheHand();
 	virtual void Increase();
 	virtual void NewRotation(FRotator objectRotation);
-	virtual void clicable();
+	virtual void Clikcable();
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 };

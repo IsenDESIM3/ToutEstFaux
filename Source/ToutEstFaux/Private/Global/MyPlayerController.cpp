@@ -9,6 +9,7 @@
 void AMyPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	bEnableClickEvents = true;
 	GetGameResolution();
 	WidgetUse = CreateWidget<UWidget_Interaction>(this, defaultWidget);
 	WidgetUse->AddToViewport(0);
@@ -179,7 +180,7 @@ void AMyPlayerController::HoldingKey()
 void AMyPlayerController::ClicInInteraction()
 {
 	if(selected)
-		selected->clicable();
+		selected->Clikcable();
 }
 
 void AMyPlayerController::putDown()

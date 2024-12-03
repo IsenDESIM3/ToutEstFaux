@@ -34,7 +34,7 @@ void ASelect::Shrink()
 	inialLocation = GetActorLocation();
 	initialRotation = GetActorRotation();
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Turquoise, "Shrinking");
-	SetActorScale3D(GetActorScale()*0.1);
+	SetActorScale3D(GetActorScale()*0.4);
 }
 
 void ASelect::Increase()
@@ -50,7 +50,7 @@ void ASelect::NewRotation(FRotator objectRotation)
 	SetActorRotation(UKismetMathLibrary::ComposeRotators(GetActorRotation(), objectRotation));
 }
 
-void ASelect::clicable()
+void ASelect::Clikcable()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Yellow, "clicable");
 }
