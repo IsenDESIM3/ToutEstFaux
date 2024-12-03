@@ -26,11 +26,12 @@ public:
 	virtual auto Shrink() -> void override;
 	virtual void Increase() override;
 	virtual void NewRotation(FRotator objectRotation) override;
-	virtual void clicable() override;
-	virtual void Grabed(UStaticMeshComponent* mesh) override;
+	virtual void clickable() override;
+	virtual void Grabbed(UStaticMeshComponent* mesh) override;
 	virtual void Release(FVector newpos) override;
 	virtual void SetFrontCamera(FVector camera) override;
 	virtual void SetInTheHand() override;
+	virtual AActor* GetItemTarget() override;
 	FVector inialLocation;
 	FRotator initialRotation;
 	UPROPERTY(EditAnywhere, Category="Components")

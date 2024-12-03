@@ -34,13 +34,13 @@ void ASelect::Shrink()
 	inialLocation = GetActorLocation();
 	initialRotation = GetActorRotation();
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Turquoise, "Shrinking");
-	SetActorScale3D(GetActorScale()*0.1);
+	SetActorScale3D(GetActorScale()*0.6);
 }
 
 void ASelect::Increase()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Purple, "increasing");
-	SetActorScale3D(GetActorScale()*10);
+	SetActorScale3D(GetActorScale()/0.6);
 	SetActorLocation(inialLocation);
 	SetActorRotation(initialRotation);
 }
@@ -50,23 +50,23 @@ void ASelect::NewRotation(FRotator objectRotation)
 	SetActorRotation(UKismetMathLibrary::ComposeRotators(GetActorRotation(), objectRotation));
 }
 
-void ASelect::clicable()
+void ASelect::clickable()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Yellow, "clicable");
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Yellow, "clickable");
 }
 
-void ASelect::Grabed(UStaticMeshComponent* mesh)
+void ASelect::Grabbed(UStaticMeshComponent* mesh)
 {
 	initialRotation = GetActorRotation();
 	AttachToComponent(mesh, FAttachmentTransformRules::KeepWorldTransform, NAME_None);
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, "grabbing");	
-	SetActorScale3D(GetActorScale()*0.1);
+	SetActorScale3D(GetActorScale()*0.4);
 
 }
 void ASelect::Release(FVector newpos)
 {
 	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);		
-	SetActorScale3D(GetActorScale()*10);
+	SetActorScale3D(GetActorScale()/0.4);
 	SetActorLocation(newpos+FVector(0, 0, 10));
 	SetActorRotation(initialRotation);
 }
@@ -81,4 +81,11 @@ void ASelect::SetInTheHand()
 {
 	SetActorRelativeLocation(FVector(0,0,0));
 }
+
+AActor* ASelect::GetItemTarget()
+{
+	return IISelectable::GetItemTarget();
+}
+
+
 

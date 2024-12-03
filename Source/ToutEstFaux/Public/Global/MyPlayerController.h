@@ -45,7 +45,7 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	UFUNCTION()
 	void ClicInInteraction();
 	UFUNCTION()
-	void putDown();
+	void PutDown();
 	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
@@ -74,6 +74,9 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	UInputAction* releaseInteraction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Reference, meta=(AllowPrivateAccess = "true"))
 	AMyCharacters* myCharacters;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Reference, meta=(AllowPrivateAccess = "true"))
+	AActor* ItemTarget; //Fill this variable with the Target variable of your item
+	
 	virtual void OnPossess(APawn* InPawn) override;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TScriptInterface<IISelectable> selected;
