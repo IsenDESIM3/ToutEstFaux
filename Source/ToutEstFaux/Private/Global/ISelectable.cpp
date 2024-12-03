@@ -9,7 +9,7 @@ void IISelectable::Shrink()
 	
 }
 
-void IISelectable::Grabed(UStaticMeshComponent* mesh)
+void IISelectable::Grabbed(UStaticMeshComponent* mesh)
 {
 	
 }
@@ -39,7 +39,12 @@ void IISelectable::NewRotation(FRotator objectRotation)
 	
 }
 
-void IISelectable::clicable()
+void IISelectable::clickable()
 {
 	
+}
+
+AActor* IISelectable::GetItemTarget()
+{
+	return nullptr;
 }

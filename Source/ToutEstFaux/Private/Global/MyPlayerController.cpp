@@ -3,6 +3,8 @@
 
 #include "Global/MyPlayerController.h"
 
+#include "Chest.h"
+#include "SkeletalDebugRendering.h"
 #include "ViewportInteractionTypes.h"
 #include "Global/ISelectable.h"
 
@@ -45,7 +47,7 @@ void AMyPlayerController::SetupInputComponent()
 	}
 	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
 	{
-		EnhancedInputComponent->BindAction(releaseInteraction,ETriggerEvent::Started,this,&AMyPlayerController::putDown);
+		EnhancedInputComponent->BindAction(releaseInteraction,ETriggerEvent::Started,this,&AMyPlayerController::PutDown);
 	}
 }
 
@@ -89,8 +91,9 @@ void AMyPlayerController::Grab()
 	if(selected!=nullptr && bHandEmpty)
 	{
 		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Interactable");
-		selected->Grabed(myCharacters->itemPos);
+		selected->Grabbed(myCharacters->itemPos);
 		selected->SetInTheHand();
+		ItemTarget = selected->GetItemTarget();
 		bHandEmpty = false;
 	}
 	
@@ -105,7 +108,7 @@ void AMyPlayerController::Interactor()
 		{
 			SwitchMappingContext(true);
 			selected->Shrink();
-			selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*70);
+			selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*45);
 		}
 	}
 	else
@@ -121,7 +124,7 @@ void AMyPlayerController::Interactor()
 			if(!bInputSwitched)
 			{
 				SwitchMappingContext(true);
-				selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*70);
+				selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*45);
 				bInputSwitched = !bInputSwitched;
 				myCharacters->SetActorRotation(FRotator(0,50,0));
 			}
@@ -178,11 +181,12 @@ void AMyPlayerController::HoldingKey()
 
 void AMyPlayerController::ClicInInteraction()
 {
+	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Green,"Interactable");
 	if(selected)
-		selected->clicable();
+		selected->clickable();
 }
 
-void AMyPlayerController::putDown()
+void AMyPlayerController::PutDown()
 {
 	GetGameResolution();
 	SetMouseLocation(Result.X, Result.Y);
@@ -196,20 +200,37 @@ void AMyPlayerController::putDown()
 
 	if(!bHandEmpty)
 	{
-		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Main occupé");
+		//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Main occupé");
 		if(GetWorld()->LineTraceSingleByChannel(HitResult,MouseLocation,EndRay,ECC_Visibility,Params))
 		{
-			if(selected == nullptr)
-			GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
+			if(selected == nullptr) return;
+			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
+			if (selected && HitResult.GetActor() == ItemTarget)
+			{
+				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red, HitResult.GetActor()->GetName());
+				ItemTarget = HitResult.GetActor();
+				if (ItemTarget->Implements<UInteractable>())
+				{
+					TScriptInterface<IInteractable> Target = TScriptInterface<IInteractable>(ItemTarget);
+					Target->Interact();
+					bHandEmpty = true;
+					selected->Release(FVector(0,0,0));
 				
-			GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
+					selected = nullptr;
+					ItemTarget = nullptr;
+				}
+			}
+
+				
+			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
 			if(selected && HitResult.Distance<500.f)
 			{
-				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
+				//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
 				newpos = HitResult.Location;
 				selected->Release(newpos);
 				bHandEmpty = true;
 				selected = nullptr;
+				ItemTarget = nullptr;
 			}
 		}
 	}
