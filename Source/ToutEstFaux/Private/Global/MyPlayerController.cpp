@@ -200,9 +200,29 @@ void AMyPlayerController::PutDown()
 
 	if(!bHandEmpty)
 	{
-		//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Main occupé");
+		////GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Main occupé");
 		if(GetWorld()->LineTraceSingleByChannel(HitResult,MouseLocation,EndRay,ECC_Visibility,Params))
 		{
+			if(selected == nullptr) return;
+			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
+			if (selected && HitResult.GetActor() == ItemTarget)
+			{
+				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red, HitResult.GetActor()->GetName());
+				ItemTarget = HitResult.GetActor();
+				if (ItemTarget->Implements<UInteractable>())
+				{
+					TScriptInterface<IInteractable> Target = TScriptInterface<IInteractable>(ItemTarget);
+					Target->Interact();
+					bHandEmpty = true;
+					selected->Release(FVector(0,0,0));
+				
+					selected = nullptr;
+					ItemTarget = nullptr;
+				}
+			}
+
+				
+			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
 			if(selected == nullptr) return;
 			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
 			if (selected && HitResult.GetActor() == ItemTarget)
@@ -225,11 +245,12 @@ void AMyPlayerController::PutDown()
 			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
 			if(selected && HitResult.Distance<500.f)
 			{
-				//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
+				////GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
 				newpos = HitResult.Location;
 				selected->Release(newpos);
 				bHandEmpty = true;
 				selected = nullptr;
+				ItemTarget = nullptr;
 				ItemTarget = nullptr;
 			}
 		}
