@@ -109,7 +109,7 @@ void ALock::CheckRotation(int index)
 	
 	if(locked[0] == true && locked[1] == true && locked[2] == true && locked[3] == true)
 	{
-		bUnlock = true;
+		bUnlock = true; 
 		GEngine->AddOnScreenDebugMessage(-1,5.0f,FColor::Green,"Unlocked");
 	}
 	else GEngine->AddOnScreenDebugMessage(-1,5.0f,FColor::Red,"Locked");

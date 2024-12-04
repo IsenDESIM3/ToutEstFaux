@@ -40,7 +40,7 @@ void ASelect::Shrink()
 void ASelect::Increase()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Purple, "increasing");
-	SetActorScale3D(GetActorScale()*10);
+	SetActorScale3D(GetActorScale()/0.4);
 	SetActorLocation(inialLocation);
 	SetActorRotation(initialRotation);
 }
