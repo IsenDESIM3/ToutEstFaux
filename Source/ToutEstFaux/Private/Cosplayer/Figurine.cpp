@@ -93,7 +93,7 @@ bool AFigurine::GetIfFigurineIsInRightPose()
 	return _rightPose==_poseIndex;
 }
 
-void AFigurine::Clikcable()
+void AFigurine::Clickable()
 {
 	ChangeAnimation();
 }

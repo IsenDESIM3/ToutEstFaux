@@ -6,7 +6,7 @@
 
 
 
-void ABook::clickable()
+void ABook::Clickable()
 {
 	if (!bIsOpen)
 	{
@@ -22,5 +22,5 @@ void ABook::clickable()
 	}
 
 
-	Super::clickable();
+	Super::Clickable();
 }

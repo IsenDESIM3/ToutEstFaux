@@ -26,7 +26,7 @@ public:
 	virtual auto Shrink() -> void override;
 	virtual void Increase() override;
 	virtual void NewRotation(FRotator objectRotation) override;
-	virtual void Clikcable() override;
+	virtual void Clickable() override;
 	virtual void Grabbed(UStaticMeshComponent* mesh) override;
 	virtual void Release(FVector newpos) override;
 	virtual void SetFrontCamera(FVector camera) override;

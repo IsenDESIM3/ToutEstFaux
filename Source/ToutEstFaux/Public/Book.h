@@ -16,7 +16,7 @@ class TOUTESTFAUX_API ABook : public ASelect
 
 public:
 	UFUNCTION(BlueprintCallable)
-	virtual void clickable() override;
+	virtual void Clickable() override;
 	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

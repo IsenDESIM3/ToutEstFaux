@@ -39,9 +39,8 @@ void IISelectable::NewRotation(FRotator objectRotation)
 	
 }
 
-void IISelectable::Clikcable()
+void IISelectable::Clickable()
 {
-	
 }
 
 AActor* IISelectable::GetItemTarget()

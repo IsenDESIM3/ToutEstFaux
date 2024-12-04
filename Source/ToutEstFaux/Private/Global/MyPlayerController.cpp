@@ -184,7 +184,7 @@ void AMyPlayerController::ClicInInteraction()
 {
 	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Green,"Interactable");
 	if(selected)
-		selected->Clikcable();
+		selected->Clickable();
 }
 
 void AMyPlayerController::PutDown()

@@ -23,13 +23,13 @@ public:
 	
 	
 	virtual void Shrink();
-	virtual void Grabed(UStaticMeshComponent* mesh);
+	virtual void Grabbed(UStaticMeshComponent* mesh);
 	virtual void Release(FVector newpos);
 	virtual void SetFrontCamera(FVector camera);
 	virtual void SetInTheHand();
 	virtual void Increase();
 	virtual void NewRotation(FRotator objectRotation);
-	virtual void Clikcable();
+	virtual void Clickable();
 	virtual AActor* GetItemTarget(	);
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:

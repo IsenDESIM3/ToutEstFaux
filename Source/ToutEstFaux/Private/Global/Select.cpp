@@ -50,12 +50,15 @@ void ASelect::NewRotation(FRotator objectRotation)
 	SetActorRotation(UKismetMathLibrary::ComposeRotators(GetActorRotation(), objectRotation));
 }
 
-void ASelect::Clikcable()
+void ASelect::Clickable()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Yellow, "clicable");
+
+	IISelectable::Clickable();
 }
 
-void ASelect::Grabed(UStaticMeshComponent* mesh)
+
+void ASelect::Grabbed(UStaticMeshComponent* mesh)
 {
 	initialRotation = GetActorRotation();
 	AttachToComponent(mesh, FAttachmentTransformRules::KeepWorldTransform, NAME_None);
@@ -80,5 +83,10 @@ void ASelect::SetFrontCamera(FVector camera)
 void ASelect::SetInTheHand()
 {
 	SetActorRelativeLocation(FVector(0,0,0));
+}
+
+AActor* ASelect::GetItemTarget()
+{
+	return IISelectable::GetItemTarget();
 }
 
