@@ -20,17 +20,22 @@ class TOUTESTFAUX_API AMenuGameMode : public AGameModeBase
 
 public:
 	virtual void OnPostLogin(AController* NewPlayer) override;
-	
+
+	UFUNCTION()
 	void CreateServer(FString ServerName, FString HostName);
 
+	UFUNCTION()
 	void JoinServer(int ServerIndex);
 
+	UFUNCTION()
 	void FindAllServers();
+	
+	UFUNCTION()
 	void ReceiveServers(TArray<FServerInfo> AllServers);
 
+	UFUNCTION()
 	void QuitGame();
-
-private:
+	
 	UPROPERTY()
 	AMenuPlayerController* _playerController=nullptr;
 

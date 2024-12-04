@@ -115,7 +115,7 @@ void UTeFGameInstance::CreateServer(FString ServerName, FString HostName)
 
 		SessionSettings.Set(FName("SERVER_NAME_KEY"), ServerName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 		SessionSettings.Set(FName("SERVER_HOSTNAME_KEY"), HostName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
-		SessionInterface->CreateSession(0, MySessionName, SessionSettings);
+		SessionInterface->CreateSession(0, FName("MySessionName"), SessionSettings);
 	}
 }
 

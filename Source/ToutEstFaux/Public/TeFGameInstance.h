@@ -49,6 +49,19 @@ class TOUTESTFAUX_API UTeFGameInstance : public UGameInstance
 public:
 	UTeFGameInstance();
 
+	UFUNCTION(BlueprintCallable)
+	void CreateServer(FString ServerName, FString HostName);
+
+	UFUNCTION(BlueprintCallable)
+	void FindServer();
+	UFUNCTION(BlueprintCallable)
+	void JoinServer(int32 ArrayIndex);
+	UFUNCTION(BlueprintCallable)
+	void LeaveSession();
+
+	void SetGameMode(AMenuGameMode* GameMode);
+
+
 protected:
 	
 	FName MySessionName;
@@ -68,22 +81,11 @@ protected:
 	virtual void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 	virtual void OnDestroySessionComplete(FName SessionName, bool Succeeded);
 	
-
-	UFUNCTION(BlueprintCallable)
-	void CreateServer(FString ServerName, FString HostName);
-
-	UFUNCTION(BlueprintCallable)
-	void FindServer();
-	UFUNCTION(BlueprintCallable)
-	void JoinServer(int32 ArrayIndex);
-	UFUNCTION(BlueprintCallable)
-	void LeaveSession();
-
 	
-	void SetGameMode(AMenuGameMode* GameMode);
 private:
-	FName SessionName = FName("MySessionName");
+//	FName SessionName = FName("MySessionName");
 
+	UPROPERTY()
 	TArray<FServerInfo> AllServers{};
 
 	UPROPERTY()
