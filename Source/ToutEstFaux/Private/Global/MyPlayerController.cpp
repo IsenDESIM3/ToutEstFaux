@@ -215,7 +215,6 @@ void AMyPlayerController::PutDown()
 					Target->Interact();
 					bHandEmpty = true;
 					selected->Release(FVector(0,0,0));
-					
 					selected = nullptr;
 					ItemTarget = nullptr;
 				}
