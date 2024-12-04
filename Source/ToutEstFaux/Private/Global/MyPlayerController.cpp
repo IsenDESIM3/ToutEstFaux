@@ -11,6 +11,7 @@
 void AMyPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	bEnableClickEvents = true;
 	GetGameResolution();
 	WidgetUse = CreateWidget<UWidget_Interaction>(this, defaultWidget);
 	WidgetUse->AddToViewport(0);
@@ -183,7 +184,7 @@ void AMyPlayerController::ClicInInteraction()
 {
 	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Green,"Interactable");
 	if(selected)
-		selected->clickable();
+		selected->Clikcable();
 }
 
 void AMyPlayerController::PutDown()
@@ -245,12 +246,11 @@ void AMyPlayerController::PutDown()
 			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
 			if(selected && HitResult.Distance<500.f)
 			{
-				////GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
+				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
 				newpos = HitResult.Location;
 				selected->Release(newpos);
 				bHandEmpty = true;
 				selected = nullptr;
-				ItemTarget = nullptr;
 				ItemTarget = nullptr;
 			}
 		}

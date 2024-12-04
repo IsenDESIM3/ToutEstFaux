@@ -50,7 +50,7 @@ void ASelect::NewRotation(FRotator objectRotation)
 	SetActorRotation(UKismetMathLibrary::ComposeRotators(GetActorRotation(), objectRotation));
 }
 
-void ASelect::clickable()
+void ASelect::Clikcable()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Yellow, "clickable");
 }
