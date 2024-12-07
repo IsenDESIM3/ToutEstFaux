@@ -63,13 +63,13 @@ void ASelect::Grabbed(UStaticMeshComponent* mesh)
 	initialRotation = GetActorRotation();
 	AttachToComponent(mesh, FAttachmentTransformRules::KeepWorldTransform, NAME_None);
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, "grabbing");	
-	SetActorScale3D(GetActorScale()*0.1);
+	SetActorScale3D(GetActorScale()*0.4);
 
 }
 void ASelect::Release(FVector newpos)
 {
 	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);		
-	SetActorScale3D(GetActorScale()*10);
+	SetActorScale3D(GetActorScale()/0.4);
 	SetActorLocation(newpos+FVector(0, 0, 10));
 	SetActorRotation(initialRotation);
 }

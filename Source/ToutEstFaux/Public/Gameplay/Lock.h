@@ -6,6 +6,17 @@
 #include "Global/Select.h"
 #include "Lock.generated.h"
 
+USTRUCT(BlueprintType)
+struct FLockData
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int numbers;
+
+	UPROPERTY(EditAnywhere)
+	float rot;
+};
 /**
  * 
  */
@@ -22,31 +33,35 @@ protected:
 	virtual void BeginPlay() override;
 public:
 	
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Lock")
 	UStaticMeshComponent* LockMesh;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Lock")
 	UStaticMeshComponent* Ring1;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Lock")
 	UStaticMeshComponent* Ring2;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Lock")
 	UStaticMeshComponent* Ring3;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Lock")
 	UStaticMeshComponent* Ring4;
+	UPROPERTY()
 	TArray<UStaticMeshComponent*> Meshes;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
-	TArray<int> Combination;
+	TArray<FLockData> LockData;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
-	TArray<float> goodRot;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
-	TArray<float> rot;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
-	TArray<bool> locked;
+	TArray<FLockData> Combination;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Lock")
 	bool bUnlock=false;
 
 	UFUNCTION()
 	void GetValueToRotation();
 	UFUNCTION(BlueprintCallable)
-	void CheckRotation(int index);
+	void CheckRotation();
+
+	UFUNCTION()
+	void Click(UPrimitiveComponent* TouchedComponent , FKey ButtonPressed);
 	
 };
+
+
+
+
