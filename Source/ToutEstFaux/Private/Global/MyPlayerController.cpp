@@ -7,79 +7,47 @@
 #include "SkeletalDebugRendering.h"
 #include "ViewportInteractionTypes.h"
 #include "Global/ISelectable.h"
+#include "Kismet/GameplayStatics.h"
 
 void AMyPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	bEnableClickEvents = true;
-	GetGameResolution();
-	WidgetUse = CreateWidget<UWidget_Interaction>(this, defaultWidget);
-	WidgetUse->AddToViewport(0);
-	if(UEnhancedInputLocalPlayerSubsystem* Subsystem= ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
-	{
-		Subsystem->AddMappingContext(defaultMappingContext, 0);
-		bShowMouseCursor = false;
-	}
-	APlayerController* MyController = GetWorld()->GetFirstPlayerController();
-
 }
-void AMyPlayerController::SetupInputComponent()
+
+void AMyPlayerController::SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLocalPlayerSubsystem* Subsystem)
 {
-	Super::SetupInputComponent();
-	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
+	if(EIC)
 	{
-		EnhancedInputComponent->BindAction(interaction, ETriggerEvent::Started, this , &AMyPlayerController::Interactor);
+		EIC->BindAction(interaction,ETriggerEvent::Started, this , &AMyPlayerController::Interactor);
+		EIC->BindAction(mouseSelection,ETriggerEvent::Started, this , &AMyPlayerController::Grab);
+		EIC->BindAction(holdingRotation,ETriggerEvent::Started, this , &AMyPlayerController::HoldingKey);
+		EIC->BindAction(holdingRotation,ETriggerEvent::Completed, this , &AMyPlayerController::StopHoldingKey);
+		EIC->BindAction(holdingRotation,ETriggerEvent::Canceled, this , &AMyPlayerController::StopHoldingKey);
+		EIC->BindAction(clicInteraction,ETriggerEvent::Started, this , &AMyPlayerController::ClicInInteraction);
+		EIC->BindAction(releaseInteraction,ETriggerEvent::Started,this,&AMyPlayerController::PutDown);
 	}
+
+	_subsystem=Subsystem;
 	
-	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
-	{
-		EnhancedInputComponent->BindAction(mouseSelection, ETriggerEvent::Started, this , &AMyPlayerController::Grab);
-	}
 	
-	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
-	{
-		EnhancedInputComponent->BindAction(holdingRotation,ETriggerEvent::Started, this , &AMyPlayerController::HoldingKey);
-		EnhancedInputComponent->BindAction(holdingRotation,ETriggerEvent::Completed, this , &AMyPlayerController::HoldingKey);
-		EnhancedInputComponent->BindAction(holdingRotation,ETriggerEvent::Canceled, this , &AMyPlayerController::HoldingKey);
-	}
-	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
-	{
-		EnhancedInputComponent->BindAction(clicInteraction,ETriggerEvent::Started, this , &AMyPlayerController::ClicInInteraction);
-	}
-	if(UEnhancedInputComponent* EnhancedInputComponent= Cast<UEnhancedInputComponent>(InputComponent))
-	{
-		EnhancedInputComponent->BindAction(releaseInteraction,ETriggerEvent::Started,this,&AMyPlayerController::PutDown);
-	}
 }
 
 void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 {
 	
-	if(UEnhancedInputLocalPlayerSubsystem* Subsystem= ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+	if(_subsystem)
 	{
+		_subsystem->ClearAllMappings();
+		
 		if(bIsOpen)
 		{
-			Subsystem->AddMappingContext(interactionMappingContext, 0);
-			Subsystem->RemoveMappingContext(defaultMappingContext);
-			if (IsValid(interactionWidget))
-			{
-				bShowMouseCursor = true;
-				WidgetUse->RemoveFromParent();
-				// WidgetUse = CreateWidget<UWidget_Interaction>(this, interactionWidget);
-				// WidgetUse->AddToViewport(0);
-			}
+			GEngine->AddOnScreenDebugMessage(-1,2,FColor::Green,"Interaction mode");
+			_subsystem->AddMappingContext(interactionMappingContext, 0);
 		}
 		else
 		{
-			Subsystem->AddMappingContext(defaultMappingContext,0);
-			Subsystem->RemoveMappingContext(interactionMappingContext);
-			if (IsValid(defaultWidget))
-			{
-				bShowMouseCursor = false;
-				// WidgetUse->RemoveFromParent();
-				WidgetUse = CreateWidget<UWidget_Interaction>(this, defaultWidget);
-				WidgetUse->AddToViewport(0);
-			}
+			GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"Normal mode");
+			_subsystem->AddMappingContext(defaultMappingContext,0);
 		}
 	}
 }
@@ -102,6 +70,7 @@ void AMyPlayerController::Grab()
 
 void AMyPlayerController::Interactor()
 {
+	
 	if(!selected)
 	{
 		selected = Raycast();
@@ -122,18 +91,26 @@ void AMyPlayerController::Interactor()
 		}
 		else
 		{
-			if(!bInputSwitched)
+			if(bCantChangeMapping)
 			{
-				SwitchMappingContext(true);
-				selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*45);
-				bInputSwitched = !bInputSwitched;
-				myCharacters->SetActorRotation(FRotator(0,50,0));
-			}
-			else
-			{
-				SwitchMappingContext(false);
-				selected->SetInTheHand();
-				bInputSwitched = !bInputSwitched;
+				bCantChangeMapping=false;
+				GetWorldTimerManager().SetTimer(SwapMappingTimerHandle,this,&AMyPlayerController::SetCanChangeMapping,0.2f);
+				
+				if(!bInputSwitched)
+				{
+					GEngine->AddOnScreenDebugMessage(-1,2,FColor::Green,"Input Not switch");
+					SwitchMappingContext(true);
+					selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*45);
+					bInputSwitched = !bInputSwitched;
+					myCharacters->SetActorRotation(FRotator(0,50,0));
+				}
+				else
+				{
+					GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"Input switch");
+					SwitchMappingContext(false);
+					selected->SetInTheHand();
+					bInputSwitched = !bInputSwitched;
+				}
 			}
 		}
 		
@@ -171,13 +148,19 @@ void AMyPlayerController::GetMouseXYInfo(float mousex, float mousey)
 	if(selected && bCanRotate)
 	{
 		selected->NewRotation(FRotator(mousey,mousex,0)*-2);
-		
 	}
 }
 
 void AMyPlayerController::HoldingKey()
 {
-	bCanRotate = !bCanRotate;
+	bCanRotate = true;
+	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Orange,"Can Rotate");
+}
+
+void AMyPlayerController::StopHoldingKey()
+{
+	bCanRotate = false;
+	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Orange,"Cannot Rotate");
 }
 
 void AMyPlayerController::ClicInInteraction()
@@ -257,10 +240,25 @@ void AMyPlayerController::PutDown()
 	}
 }
 
+void AMyPlayerController::SetWidget(UWidget_Interaction* newWidget)
+{
+	WidgetUse = newWidget;
+}
+
+
+
 void AMyPlayerController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 	myCharacters = Cast<AMyCharacters>(InPawn);
+
+	GetGameResolution();
+	
+}
+
+void AMyPlayerController::SetCanChangeMapping()
+{
+	bCantChangeMapping=true;
 }
 
 

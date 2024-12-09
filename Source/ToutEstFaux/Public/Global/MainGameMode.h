@@ -6,6 +6,9 @@
 #include "GameFramework/GameModeBase.h"
 #include "MainGameMode.generated.h"
 
+class ADoor;
+class UWidget_Interaction;
+class AMyCharacters;
 class APlinth;
 
 UENUM(BlueprintType)
@@ -52,6 +55,7 @@ public:
 	//Cosplayer Enigma
 	void SetPlinths(APlinth* newPlinth);
 	void CheckIfCosplayerEnigmaFinish();
+	void SetDoors(bool bIsExitDoor,ADoor* NewDoors);
 
 	FTeletubbiesMatData GetTeletubbiesRightData(ETeletubbies TeletubbiesType);
 
@@ -75,5 +79,16 @@ private:
 	//Controllers
 	UPROPERTY()
 	TArray<class AMyPlayerController*> _listOfPlayerController;
-	
+
+	UPROPERTY(EditDefaultsOnly,meta=(AllowPrivateAccess))
+	TSubclassOf<AMyCharacters> _characterClass=nullptr;
+
+	UPROPERTY()
+	TArray<AMyCharacters*> _listOfCharacter{};
+
+	UPROPERTY()
+	TArray<ADoor*>_dressingDoors{};
+
+	UPROPERTY()
+	TArray<ADoor*>_exitDoors{};
 };

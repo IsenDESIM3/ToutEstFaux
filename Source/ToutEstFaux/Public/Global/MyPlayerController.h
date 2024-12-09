@@ -25,7 +25,6 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	
 	protected:
 	virtual void BeginPlay() override;
-	virtual void SetupInputComponent() override;
 	
 	public:
 	UFUNCTION(BlueprintCallable)
@@ -43,15 +42,17 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	UFUNCTION()
 	void HoldingKey();
 	UFUNCTION()
+	void StopHoldingKey();
+	UFUNCTION()
 	void ClicInInteraction();
 	UFUNCTION()
 	void PutDown();
-	
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
-	TSubclassOf<UWidget_Interaction> interactionWidget = nullptr;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
-	TSubclassOf<UWidget_Interaction> defaultWidget= nullptr;
+	void SetWidget(UWidget_Interaction* newWidget);
+
+	void SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLocalPlayerSubsystem* Subsystem);
+	
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
 	FVector2D Result = FVector2D( 1, 1 );
 	bool bCanRotate = false;
@@ -80,7 +81,15 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	virtual void OnPossess(APawn* InPawn) override;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TScriptInterface<IISelectable> selected;
+
+	UPROPERTY()
+	UEnhancedInputLocalPlayerSubsystem* _subsystem;
+
 	
-	
+
+	//Temporaire
+	bool bCantChangeMapping=true;
+	FTimerHandle SwapMappingTimerHandle;
+	void SetCanChangeMapping();
 	
 };

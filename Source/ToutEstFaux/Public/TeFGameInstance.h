@@ -90,5 +90,8 @@ private:
 
 	UPROPERTY()
 	AMenuGameMode* _gameMode=nullptr;
+
+	UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess))
+	FString _mapName = "L_Game";
 };
 

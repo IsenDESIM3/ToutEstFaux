@@ -4,7 +4,9 @@
 #include "Global/MainGameMode.h"
 
 #include "Cosplayer/Plinth.h"
+#include "Global/Door.h"
 #include "Global/MyPlayerController.h"
+#include "Kismet/GameplayStatics.h"
 
 void AMainGameMode::SetPlinths(APlinth* newPlinth)
 {
@@ -25,9 +27,14 @@ void AMainGameMode::CheckIfCosplayerEnigmaFinish()
 				}
 			}
 			bIsCosplayerEnigmaFinish=true;
-			GEngine->AddOnScreenDebugMessage(-1,10,FColor::Green, "Cosplayer Enigma Finish");
+			GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Green, "Cosplayer Enigma Finish");
 		}
 	}
+}
+
+void AMainGameMode::SetDoors(bool bIsExitDoor,ADoor* NewDoors)
+{
+	bIsExitDoor?_exitDoors.AddUnique(NewDoors):_dressingDoors.AddUnique(NewDoors);
 }
 
 FTeletubbiesMatData AMainGameMode::GetTeletubbiesRightData(ETeletubbies TeletubbiesType)
@@ -59,11 +66,25 @@ void AMainGameMode::OnPostLogin(AController* NewPlayer)
 {
 	Super::OnPostLogin(NewPlayer);
 	
+	NewPlayer->UnPossess();
+	
 	AMyPlayerController* newController = Cast<AMyPlayerController>(NewPlayer);
 	if(newController)
 	{
 		_listOfPlayerController.AddUnique(newController);
+		GEngine->AddOnScreenDebugMessage(-1,2,FColor::Yellow,"Nouveau Controller");
 	}
+
+	AActor* PlayerStart = FindPlayerStart(NewPlayer,FString::FromInt(_listOfPlayerController.Num()-1));
+
+	if(_characterClass)
+	{
+		AMyCharacters* NewCharacter = GetWorld()->SpawnActor<AMyCharacters>(_characterClass,PlayerStart->GetTransform());
+		_listOfCharacter.AddUnique(NewCharacter);
+
+		NewPlayer->Possess(NewCharacter);
+	}
+	
 }
 
 void AMainGameMode::Logout(AController* Exiting)
@@ -76,3 +97,5 @@ void AMainGameMode::Logout(AController* Exiting)
 		_listOfPlayerController.Remove(outController);
 	}
 }
+
+
