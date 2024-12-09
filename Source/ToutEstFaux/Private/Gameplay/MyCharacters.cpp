@@ -3,9 +3,12 @@
 
 #include "Gameplay/MyCharacters.h"
 
+#include "EnhancedInputComponent.h"
 #include "Camera/CameraActor.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/InputSettings.h"
+#include "Global/MyPlayerController.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AMyCharacters::AMyCharacters()
@@ -46,6 +49,30 @@ void AMyCharacters::Tick(float DeltaTime)
 void AMyCharacters::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(UGameplayStatics::GetPlayerController(GetWorld(),0)->InputComponent);
+	
+	AMyPlayerController* PC = GetController<AMyPlayerController>();
+	check(EIC && PC);
+
+	ULocalPlayer* LocalPlayer = UGameplayStatics::GetPlayerController(GetWorld(),0)->GetLocalPlayer();
+	check(LocalPlayer);
+	
+	UEnhancedInputLocalPlayerSubsystem* Subsystem =
+		LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
+	check(Subsystem);
+	
+	
+	PC->SetInput(EIC,Subsystem);
+	
+	Subsystem->ClearAllMappings();
+	Subsystem->AddMappingContext(PC->defaultMappingContext, 0);
+
+	UWidget_Interaction* WidgetUse = CreateWidget<UWidget_Interaction>(PC, defaultWidget);
+	if(WidgetUse)
+	{
+		WidgetUse->AddToViewport(0);
+		PC->SetWidget(WidgetUse);
+	}
 	
 }
 

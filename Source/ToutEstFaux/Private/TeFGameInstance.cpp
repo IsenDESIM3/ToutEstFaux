@@ -38,7 +38,7 @@ void UTeFGameInstance::OnCreateSessionComplete(FName InSessionName, bool Succeed
 	if (Succeeded)
 	{
 		
-		GetWorld()->ServerTravel("/Game/Assets/Multijoueur/L_Multi?listen");
+		GetWorld()->ServerTravel("/Game/GameMaps/"+_mapName+"?listen");
 	}
 }
 

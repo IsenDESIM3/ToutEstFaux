@@ -7,6 +7,8 @@
 #include "GameFramework/Character.h"
 #include "MyCharacters.generated.h"
 
+class UWidget_Interaction;
+
 UCLASS()
 class TOUTESTFAUX_API AMyCharacters : public ACharacter
 {
@@ -29,8 +31,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+private:
+	//Widget
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UWidget_Interaction> defaultWidget= nullptr;
 
 	
 };
