@@ -3,6 +3,8 @@
 
 #include "Global/MyPlayerController.h"
 
+#include <string>
+
 #include "Chest.h"
 #include "SkeletalDebugRendering.h"
 #include "ViewportInteractionTypes.h"
@@ -31,6 +33,7 @@ void AMyPlayerController::SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLo
 	
 	
 }
+
 
 void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 {
@@ -71,6 +74,17 @@ void AMyPlayerController::Grab()
 void AMyPlayerController::Interactor()
 {
 	
+	FVector CameraLocation = myCharacters->GetCameraLocation();
+	FRotator CameraRotation = myCharacters->GetControlRotation(); 
+
+	FRotator NewRotation = FRotator(CameraRotation.Pitch, CameraRotation.Yaw, 0.0f);
+
+	myCharacters->Controller->SetControlRotation(NewRotation);
+
+	FVector ForwardVector = FRotationMatrix(NewRotation).GetUnitAxis(EAxis::X);
+
+	FVector ItemPosition = CameraLocation + (ForwardVector * 60.0f);
+
 	if(!selected)
 	{
 		selected = Raycast();
@@ -78,7 +92,7 @@ void AMyPlayerController::Interactor()
 		{
 			SwitchMappingContext(true);
 			selected->Shrink();
-			selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*45);
+			selected->SetFrontCamera(ItemPosition);
 		}
 	}
 	else
@@ -100,9 +114,9 @@ void AMyPlayerController::Interactor()
 				{
 					GEngine->AddOnScreenDebugMessage(-1,2,FColor::Green,"Input Not switch");
 					SwitchMappingContext(true);
-					selected->SetFrontCamera(myCharacters->GetCameraLocation()+myCharacters->GetCameraForward()*45);
+					selected->SetFrontCamera(ItemPosition);
 					bInputSwitched = !bInputSwitched;
-					myCharacters->SetActorRotation(FRotator(0,50,0));
+					
 				}
 				else
 				{
@@ -117,6 +131,8 @@ void AMyPlayerController::Interactor()
 	}
 		
 }
+
+
 
 TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 {

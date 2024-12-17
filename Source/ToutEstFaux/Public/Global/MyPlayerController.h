@@ -53,6 +53,7 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	void SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLocalPlayerSubsystem* Subsystem);
 	
 	
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
 	FVector2D Result = FVector2D( 1, 1 );
 	bool bCanRotate = false;
@@ -77,6 +78,7 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	AMyCharacters* myCharacters;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Reference, meta=(AllowPrivateAccess = "true"))
 	AActor* ItemTarget; //Fill this variable with the Target variable of your item
+	
 	
 	virtual void OnPossess(APawn* InPawn) override;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)

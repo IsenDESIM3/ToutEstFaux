@@ -29,7 +29,7 @@ public:
 	virtual void Clickable() override;
 	virtual void Grabbed(UStaticMeshComponent* mesh) override;
 	virtual void Release(FVector newpos) override;
-	virtual void SetFrontCamera(FVector camera) override;
+	virtual void SetFrontCamera(FVector vector) override;
 	virtual void SetInTheHand() override;
 	virtual AActor* GetItemTarget() override;
 	FVector inialLocation;

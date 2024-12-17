@@ -19,7 +19,7 @@ void IISelectable::Release(FVector newpos)
 	
 }
 
-void IISelectable::SetFrontCamera(FVector camera)
+void IISelectable::SetFrontCamera(FVector vector)
 {
 }
 
