@@ -6,6 +6,7 @@
 #include <string>
 
 #include "Chest.h"
+#include "IPlaceable.h"
 #include "SkeletalDebugRendering.h"
 #include "ViewportInteractionTypes.h"
 #include "Global/ISelectable.h"
@@ -219,6 +220,7 @@ void AMyPlayerController::PutDown()
 					selected = nullptr;
 					ItemTarget = nullptr;
 				}
+				
 			}
 
 				
@@ -241,6 +243,18 @@ void AMyPlayerController::PutDown()
 				}
 			}
 
+			if (HitResult.GetActor()->Implements<UIPlaceable>())
+			{
+				TScriptInterface<IIPlaceable> Target = TScriptInterface<IIPlaceable>(HitResult.GetActor());
+				float actorHeight = Target->getActorHeight();
+				
+				newpos = FVector(HitResult.GetActor()->GetActorLocation().X, HitResult.GetActor()->GetActorLocation().Y, actorHeight-10);
+				UE_LOG(LogTemp, Warning, TEXT("%f, %f, %f"), newpos.X, newpos.Y, newpos.Z);
+				selected->Release(newpos);
+				bHandEmpty = true;
+				selected = nullptr;
+				ItemTarget = nullptr;
+			}
 				
 			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
 			if(selected && HitResult.Distance<500.f)
