@@ -74,10 +74,11 @@ void ASelect::Release(FVector newpos)
 	SetActorRotation(initialRotation);
 }
 
-void ASelect::SetFrontCamera(FVector camera)
+void ASelect::SetFrontCamera(FVector Vector)
 {
 	// DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
-	SetActorLocation(camera);
+	UE_LOG(LogTemp, Warning, TEXT("%f, %f, %f"), Vector.X, Vector.Y, Vector.Z);
+	SetActorLocation(FVector(Vector.X, Vector.Y, Vector.Z));
 }
 
 void ASelect::SetInTheHand()

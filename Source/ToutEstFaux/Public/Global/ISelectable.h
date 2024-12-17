@@ -25,7 +25,7 @@ public:
 	virtual void Shrink();
 	virtual void Grabbed(UStaticMeshComponent* mesh);
 	virtual void Release(FVector newpos);
-	virtual void SetFrontCamera(FVector camera);
+	virtual void SetFrontCamera(FVector vector);
 	virtual void SetInTheHand();
 	virtual void Increase();
 	virtual void NewRotation(FRotator objectRotation);
