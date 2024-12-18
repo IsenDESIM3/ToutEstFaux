@@ -24,3 +24,10 @@ void ABook::Clickable()
 
 	Super::Clickable();
 }
+
+void ABook::Release(FVector newpos, FRotator newrot)
+{
+	Super::Release(newpos, newrot);
+	SetActorLocation(FVector(newpos.X, newpos.Y, newpos.Z+5));
+	SetActorRotation(FRotator(-90, newrot.Yaw, newrot.Roll));
+}

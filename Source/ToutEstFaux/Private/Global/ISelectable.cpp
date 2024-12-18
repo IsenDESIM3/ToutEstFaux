@@ -14,7 +14,7 @@ void IISelectable::Grabbed(UStaticMeshComponent* mesh)
 	
 }
 
-void IISelectable::Release(FVector newpos)
+void IISelectable::Release(FVector newpos, FRotator newrot)
 {
 	
 }

@@ -28,7 +28,7 @@ public:
 	virtual void NewRotation(FRotator objectRotation) override;
 	virtual void Clickable() override;
 	virtual void Grabbed(UStaticMeshComponent* mesh) override;
-	virtual void Release(FVector newpos) override;
+	virtual void Release(FVector newpos, FRotator newrot) override;
 	virtual void SetFrontCamera(FVector vector) override;
 	virtual void SetInTheHand() override;
 	virtual AActor* GetItemTarget() override;
