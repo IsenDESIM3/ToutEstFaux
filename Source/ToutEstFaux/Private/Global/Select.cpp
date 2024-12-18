@@ -66,12 +66,12 @@ void ASelect::Grabbed(UStaticMeshComponent* mesh)
 	SetActorScale3D(GetActorScale()*0.4);
 
 }
-void ASelect::Release(FVector newpos)
+void ASelect::Release(FVector newpos, FRotator newrot)
 {
 	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);		
 	SetActorScale3D(GetActorScale()/0.4);
-	SetActorLocation(newpos+FVector(0, 0, 10));
-	SetActorRotation(initialRotation);
+	SetActorLocation(newpos);
+	SetActorRotation(newrot);
 }
 
 void ASelect::SetFrontCamera(FVector Vector)

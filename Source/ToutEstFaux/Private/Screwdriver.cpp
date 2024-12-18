@@ -4,9 +4,9 @@
 #include "Screwdriver.h"
 
 
-void AScrewdriver::Release(FVector newpos)
+void AScrewdriver::Release(FVector newpos, FRotator newrot)
 {
-	Super::Release(newpos);
+	Super::Release(newpos, newrot);
 }
 
 AActor* AScrewdriver::GetItemTarget()

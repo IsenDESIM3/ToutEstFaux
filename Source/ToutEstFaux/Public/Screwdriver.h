@@ -18,7 +18,7 @@ class TOUTESTFAUX_API AScrewdriver : public ASelect
 
 public:
 	UFUNCTION()
-	virtual void Release(FVector newpos) override;
+	virtual void Release(FVector newpos, FRotator newrot) override;
 
 	UFUNCTION()
 	virtual AActor* GetItemTarget() override;

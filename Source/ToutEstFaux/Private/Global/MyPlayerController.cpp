@@ -206,7 +206,7 @@ void AMyPlayerController::PutDown()
 		{
 			if(selected == nullptr) return;
 			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
-			if (selected && HitResult.GetActor() == ItemTarget)
+			if (HitResult.GetActor() == ItemTarget)
 			{
 				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red, HitResult.GetActor()->GetName());
 				ItemTarget = HitResult.GetActor();
@@ -215,57 +215,35 @@ void AMyPlayerController::PutDown()
 					TScriptInterface<IInteractable> Target = TScriptInterface<IInteractable>(ItemTarget);
 					Target->Interact();
 					bHandEmpty = true;
-					selected->Release(FVector(0,0,0));
+					selected->Release(FVector(0,0,0), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
 				
 					selected = nullptr;
 					ItemTarget = nullptr;
 				}
 				
 			}
-
-				
-			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
-			if(selected == nullptr) return;
-			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
-			if (selected && HitResult.GetActor() == ItemTarget)
-			{
-				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red, HitResult.GetActor()->GetName());
-				ItemTarget = HitResult.GetActor();
-				if (ItemTarget->Implements<UInteractable>())
-				{
-					TScriptInterface<IInteractable> Target = TScriptInterface<IInteractable>(ItemTarget);
-					Target->Interact();
-					bHandEmpty = true;
-					selected->Release(FVector(0,0,0));
-					
-					selected = nullptr;
-					ItemTarget = nullptr;
-				}
-			}
-
-			if (HitResult.GetActor()->Implements<UIPlaceable>())
+			else if (HitResult.GetActor()->Implements<UIPlaceable>())
 			{
 				TScriptInterface<IIPlaceable> Target = TScriptInterface<IIPlaceable>(HitResult.GetActor());
 				float actorHeight = Target->getActorHeight();
 				
-				newpos = FVector(HitResult.GetActor()->GetActorLocation().X, HitResult.GetActor()->GetActorLocation().Y, actorHeight-10);
-				UE_LOG(LogTemp, Warning, TEXT("%f, %f, %f"), newpos.X, newpos.Y, newpos.Z);
-				selected->Release(newpos);
+				//newpos = FVector(HitResult.GetActor()->GetActorLocation().X, HitResult.GetActor()->GetActorLocation().Y, actorHeight-10);
+				newpos = FVector(HitResult.Location.X, HitResult.Location.Y, actorHeight);
+				selected->Release(newpos+myCharacters->GetCameraForward(), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
 				bHandEmpty = true;
 				selected = nullptr;
 				ItemTarget = nullptr;
 			}
-				
-			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,HitResult.GetActor()->GetName());
-			if(selected && HitResult.Distance<500.f)
-			{
-				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
-				newpos = HitResult.Location;
-				selected->Release(newpos);
-				bHandEmpty = true;
-				selected = nullptr;
-				ItemTarget = nullptr;
-			}
+			// 	
+			// if(HitResult.Distance<500.f)
+			// {
+			// 	GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
+			// 	newpos = HitResult.Location;
+			// 	selected->Release(newpos);
+			// 	bHandEmpty = true;
+			// 	selected = nullptr;
+			// 	ItemTarget = nullptr;
+			// }
 		}
 	}
 }
