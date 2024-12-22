@@ -58,13 +58,13 @@ public:
 	void SetDoors(bool bIsExitDoor,ADoor* NewDoors);
 
 	FTeletubbiesMatData GetTeletubbiesRightData(ETeletubbies TeletubbiesType);
-
-	//Controllers
 	
 	//Call when a player join the game 
 	virtual void OnPostLogin(AController* NewPlayer) override;
 	//Call when a player quit the game
 	virtual void Logout(AController* Exiting) override;
+
+	virtual void BeginPlay() override;
 	
 private:
 	
@@ -91,4 +91,9 @@ private:
 
 	UPROPERTY()
 	TArray<ADoor*>_exitDoors{};
+
+	void OpenDressroomDoors();
+
+	//test
+	FTimerHandle TestHander;
 };
