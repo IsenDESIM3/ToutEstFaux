@@ -8,6 +8,12 @@
 #include "Global/MyPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
+void AMainGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+	GetWorldTimerManager().SetTimer(TestHander, this, &AMainGameMode::OpenDressroomDoors,5.f);
+}
+
 void AMainGameMode::SetPlinths(APlinth* newPlinth)
 {
 	_listOfAllPlinths.AddUnique(newPlinth);
@@ -97,5 +103,16 @@ void AMainGameMode::Logout(AController* Exiting)
 		_listOfPlayerController.Remove(outController);
 	}
 }
+
+
+void AMainGameMode::OpenDressroomDoors()
+{
+	for (ADoor* Door : _dressingDoors)
+	{
+		GEngine->AddOnScreenDebugMessage(-1,2,FColor::Purple,"Let's goooo");
+		Door->SetOpenDoor();
+	}
+}
+
 
 

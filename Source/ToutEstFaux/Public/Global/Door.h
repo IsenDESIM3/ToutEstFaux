@@ -48,10 +48,14 @@ private:
 
 	UPROPERTY(EditAnywhere,meta=(AllowPrivateAccess))
 	bool bIsAnExitDoor=true;
-	
+
+	UPROPERTY(ReplicatedUsing=OnRep_DoorOpened)
 	bool bIsDoorOpened=false;
 
-	int8 _multiplicateur=1;
+	UFUNCTION()
+	void OnRep_DoorOpened();
+
+	int8 _multiplicateur=-1;
 	
 	void OpenTheDoor();
 	void CloseTheDoor();
@@ -59,4 +63,25 @@ private:
 	FTimerHandle DoorHandler;
 
 	FTimerHandle TestHandler;
+
+	//Online
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_OpenTheDoor();
+	bool Server_OpenTheDoor_Validate();
+	void Server_OpenTheDoor_Implementation();
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_OpenTheDoor();
+	bool Multi_OpenTheDoor_Validate();
+	void Multi_OpenTheDoor_Implementation();
+
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_CloseTheDoor();
+	bool Server_CloseTheDoor_Validate();
+	void Server_CloseTheDoor_Implementation();
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_CloseTheDoor();
+	bool Multi_CloseTheDoor_Validate();
+	void Multi_CloseTheDoor_Implementation();
 };

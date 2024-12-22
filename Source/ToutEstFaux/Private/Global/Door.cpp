@@ -6,6 +6,8 @@
 #include "Global/MainGameMode.h"
 #include "Kismet/GameplayStatics.h"
 
+#include "Net/UnrealNetwork.h"
+
 // Sets default values
 ADoor::ADoor()
 {
@@ -18,6 +20,14 @@ ADoor::ADoor()
 	Door = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Door"));
 	Door->SetupAttachment(DoorFrame);
 
+}
+
+//This is for the replication
+void ADoor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ADoor, bIsDoorOpened);
 }
 
 // Called when the game starts or when spawned
@@ -43,6 +53,7 @@ void ADoor::BeginPlay()
 		
 	}
 	
+	
 }
 
 // Called every frame
@@ -57,31 +68,82 @@ void ADoor::SetOpenDoor()
 {
 	_multiplicateur = -_multiplicateur;
 	bIsDoorOpened=!bIsDoorOpened;
-	bIsDoorOpened ? OpenTheDoor() : CloseTheDoor();
+	OnRep_DoorOpened();
 }
 
 
+void ADoor::OnRep_DoorOpened()
+{
+	if(bIsDoorOpened)
+	{
+		//Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,_maxRotation,Door->GetRelativeRotation().Roll));
+		Server_OpenTheDoor();
+	}
+	else
+	{
+		//Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,0,Door->GetRelativeRotation().Roll));
+		Server_CloseTheDoor();
+	}
+}
+
 void ADoor::OpenTheDoor()
 {
-	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Orange,"Going to Add");
+	
 	if(Door->GetRelativeRotation().Yaw * _multiplicateur < _maxRotation * _multiplicateur )
 	{
-		GEngine->AddOnScreenDebugMessage(-1,1,FColor::Green,"Add");
 		Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,Door->GetRelativeRotation().Yaw + _multiplicateur,Door->GetRelativeRotation().Roll));
-		GetWorldTimerManager().SetTimer(DoorHandler,this,&ADoor::OpenTheDoor,0.02);
+		GetWorldTimerManager().SetTimer(DoorHandler,this,&ADoor::Server_OpenTheDoor,0.02);
 	}
-	
 }
 
 void ADoor::CloseTheDoor()
 {
-	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Red,"remove");
 	if(Door->GetRelativeRotation().Yaw * -_multiplicateur >=1 )
 	{
 		Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,Door->GetRelativeRotation().Yaw + _multiplicateur,Door->GetRelativeRotation().Roll));
-		GetWorldTimerManager().SetTimer(DoorHandler,this,&ADoor::CloseTheDoor,0.02);
+		GetWorldTimerManager().SetTimer(DoorHandler,this,&ADoor::Server_CloseTheDoor,0.02);
 	}
 	
+}
+
+bool ADoor::Server_OpenTheDoor_Validate()
+{
+	return true;
+}
+
+void ADoor::Server_OpenTheDoor_Implementation()
+{
+	Multi_OpenTheDoor();
+}
+
+bool ADoor::Multi_OpenTheDoor_Validate()
+{
+	return true;
+}
+
+void ADoor::Multi_OpenTheDoor_Implementation()
+{
+	OpenTheDoor();
+}
+
+bool ADoor::Server_CloseTheDoor_Validate()
+{
+	return true;
+}
+
+void ADoor::Server_CloseTheDoor_Implementation()
+{
+	Multi_CloseTheDoor();
+}
+
+bool ADoor::Multi_CloseTheDoor_Validate()
+{
+	return true;
+}
+
+void ADoor::Multi_CloseTheDoor_Implementation()
+{
+	CloseTheDoor();
 }
 
 

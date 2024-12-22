@@ -21,13 +21,13 @@ void AMyPlayerController::SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLo
 {
 	if(EIC)
 	{
-		EIC->BindAction(interaction,ETriggerEvent::Started, this , &AMyPlayerController::Interactor);
-		EIC->BindAction(mouseSelection,ETriggerEvent::Started, this , &AMyPlayerController::Grab);
-		EIC->BindAction(holdingRotation,ETriggerEvent::Started, this , &AMyPlayerController::HoldingKey);
-		EIC->BindAction(holdingRotation,ETriggerEvent::Completed, this , &AMyPlayerController::StopHoldingKey);
-		EIC->BindAction(holdingRotation,ETriggerEvent::Canceled, this , &AMyPlayerController::StopHoldingKey);
-		EIC->BindAction(clicInteraction,ETriggerEvent::Started, this , &AMyPlayerController::ClicInInteraction);
-		EIC->BindAction(releaseInteraction,ETriggerEvent::Started,this,&AMyPlayerController::PutDown);
+		EIC->BindAction(interaction,ETriggerEvent::Started, this , &AMyPlayerController::Server_Interactor);
+		EIC->BindAction(mouseSelection,ETriggerEvent::Started, this , &AMyPlayerController::Server_Grab);
+		EIC->BindAction(holdingRotation,ETriggerEvent::Started, this , &AMyPlayerController::Server_HoldingKey);
+		EIC->BindAction(holdingRotation,ETriggerEvent::Completed, this , &AMyPlayerController::Server_StopHoldingKey);
+		EIC->BindAction(holdingRotation,ETriggerEvent::Canceled, this , &AMyPlayerController::Server_StopHoldingKey);
+		EIC->BindAction(clicInteraction,ETriggerEvent::Started, this , &AMyPlayerController::Server_ClicInInteraction);
+		EIC->BindAction(releaseInteraction,ETriggerEvent::Started,this,&AMyPlayerController::Server_PutDown);
 	}
 
 	_subsystem=Subsystem;
@@ -56,11 +56,38 @@ void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 	}
 }
 
+
+bool AMyPlayerController::Server_Grab_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Server_Grab_Implementation()
+{
+	
+	Multi_Grab();
+}
+
+bool AMyPlayerController::Multi_Grab_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Multi_Grab_Implementation()
+{
+	
+	Grab();
+}
+
 void AMyPlayerController::Grab()
 {
+	
 	// 	TODO : mettre l'objet dans la main via une socket et faire la gestion d'inventaire
 	if(!selected)
-	selected = Raycast();
+	{
+		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Blue,"Pas de Seclected");
+		selected = Raycast();
+	}
 	if(selected!=nullptr && bHandEmpty)
 	{
 		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Interactable");
@@ -71,6 +98,27 @@ void AMyPlayerController::Grab()
 	}
 	
 }
+
+bool AMyPlayerController::Server_Interactor_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Server_Interactor_Implementation()
+{
+	Multi_Interactor();
+}
+
+bool AMyPlayerController::Multi_Interactor_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Multi_Interactor_Implementation()
+{
+	Interactor();
+}
+
 
 void AMyPlayerController::Interactor()
 {
@@ -145,10 +193,10 @@ TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 	FVector EndRay = MouseLocation + MouseForward * 500.0f;
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(GetPawn());
-
 	
 	if(GetWorld()->LineTraceSingleByChannel(HitResult,MouseLocation,EndRay,ECC_Visibility,Params))
 	{
+		
 		AActor* target = HitResult.GetActor();
 		if (target->Implements<UISelectable>() && myCharacters)
 		{
@@ -159,6 +207,25 @@ TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 	return nullptr;	
 }
 
+bool AMyPlayerController::Server_GetMouseXYInfo_Validate(float mousex, float mousey)
+{
+	return true;
+}
+
+void AMyPlayerController::Server_GetMouseXYInfo_Implementation(float mousex, float mousey)
+{
+	Multi_GetMouseXYInfo(mousex,mousey);
+}
+
+bool AMyPlayerController::Multi_GetMouseXYInfo_Validate(float mousex, float mousey)
+{
+	return true;
+}
+
+void AMyPlayerController::Multi_GetMouseXYInfo_Implementation(float mousex, float mousey)
+{
+	GetMouseXYInfo(mousex,mousey);
+}
 
 void AMyPlayerController::GetMouseXYInfo(float mousex, float mousey)
 {
@@ -168,10 +235,50 @@ void AMyPlayerController::GetMouseXYInfo(float mousex, float mousey)
 	}
 }
 
+bool AMyPlayerController::Server_HoldingKey_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Server_HoldingKey_Implementation()
+{
+	Multi_HoldingKey();
+}
+
+bool AMyPlayerController::Multi_HoldingKey_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Multi_HoldingKey_Implementation()
+{
+	HoldingKey();
+}
+
 void AMyPlayerController::HoldingKey()
 {
 	bCanRotate = true;
 	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Orange,"Can Rotate");
+}
+
+bool AMyPlayerController::Server_StopHoldingKey_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Server_StopHoldingKey_Implementation()
+{
+	Multi_StopHoldingKey();
+}
+
+bool AMyPlayerController::Multi_StopHoldingKey_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Multi_StopHoldingKey_Implementation()
+{
+	StopHoldingKey();
 }
 
 void AMyPlayerController::StopHoldingKey()
@@ -180,12 +287,64 @@ void AMyPlayerController::StopHoldingKey()
 	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Orange,"Cannot Rotate");
 }
 
+bool AMyPlayerController::Server_ClicInInteraction_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Server_ClicInInteraction_Implementation()
+{
+	Multi_ClicInInteraction();
+}
+
+bool AMyPlayerController::Multi_ClicInInteraction_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Multi_ClicInInteraction_Implementation()
+{
+	ClicInInteraction();
+}
+
 void AMyPlayerController::ClicInInteraction()
 {
 	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Green,"Interactable");
-	if(selected)
+	if(selected && bCanInteract)
+	{
 		selected->Clickable();
+		bCanInteract=false;
+		GetWorldTimerManager().SetTimer(InteractTimerHandle,this,&AMyPlayerController::SetCanInteract,0.1f);
+	}
+		
 }
+
+void AMyPlayerController::SetCanInteract()
+{
+	bCanInteract=true;
+}
+
+
+bool AMyPlayerController::Server_PutDown_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Server_PutDown_Implementation()
+{
+	Multi_PutDown();
+}
+
+bool AMyPlayerController::Multi_PutDown_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::Multi_PutDown_Implementation()
+{
+	PutDown();
+}
+
 
 void AMyPlayerController::PutDown()
 {
@@ -199,13 +358,15 @@ void AMyPlayerController::PutDown()
 	Params.AddIgnoredActor(GetPawn());
 	FVector newpos;
 
+	GEngine->AddOnScreenDebugMessage(-1,3,FColor::Blue,"PutDown");
+
 	if(!bHandEmpty)
 	{
-		////GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Main occupé");
+		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Main occupé");
 		if(GetWorld()->LineTraceSingleByChannel(HitResult,MouseLocation,EndRay,ECC_Visibility,Params))
 		{
 			if(selected == nullptr) return;
-			//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
+			GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
 			if (HitResult.GetActor() == ItemTarget)
 			{
 				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red, HitResult.GetActor()->GetName());
@@ -252,8 +413,6 @@ void AMyPlayerController::SetWidget(UWidget_Interaction* newWidget)
 {
 	WidgetUse = newWidget;
 }
-
-
 
 void AMyPlayerController::OnPossess(APawn* InPawn)
 {

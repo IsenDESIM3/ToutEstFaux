@@ -61,7 +61,7 @@ void AMyCharacters::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
 	check(Subsystem);
 	
-	
+	PC->myCharacters=this;
 	PC->SetInput(EIC,Subsystem);
 	
 	Subsystem->ClearAllMappings();

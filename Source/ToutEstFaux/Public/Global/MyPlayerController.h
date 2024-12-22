@@ -89,9 +89,92 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 
 	
 
-	//Temporaire
+	//Anti Spam 
 	bool bCantChangeMapping=true;
 	FTimerHandle SwapMappingTimerHandle;
 	void SetCanChangeMapping();
+
+	bool bCanInteract=true;
+	FTimerHandle InteractTimerHandle;
+	void SetCanInteract();
+
+
+	//Online
+	//Grab
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_Grab();
+	bool Server_Grab_Validate();
+	void Server_Grab_Implementation();
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_Grab();
+	bool Multi_Grab_Validate();
+	void Multi_Grab_Implementation();
+
+	//Interactor
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_Interactor();
+	bool Server_Interactor_Validate();
+	void Server_Interactor_Implementation();
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_Interactor();
+	bool Multi_Interactor_Validate();
+	void Multi_Interactor_Implementation();
+	
+	//Holding/NotHolding
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_HoldingKey();
+	bool Server_HoldingKey_Validate();
+	void Server_HoldingKey_Implementation();
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_HoldingKey();
+	bool Multi_HoldingKey_Validate();
+	void Multi_HoldingKey_Implementation();
+	
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_StopHoldingKey();
+	bool Server_StopHoldingKey_Validate();
+	void Server_StopHoldingKey_Implementation();
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_StopHoldingKey();
+	bool Multi_StopHoldingKey_Validate();
+	void Multi_StopHoldingKey_Implementation();
+
+	//Clic in Interaction
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_ClicInInteraction();
+	bool Server_ClicInInteraction_Validate();
+	void Server_ClicInInteraction_Implementation();
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_ClicInInteraction();
+	bool Multi_ClicInInteraction_Validate();
+	void Multi_ClicInInteraction_Implementation();
+
+	//PutDown
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_PutDown();
+	bool Server_PutDown_Validate();
+	void Server_PutDown_Implementation();
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_PutDown();
+	bool Multi_PutDown_Validate();
+	void Multi_PutDown_Implementation();
+
+	//Rotate
+	UFUNCTION(Server,Reliable,WithValidation,BlueprintCallable,Category="MultiPlayer")
+	void Server_GetMouseXYInfo(float mousex, float mousey);
+	bool Server_GetMouseXYInfo_Validate(float mousex, float mousey);
+	void Server_GetMouseXYInfo_Implementation(float mousex, float mousey);
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_GetMouseXYInfo(float mousex, float mousey);
+	bool Multi_GetMouseXYInfo_Validate(float mousex, float mousey);
+	void Multi_GetMouseXYInfo_Implementation(float mousex, float mousey);
+	
 	
 };
