@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "MainGameMode.generated.h"
 
+enum class ETypeOfDoor : uint8;
 class ADoor;
 class UWidget_Interaction;
 class AMyCharacters;
@@ -52,10 +53,7 @@ class TOUTESTFAUX_API AMainGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 public:
-	//Cosplayer Enigma
-	void SetPlinths(APlinth* newPlinth);
-	void CheckIfCosplayerEnigmaFinish();
-	void SetDoors(bool bIsExitDoor,ADoor* NewDoors);
+	
 
 	FTeletubbiesMatData GetTeletubbiesRightData(ETeletubbies TeletubbiesType);
 	
@@ -63,19 +61,13 @@ public:
 	virtual void OnPostLogin(AController* NewPlayer) override;
 	//Call when a player quit the game
 	virtual void Logout(AController* Exiting) override;
-
 	virtual void BeginPlay() override;
 	
 private:
 	
-	//Cosplayer Enigma
-	TArray<APlinth*> _listOfAllPlinths{};
-
 	UPROPERTY(EditDefaultsOnly,Category="All Teletubbies Configuration",meta=(AllowPrivateAccess))
 	TArray<FTeletubbiesMatData> _listOfTeletubbiesMatData{};
-
-	bool bIsCosplayerEnigmaFinish=false;
-
+	
 	//Controllers
 	UPROPERTY()
 	TArray<class AMyPlayerController*> _listOfPlayerController;
@@ -85,15 +77,5 @@ private:
 
 	UPROPERTY()
 	TArray<AMyCharacters*> _listOfCharacter{};
-
-	UPROPERTY()
-	TArray<ADoor*>_dressingDoors{};
-
-	UPROPERTY()
-	TArray<ADoor*>_exitDoors{};
-
-	void OpenDressroomDoors();
-
-	//test
-	FTimerHandle TestHander;
+	
 };

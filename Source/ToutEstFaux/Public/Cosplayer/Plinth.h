@@ -7,6 +7,7 @@
 #include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
 #include "Global/MainGameMode.h"
+#include "Global/MainGameState.h"
 #include "Plinth.generated.h"
 
 enum class ETeletubbies : uint8;
@@ -38,7 +39,7 @@ public:
 private:
 
 	UPROPERTY()
-	AMainGameMode* _mainGameMode=nullptr;
+	AMainGameState* _mainGameState=nullptr;
 	
 	//Put in Game Mode
 	void CheckIfFigurineIsGood();

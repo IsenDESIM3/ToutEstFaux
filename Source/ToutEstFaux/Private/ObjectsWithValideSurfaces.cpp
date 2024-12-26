@@ -32,3 +32,8 @@ float AObjectsWithValideSurfaces::getActorHeight()
 	return 2*actorBox.GetExtent().Z;
 }
 
+float AObjectsWithValideSurfaces::getGapPosition()
+{
+	return GapPosition;
+}
+

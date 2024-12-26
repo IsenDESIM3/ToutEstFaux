@@ -24,5 +24,6 @@ class TOUTESTFAUX_API IIPlaceable
 public:
 
 	virtual float getActorHeight();
+	virtual float getGapPosition();
 	
 };

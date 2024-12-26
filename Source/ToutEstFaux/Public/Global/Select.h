@@ -34,9 +34,10 @@ public:
 	virtual AActor* GetItemTarget() override;
 	FVector inialLocation;
 	FRotator initialRotation;
-	UPROPERTY(EditAnywhere, Category="Components")
+	UPROPERTY(EditAnywhere, Category="Selection Info")
 	UTexture2D* ImageReference;
 	
-	
+	UPROPERTY(EditDefaultsOnly, Category="Selection Info")
+	float GrabbedScale=0.4f;
 
 };

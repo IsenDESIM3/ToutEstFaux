@@ -4,6 +4,7 @@
 #include "Cosplayer/Plinth.h"
 
 #include "Cosplayer/Figurine.h"
+#include "Global/MainGameState.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -25,10 +26,10 @@ void APlinth::BeginPlay()
 {
 	Super::BeginPlay();
 
-	_mainGameMode = Cast<AMainGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-	if(_mainGameMode)
+	_mainGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
+	if(_mainGameState)
 	{
-		_mainGameMode->SetPlinths(this);
+		_mainGameState->SetPlinths(this);
 	}
 	
 }
@@ -54,12 +55,13 @@ void APlinth::CheckIfFigurineIsGood()
 {
 	if(GetIsComplete())
 	{
-		if(_mainGameMode)
+		if(_mainGameState)
 		{
-			_mainGameMode->CheckIfCosplayerEnigmaFinish();
+			_mainGameState->CheckIfCosplayerEnigmaFinish();
 		}
 		
 	}
+	
 	
 }
 

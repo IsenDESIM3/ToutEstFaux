@@ -3,8 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Global/Door.h"
 #include "Global/Select.h"
+#include "Global/MainGameMode.h"
 #include "Lock.generated.h"
+
+
+enum class ETypeOfDoor : uint8;
 
 USTRUCT(BlueprintType)
 struct FLockData
@@ -59,6 +64,10 @@ public:
 
 	UFUNCTION()
 	void Click(UPrimitiveComponent* TouchedComponent , FKey ButtonPressed);
+
+private:
+	UPROPERTY(EditAnywhere,meta=(AllowPrivateAccess),Category="Type Of Locker")
+	ETypeOfDoor MyTypeOfLockDoor = ETypeOfDoor::E_WardrobeDoor;
 	
 };
 

@@ -47,11 +47,13 @@ void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 		{
 			GEngine->AddOnScreenDebugMessage(-1,2,FColor::Green,"Interaction mode");
 			_subsystem->AddMappingContext(interactionMappingContext, 0);
+			bShowMouseCursor=true;
 		}
 		else
 		{
 			GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"Normal mode");
 			_subsystem->AddMappingContext(defaultMappingContext,0);
+			bShowMouseCursor=false;
 		}
 	}
 }
@@ -85,12 +87,10 @@ void AMyPlayerController::Grab()
 	// 	TODO : mettre l'objet dans la main via une socket et faire la gestion d'inventaire
 	if(!selected)
 	{
-		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Blue,"Pas de Seclected");
 		selected = Raycast();
 	}
 	if(selected!=nullptr && bHandEmpty)
 	{
-		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Interactable");
 		selected->Grabbed(myCharacters->itemPos);
 		selected->SetInTheHand();
 		ItemTarget = selected->GetItemTarget();
@@ -198,6 +198,7 @@ TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 	{
 		
 		AActor* target = HitResult.GetActor();
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, target->GetName());
 		if (target->Implements<UISelectable>() && myCharacters)
 		{
 			// GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, "beginning Shrink");
@@ -387,9 +388,10 @@ void AMyPlayerController::PutDown()
 			{
 				TScriptInterface<IIPlaceable> Target = TScriptInterface<IIPlaceable>(HitResult.GetActor());
 				float actorHeight = Target->getActorHeight();
+				float gapPosition = Target->getGapPosition();
 				
 				//newpos = FVector(HitResult.GetActor()->GetActorLocation().X, HitResult.GetActor()->GetActorLocation().Y, actorHeight-10);
-				newpos = FVector(HitResult.Location.X, HitResult.Location.Y, actorHeight);
+				newpos = FVector(HitResult.Location.X, HitResult.Location.Y, actorHeight + (HitResult.GetActor()->GetActorLocation().Z-actorHeight/2 ) - gapPosition);
 				selected->Release(newpos+myCharacters->GetCameraForward(), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
 				bHandEmpty = true;
 				selected = nullptr;

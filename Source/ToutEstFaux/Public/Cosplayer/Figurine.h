@@ -52,6 +52,7 @@ public:
 	virtual ETeletubbies GetTeletubbiesType() override;
 	virtual bool GetIfFigurineIsInRightPose() override;
 	virtual void Clickable() override;
+	virtual void Release(FVector newpos, FRotator newrot) override;
 
 private:
 	UPROPERTY()
