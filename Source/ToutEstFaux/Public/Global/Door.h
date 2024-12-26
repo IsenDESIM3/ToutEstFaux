@@ -13,7 +13,14 @@ enum class ETypeOfOpening : uint8
 	E_BackOpening UMETA(DisplayName="Back Opening"),
 	
 };
-
+UENUM(BlueprintType)
+enum class ETypeOfDoor : uint8
+{
+	E_NormalDoor UMETA(DisplayName="Normal Door"),
+	E_ExitDoor UMETA(DisplayName="Exit Door"),
+	E_WardrobeDoor UMETA(DisplayName="Wardrobe Door"),
+	
+};
 UCLASS()
 class TOUTESTFAUX_API ADoor : public AActor
 {
@@ -34,11 +41,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 	void SetOpenDoor();
-	
+	ETypeOfDoor GetTypeOfDoor();
 
 private:
 	UPROPERTY(EditAnywhere,meta=(AllowPrivateAccess))
@@ -47,7 +51,7 @@ private:
 	float _maxRotation=90.f;
 
 	UPROPERTY(EditAnywhere,meta=(AllowPrivateAccess))
-	bool bIsAnExitDoor=true;
+	ETypeOfDoor MyTypeOfDoor=ETypeOfDoor::E_NormalDoor;
 
 	UPROPERTY(ReplicatedUsing=OnRep_DoorOpened)
 	bool bIsDoorOpened=false;
@@ -55,33 +59,17 @@ private:
 	UFUNCTION()
 	void OnRep_DoorOpened();
 
-	int8 _multiplicateur=-1;
+	UPROPERTY(ReplicatedUsing=OnRep_ChangeRot)
+	float _actualRotation=0;
+
+	UFUNCTION()
+	void OnRep_ChangeRot();
+
+	int8 _multiplicator=-1;
+	float _RotationGoal=0;
 	
 	void OpenTheDoor();
-	void CloseTheDoor();
 
 	FTimerHandle DoorHandler;
-
-	FTimerHandle TestHandler;
-
-	//Online
-	UFUNCTION(Server,Reliable,WithValidation)
-	void Server_OpenTheDoor();
-	bool Server_OpenTheDoor_Validate();
-	void Server_OpenTheDoor_Implementation();
-
-	UFUNCTION(NetMulticast,Reliable,WithValidation)
-	void Multi_OpenTheDoor();
-	bool Multi_OpenTheDoor_Validate();
-	void Multi_OpenTheDoor_Implementation();
-
-	UFUNCTION(Server,Reliable,WithValidation)
-	void Server_CloseTheDoor();
-	bool Server_CloseTheDoor_Validate();
-	void Server_CloseTheDoor_Implementation();
-
-	UFUNCTION(NetMulticast,Reliable,WithValidation)
-	void Multi_CloseTheDoor();
-	bool Multi_CloseTheDoor_Validate();
-	void Multi_CloseTheDoor_Implementation();
+	
 };

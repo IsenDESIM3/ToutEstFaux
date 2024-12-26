@@ -4,6 +4,7 @@
 #include "Global/Door.h"
 
 #include "Global/MainGameMode.h"
+#include "Global/MainGameState.h"
 #include "Kismet/GameplayStatics.h"
 
 #include "Net/UnrealNetwork.h"
@@ -28,6 +29,7 @@ void ADoor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimePro
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ADoor, bIsDoorOpened);
+	DOREPLIFETIME(ADoor, _actualRotation);
 }
 
 // Called when the game starts or when spawned
@@ -35,10 +37,10 @@ void ADoor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	AMainGameMode* _mainGameMode = Cast<AMainGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-	if(_mainGameMode)
+	AMainGameState* _mainGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
+	if(_mainGameState)
 	{
-		_mainGameMode->SetDoors(bIsAnExitDoor,this);
+		_mainGameState->SetDoor(this);
 	}
 
 	switch (TypeOfOpening)
@@ -49,26 +51,23 @@ void ADoor::BeginPlay()
 
 		case ETypeOfOpening::E_BackOpening :
 		_maxRotation=-90.f;
+		_multiplicator=-_multiplicator;
 		break;
 		
 	}
-	
-	
-}
-
-// Called every frame
-void ADoor::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 }
 
 
 void ADoor::SetOpenDoor()
 {
-	_multiplicateur = -_multiplicateur;
+	_multiplicator = -_multiplicator;
 	bIsDoorOpened=!bIsDoorOpened;
 	OnRep_DoorOpened();
+}
+
+ETypeOfDoor ADoor::GetTypeOfDoor()
+{
+	return MyTypeOfDoor;
 }
 
 
@@ -76,74 +75,29 @@ void ADoor::OnRep_DoorOpened()
 {
 	if(bIsDoorOpened)
 	{
-		//Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,_maxRotation,Door->GetRelativeRotation().Roll));
-		Server_OpenTheDoor();
+		_RotationGoal=_maxRotation*_multiplicator;
+		OpenTheDoor();
 	}
 	else
 	{
-		//Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,0,Door->GetRelativeRotation().Roll));
-		Server_CloseTheDoor();
+		_RotationGoal=1*_multiplicator;
+		OpenTheDoor();
 	}
 }
 
 void ADoor::OpenTheDoor()
 {
 	
-	if(Door->GetRelativeRotation().Yaw * _multiplicateur < _maxRotation * _multiplicateur )
+	if(_actualRotation * _multiplicator < _RotationGoal )
 	{
-		Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,Door->GetRelativeRotation().Yaw + _multiplicateur,Door->GetRelativeRotation().Roll));
-		GetWorldTimerManager().SetTimer(DoorHandler,this,&ADoor::Server_OpenTheDoor,0.02);
+		_actualRotation=Door->GetRelativeRotation().Yaw + _multiplicator;
+		OnRep_ChangeRot();
+		GetWorldTimerManager().SetTimer(DoorHandler,this,&ADoor::OpenTheDoor,0.02);
 	}
 }
 
-void ADoor::CloseTheDoor()
+void ADoor::OnRep_ChangeRot()
 {
-	if(Door->GetRelativeRotation().Yaw * -_multiplicateur >=1 )
-	{
-		Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,Door->GetRelativeRotation().Yaw + _multiplicateur,Door->GetRelativeRotation().Roll));
-		GetWorldTimerManager().SetTimer(DoorHandler,this,&ADoor::Server_CloseTheDoor,0.02);
-	}
-	
+	Door->SetRelativeRotation(FRotator(Door->GetRelativeRotation().Pitch,_actualRotation,Door->GetRelativeRotation().Roll));
 }
-
-bool ADoor::Server_OpenTheDoor_Validate()
-{
-	return true;
-}
-
-void ADoor::Server_OpenTheDoor_Implementation()
-{
-	Multi_OpenTheDoor();
-}
-
-bool ADoor::Multi_OpenTheDoor_Validate()
-{
-	return true;
-}
-
-void ADoor::Multi_OpenTheDoor_Implementation()
-{
-	OpenTheDoor();
-}
-
-bool ADoor::Server_CloseTheDoor_Validate()
-{
-	return true;
-}
-
-void ADoor::Server_CloseTheDoor_Implementation()
-{
-	Multi_CloseTheDoor();
-}
-
-bool ADoor::Multi_CloseTheDoor_Validate()
-{
-	return true;
-}
-
-void ADoor::Multi_CloseTheDoor_Implementation()
-{
-	CloseTheDoor();
-}
-
 

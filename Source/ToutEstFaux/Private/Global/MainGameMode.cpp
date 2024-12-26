@@ -4,44 +4,23 @@
 #include "Global/MainGameMode.h"
 
 #include "Cosplayer/Plinth.h"
+
 #include "Global/Door.h"
+#include "Global/MainGameState.h"
 #include "Global/MyPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
 void AMainGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorldTimerManager().SetTimer(TestHander, this, &AMainGameMode::OpenDressroomDoors,5.f);
-}
 
-void AMainGameMode::SetPlinths(APlinth* newPlinth)
-{
-	_listOfAllPlinths.AddUnique(newPlinth);
-}
-
-void AMainGameMode::CheckIfCosplayerEnigmaFinish()
-{
-	if(!bIsCosplayerEnigmaFinish)
+	if(AMainGameState* GS = Cast<AMainGameState>(UGameplayStatics::GetGameState(GetWorld())))
 	{
-		if(_listOfAllPlinths.Num()>=4)
-		{
-			for(int i=0; i<_listOfAllPlinths.Num();i++)
-			{
-				if(!_listOfAllPlinths[i]->GetIsComplete())
-				{
-					return;
-				}
-			}
-			bIsCosplayerEnigmaFinish=true;
-			GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Green, "Cosplayer Enigma Finish");
-		}
+		GS->SetGameMode(this);
 	}
 }
 
-void AMainGameMode::SetDoors(bool bIsExitDoor,ADoor* NewDoors)
-{
-	bIsExitDoor?_exitDoors.AddUnique(NewDoors):_dressingDoors.AddUnique(NewDoors);
-}
+
 
 FTeletubbiesMatData AMainGameMode::GetTeletubbiesRightData(ETeletubbies TeletubbiesType)
 {
@@ -105,14 +84,8 @@ void AMainGameMode::Logout(AController* Exiting)
 }
 
 
-void AMainGameMode::OpenDressroomDoors()
-{
-	for (ADoor* Door : _dressingDoors)
-	{
-		GEngine->AddOnScreenDebugMessage(-1,2,FColor::Purple,"Let's goooo");
-		Door->SetOpenDoor();
-	}
-}
+
+
 
 
 

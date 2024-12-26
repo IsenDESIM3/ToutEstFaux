@@ -27,4 +27,8 @@ public:
 	UFUNCTION()
 	virtual float getActorHeight() override;
 
+	virtual float getGapPosition() override;
+
+	UPROPERTY(EditDefaultsOnly,Category="Placeable Info")
+	float GapPosition=0;
 };

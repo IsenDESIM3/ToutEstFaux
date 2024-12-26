@@ -5,6 +5,11 @@
 
 #include <ThirdParty/ShaderConductor/ShaderConductor/External/DirectXShaderCompiler/include/dxc/DXIL/DxilConstants.h>
 
+#include "GameFramework/GameState.h"
+#include "Global/MainGameMode.h"
+#include "Global/MainGameState.h"
+#include "Kismet/GameplayStatics.h"
+
 ALock::ALock()
 {
 	LockData.Init({0,0},10);
@@ -39,6 +44,7 @@ void ALock::Click(UPrimitiveComponent* TouchedComponent, FKey ButtonPressed)
 	// todo: write here the equivalent of the bp with lines above the function
 }
 
+
 void ALock::BeginPlay()
 {
 	Super::BeginPlay();
@@ -59,6 +65,9 @@ void ALock::BeginPlay()
 		vRot+=36.0f;
 	}
 	GetValueToRotation();
+		
+	
+	
 }
 
 void ALock::GetValueToRotation()
@@ -85,7 +94,13 @@ void ALock::CheckRotation()
 			return;
 		}
 	}
-		bUnlock = true; 
-		GEngine->AddOnScreenDebugMessage(-1,5.0f,FColor::Green,"Unlocked");
+	bUnlock = true;
+
+	if(AMainGameState* GS = Cast<AMainGameState>(GetWorld()->GetGameState()))
+	{
+		GS->OpenDoor(MyTypeOfLockDoor);
+	}
+	
+		
 }
 

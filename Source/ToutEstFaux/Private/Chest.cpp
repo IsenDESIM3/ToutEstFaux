@@ -9,6 +9,12 @@ AChest::AChest()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	BotChest=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BotChest"));
+	BotChest->SetupAttachment(RootComponent);
+	
+	TopChest=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TopChest"));
+	TopChest->SetupAttachment(BotChest);
+
 }
 
 // Called when the game starts or when spawned
@@ -27,7 +33,7 @@ void AChest::Tick(float DeltaTime)
 
 void AChest::Interact()
 {
-	StaticMesh->SetRelativeRotation(FRotator(170, 0, 0));
+	TopChest->SetRelativeRotation(FRotator(170, 0, 0));
 	bIsOpen = true;
 }
 

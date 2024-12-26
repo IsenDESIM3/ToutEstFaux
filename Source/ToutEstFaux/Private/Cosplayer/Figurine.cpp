@@ -98,6 +98,12 @@ void AFigurine::Clickable()
 	ChangeAnimation();
 }
 
+void AFigurine::Release(FVector newpos, FRotator newrot)
+{
+	newpos+=FVector(0,0,10);
+	Super::Release(newpos, newrot);
+}
+
 void AFigurine::ChangeCanMove()
 {
 	bCanMove=true;

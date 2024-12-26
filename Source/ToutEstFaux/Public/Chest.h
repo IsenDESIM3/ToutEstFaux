@@ -20,16 +20,18 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* BotChest;
+
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* TopChest;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION()
 	virtual void Interact() override;
-
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMeshComponent* StaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bIsOpen = false;
