@@ -2,9 +2,6 @@
 
 
 #include "Global/Select.h"
-
-#include "GameFramework/SpringArmComponent.h"
-#include "Gameplay/MyCharacters.h"
 #include "Kismet/KismetMathLibrary.h"
 
 // Sets default values

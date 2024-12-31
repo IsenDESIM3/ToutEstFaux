@@ -4,9 +4,6 @@
 #include "Gameplay/MyCharacters.h"
 
 #include "EnhancedInputComponent.h"
-#include "Camera/CameraActor.h"
-#include "Components/BoxComponent.h"
-#include "GameFramework/InputSettings.h"
 #include "Global/MyPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 

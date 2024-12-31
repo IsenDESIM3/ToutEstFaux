@@ -5,7 +5,6 @@
 
 #include "Cosplayer/Figurine.h"
 #include "Global/MainGameState.h"
-#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 APlinth::APlinth()

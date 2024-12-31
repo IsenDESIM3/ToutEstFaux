@@ -9,58 +9,44 @@
   <component name="ChangeListManager">
     <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/BluePrint/BP_Test_bed.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/BluePrint/BP_Test_dresser.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/BluePrint/BP_Test_kidbed.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/BluePrint/BP_Test_table.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Adult_Bed.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Adult_Bed.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Kid_Bed.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Kid_Bed.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Manga.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Manga.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Shelf.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Shelf.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Table.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Table.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_TableDrawer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_TableDrawer.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Wardrobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Wardrobe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/table.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/table.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Global/PC_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Global/PC_Player.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_Chest.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_Chest.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_Door.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_Door.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_JobBook.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_JobBook.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Plinths.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Plinths.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/PhotoFrame/SM_PhotoFrame.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/PhotoFrame/SM_PhotoFrame.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Plinth/SM_Plinth.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Plinth/SM_Plinth.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_BigWindow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_BigWindow.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_House.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_House.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_Wardrobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_Wardrobe.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Level/L_Cosplayer.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Level/L_Cosplayer.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Blueprints/BP_Lock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Blueprints/BP_Lock.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/SM_NumberLock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Objects/SM_NumberLock.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Models/Book/bookLS.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Models/Book/bookLS.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Models/Chest/chestBottom.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Models/Chest/chestTop.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Models/Chest/chestTop_Anim.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Models/Chest/chestTop_Skeleton.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Models/Screwdriver/SM_Screwdriver.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Models/Screwdriver/SM_Screwdriver.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Materials/M_Ring.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Materials/M_Ring.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/Material_001.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/SM_upper_lock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Objects/SM_upper_lock.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/lock2.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/lock3.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/lock4.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/number_lock.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/upper_lock.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Objects/upper_lock.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/number_lock.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/upper_lock.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Bp_TutorialCharacter.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Disconnect.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/GM_Multiplayer.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/L_Multi.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu_MultiplayerWidget.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_Physics.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_Physics.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_PhysicsAsset.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_PhysicsAsset.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_Pickup_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_Pickup_Rifle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_Weapon_Component.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_Weapon_Component.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Game.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Game.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Global/GM_MainGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Global/GM_MainGameMode.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Chest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Chest.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Plinth.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Plinth.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Lock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Lock.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/MyCharacters.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/MyCharacters.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Door.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Door.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameState.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyPlayerController.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Select.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Select.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/IPlaceable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/IPlaceable.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/ObjectsWithValideSurfaces.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/ObjectsWithValideSurfaces.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Chest.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Chest.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Plinth.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Plinth.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Lock.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Lock.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/Door.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/Door.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameMode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/Select.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/Select.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/IPlaceable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/IPlaceable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/ObjectsWithValideSurfaces.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/ObjectsWithValideSurfaces.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToutEstFaux.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/ToutEstFaux.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +202,11 @@
       <workItem from="1735028369523" duration="7659000" />
       <workItem from="1735038074823" duration="1601000" />
       <workItem from="1735046054601" duration="3018000" />
-      <workItem from="1735202914697" duration="4777000" />
+      <workItem from="1735202914697" duration="4860000" />
+      <workItem from="1735288730583" duration="1105000" />
+      <workItem from="1735376184188" duration="2487000" />
+      <workItem from="1735546038218" duration="3297000" />
+      <workItem from="1735632955748" duration="1140000" />
     </task>
     <servers />
   </component>

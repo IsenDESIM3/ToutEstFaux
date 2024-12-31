@@ -2,10 +2,6 @@
 
 
 #include "Global/MainGameMode.h"
-
-#include "Cosplayer/Plinth.h"
-
-#include "Global/Door.h"
 #include "Global/MainGameState.h"
 #include "Global/MyPlayerController.h"
 #include "Kismet/GameplayStatics.h"

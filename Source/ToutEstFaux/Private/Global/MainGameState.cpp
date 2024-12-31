@@ -2,7 +2,6 @@
 
 
 #include "Global/MainGameState.h"
-
 #include "Cosplayer/Plinth.h"
 #include "Global/Door.h"
 
@@ -46,7 +45,7 @@ void AMainGameState::OpenDoor(ETypeOfDoor Type)
 	{
 		if(Door->GetTypeOfDoor()==Type)
 		{
-			GEngine->AddOnScreenDebugMessage(-1,2,FColor::Green,"OPEN THE DOOR");
+			//GEngine->AddOnScreenDebugMessage(-1,2,FColor::Green,"OPEN THE DOOR");
 			Door->SetOpenDoor();
 		}
 	}
