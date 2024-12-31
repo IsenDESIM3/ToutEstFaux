@@ -2,15 +2,9 @@
 
 
 #include "Global/MyPlayerController.h"
-
-#include <string>
-
 #include "Chest.h"
 #include "IPlaceable.h"
-#include "SkeletalDebugRendering.h"
-#include "ViewportInteractionTypes.h"
 #include "Global/ISelectable.h"
-#include "Kismet/GameplayStatics.h"
 
 void AMyPlayerController::BeginPlay()
 {
@@ -45,13 +39,13 @@ void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 		
 		if(bIsOpen)
 		{
-			GEngine->AddOnScreenDebugMessage(-1,2,FColor::Green,"Interaction mode");
+			
 			_subsystem->AddMappingContext(interactionMappingContext, 0);
 			bShowMouseCursor=true;
 		}
 		else
 		{
-			GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"Normal mode");
+			
 			_subsystem->AddMappingContext(defaultMappingContext,0);
 			bShowMouseCursor=false;
 		}
@@ -161,7 +155,7 @@ void AMyPlayerController::Interactor()
 				
 				if(!bInputSwitched)
 				{
-					GEngine->AddOnScreenDebugMessage(-1,2,FColor::Green,"Input Not switch");
+					
 					SwitchMappingContext(true);
 					selected->SetFrontCamera(ItemPosition);
 					bInputSwitched = !bInputSwitched;
@@ -169,7 +163,7 @@ void AMyPlayerController::Interactor()
 				}
 				else
 				{
-					GEngine->AddOnScreenDebugMessage(-1,2,FColor::Blue,"Input switch");
+					
 					SwitchMappingContext(false);
 					selected->SetInTheHand();
 					bInputSwitched = !bInputSwitched;
@@ -259,7 +253,7 @@ void AMyPlayerController::Multi_HoldingKey_Implementation()
 void AMyPlayerController::HoldingKey()
 {
 	bCanRotate = true;
-	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Orange,"Can Rotate");
+	
 }
 
 bool AMyPlayerController::Server_StopHoldingKey_Validate()
@@ -285,7 +279,7 @@ void AMyPlayerController::Multi_StopHoldingKey_Implementation()
 void AMyPlayerController::StopHoldingKey()
 {
 	bCanRotate = false;
-	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Orange,"Cannot Rotate");
+	
 }
 
 bool AMyPlayerController::Server_ClicInInteraction_Validate()
@@ -310,7 +304,7 @@ void AMyPlayerController::Multi_ClicInInteraction_Implementation()
 
 void AMyPlayerController::ClicInInteraction()
 {
-	GEngine->AddOnScreenDebugMessage(-1,1,FColor::Green,"Interactable");
+	
 	if(selected && bCanInteract)
 	{
 		selected->Clickable();
@@ -359,15 +353,15 @@ void AMyPlayerController::PutDown()
 	Params.AddIgnoredActor(GetPawn());
 	FVector newpos;
 
-	GEngine->AddOnScreenDebugMessage(-1,3,FColor::Blue,"PutDown");
+	
 
 	if(!bHandEmpty)
 	{
-		GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Main occupé");
+		
 		if(GetWorld()->LineTraceSingleByChannel(HitResult,MouseLocation,EndRay,ECC_Visibility,Params))
 		{
 			if(selected == nullptr) return;
-			GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red,"Selected est nul !!!");
+			
 			if (HitResult.GetActor() == ItemTarget)
 			{
 				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red, HitResult.GetActor()->GetName());

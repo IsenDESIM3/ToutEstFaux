@@ -9,8 +9,10 @@
 UENUM(BlueprintType)
 enum class ETypeOfOpening : uint8
 {
-	E_FrontOpening UMETA(DisplayName="Front Opening"),
-	E_BackOpening UMETA(DisplayName="Back Opening"),
+	E_FrontOpening UMETA(DisplayName="Front Opening 90°"),
+	E_BackOpening UMETA(DisplayName="Back Opening -90°"),
+	E_BigFrontOpening UMETA(DisplayName="Big Front Opening 120°"),
+	E_BigBackOpening UMETA(DisplayName="Big Back Opening -120°"),
 	
 };
 UENUM(BlueprintType)
@@ -43,6 +45,7 @@ protected:
 public:	
 	void SetOpenDoor();
 	ETypeOfDoor GetTypeOfDoor();
+
 
 private:
 	UPROPERTY(EditAnywhere,meta=(AllowPrivateAccess))

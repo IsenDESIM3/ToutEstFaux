@@ -2,11 +2,7 @@
 
 
 #include "Global/Door.h"
-
-#include "Global/MainGameMode.h"
 #include "Global/MainGameState.h"
-#include "Kismet/GameplayStatics.h"
-
 #include "Net/UnrealNetwork.h"
 
 // Sets default values
@@ -49,8 +45,17 @@ void ADoor::BeginPlay()
 		_maxRotation=90.f;
 		break;
 
+		case ETypeOfOpening::E_BigFrontOpening :
+		_maxRotation=120.f;
+		break;
+
 		case ETypeOfOpening::E_BackOpening :
 		_maxRotation=-90.f;
+		_multiplicator=-_multiplicator;
+		break;
+
+		case ETypeOfOpening::E_BigBackOpening :
+		_maxRotation=-120.f;
 		_multiplicator=-_multiplicator;
 		break;
 		
@@ -69,6 +74,8 @@ ETypeOfDoor ADoor::GetTypeOfDoor()
 {
 	return MyTypeOfDoor;
 }
+
+
 
 
 void ADoor::OnRep_DoorOpened()

@@ -2,18 +2,12 @@
 
 
 #include "Gameplay/Lock.h"
-
-#include <ThirdParty/ShaderConductor/ShaderConductor/External/DirectXShaderCompiler/include/dxc/DXIL/DxilConstants.h>
-
-#include "GameFramework/GameState.h"
-#include "Global/MainGameMode.h"
 #include "Global/MainGameState.h"
-#include "Kismet/GameplayStatics.h"
 
 ALock::ALock()
 {
-	LockData.Init({0,0},10);
-	Combination.Init({0,0},4);
+	LockData.Init({ENumbers::E_0,0},10);
+	Combination.Init({ENumbers::E_0,0},4);
 	LockMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("LockMesh"));
 	LockMesh->SetupAttachment(RootComponent);
 	Ring1 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Ring1"));
@@ -32,16 +26,30 @@ ALock::ALock()
 		posX += 24.0f;
 	}
 	
-	// Ring1->OnClicked.AddDynamic(this,&ALock::Click);
-	// Ring2->OnClicked.AddDynamic(this,&ALock::Click);
-	// Ring3->OnClicked.AddDynamic(this,&ALock::Click);
-	// Ring4->OnClicked.AddDynamic(this,&ALock::Click);
+	/*Ring1->OnClicked.AddDynamic(this,&ALock::Click);
+	Ring2->OnClicked.AddDynamic(this,&ALock::Click);
+	Ring3->OnClicked.AddDynamic(this,&ALock::Click);
+	Ring4->OnClicked.AddDynamic(this,&ALock::Click);*/
 	
 }
 
 void ALock::Click(UPrimitiveComponent* TouchedComponent, FKey ButtonPressed)
 {
 	// todo: write here the equivalent of the bp with lines above the function
+	
+}
+
+void ALock::Release(FVector newpos, FRotator newrot)
+{
+	!bUnlock ? Super::Release(_initialPos, _initialRot) : Super::Release(newpos, newrot);
+}
+
+void ALock::ChangeMat(UMaterialInstance* NewMat)
+{
+	Ring1->SetMaterial(0,NewMat);
+	Ring2->SetMaterial(0,NewMat);
+	Ring3->SetMaterial(0,NewMat);
+	Ring4->SetMaterial(0,NewMat);
 }
 
 
@@ -66,7 +74,8 @@ void ALock::BeginPlay()
 	}
 	GetValueToRotation();
 		
-	
+	_initialPos = GetActorLocation();
+	_initialRot = GetActorRotation();
 	
 }
 
