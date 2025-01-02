@@ -8,6 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Materials/Train/M_Wagoon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Materials/Train/M_Wagoon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Train/Blueprint/BP_Train.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Train/SM_Locomotive.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Train/SM_Wagoon.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Game.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Game.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,17 +27,26 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Plinth.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Lock.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Train.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Door.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameState.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyPlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Select.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/IPlaceable.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/ServerWidget.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/ObjectsWithValideSurfaces.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Screwdriver.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Plinth.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Lock.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/MyCharacters.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Train.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/Door.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameMode.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/Select.h" root0="FORCE_HIGHLIGHTING" />
@@ -56,7 +71,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Uproject.ToutEstFaux.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature-MultiplayerFunctionality&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-TrainDeco&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -169,6 +184,10 @@
       <workItem from="1735376184188" duration="2487000" />
       <workItem from="1735546038218" duration="3297000" />
       <workItem from="1735632955748" duration="1355000" />
+      <workItem from="1735739861717" duration="148000" />
+      <workItem from="1735740039435" duration="41000" />
+      <workItem from="1735740108424" duration="5030000" />
+      <workItem from="1735806508015" duration="8277000" />
     </task>
     <servers />
   </component>
