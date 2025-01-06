@@ -9,12 +9,13 @@
   <component name="ChangeListManager">
     <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Materials/Train/M_Wagoon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Materials/Train/M_Wagoon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Train/Blueprint/BP_Train.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Train/SM_Locomotive.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Train/SM_Wagoon.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_DoorFrame.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_DoorFrame.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Train/Blueprint/BP_KidTrain_Track.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Train/Blueprint/BP_KidTrain_Track.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Game.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Game.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Lock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Lock.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Train.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Train.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +189,7 @@
       <workItem from="1735740039435" duration="41000" />
       <workItem from="1735740108424" duration="5030000" />
       <workItem from="1735806508015" duration="8277000" />
+      <workItem from="1736150729087" duration="3571000" />
     </task>
     <servers />
   </component>
