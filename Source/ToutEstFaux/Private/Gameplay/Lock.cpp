@@ -98,7 +98,7 @@ void ALock::CheckRotation()
 	for(int i=0,j=0; i <= 3; i++)
 	{
 		float rot = Meshes[i]->GetRelativeRotation().Roll;
-		if (Combination[i].rot!=rot)
+		if(Combination[i].rot -1 >= rot  || Combination[i].rot +1 <= rot)
 		{
 			return;
 		}

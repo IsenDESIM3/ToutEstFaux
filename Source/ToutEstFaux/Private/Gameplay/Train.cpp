@@ -31,7 +31,7 @@ void ATrain::Tick(float DeltaTime)
 	{
 		SetLocomotivePos();
 
-		_trackDistance = Speed * UGameplayStatics::GetWorldDeltaSeconds(GetWorld()) + _trackDistance ;
+		_trackDistance = Speed + _trackDistance ;
 		_trackDistance = int(_trackDistance) % int(MyTrack->GetSpline()->GetSplineLength());
 		
 		UpdateWagonPos();
