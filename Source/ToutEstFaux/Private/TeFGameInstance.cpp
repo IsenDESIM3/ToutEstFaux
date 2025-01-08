@@ -106,12 +106,25 @@ void UTeFGameInstance::CreateServer(FString ServerName, FString HostName)
 		UE_LOG(LogTemp, Warning, TEXT("Creating Server..."));
 
 		FOnlineSessionSettings SessionSettings;
-		SessionSettings.bIsLANMatch = true;  
-		SessionSettings.bUsesPresence = true;
-		SessionSettings.NumPublicConnections = 5;
-		SessionSettings.bShouldAdvertise = true;
-		SessionSettings.bAllowJoinInProgress = true;
-		SessionSettings.bIsDedicated = false;
+		SessionSettings.bAllowJoinInProgress=true;
+		SessionSettings.bIsDedicated=false;
+		if(IOnlineSubsystem::Get()->GetSubsystemName()!= "NULL")
+			SessionSettings.bIsLANMatch=false;
+		else
+			SessionSettings.bIsLANMatch=true;
+	
+		SessionSettings.bShouldAdvertise=true;
+		SessionSettings.bUsesPresence=true;
+		SessionSettings.NumPublicConnections=2;
+
+		SessionSettings.bUsesStats=false;
+		SessionSettings.bAntiCheatProtected=false;
+		SessionSettings.bUseLobbiesIfAvailable=true;
+		SessionSettings.bUseLobbiesVoiceChatIfAvailable=false;
+		SessionSettings.bAllowInvites=true;
+
+		SessionSettings.bAllowJoinViaPresence=true;
+		SessionSettings.bAllowJoinViaPresenceFriendsOnly=false;
 
 		SessionSettings.Set(FName("SERVER_NAME_KEY"), ServerName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 		SessionSettings.Set(FName("SERVER_HOSTNAME_KEY"), HostName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
@@ -127,7 +140,13 @@ void UTeFGameInstance::FindServer()
 		UE_LOG(LogTemp, Warning, TEXT("FindServer"));
 
 		SessionSearch = MakeShareable(new FOnlineSessionSearch());
-		SessionSearch->bIsLanQuery = true;
+
+	
+		if(IOnlineSubsystem::Get()->GetSubsystemName()!= "NULL")
+    		SessionSearch->bIsLanQuery =false;
+    	else
+    		SessionSearch->bIsLanQuery =true;
+		
 		SessionSearch->MaxSearchResults = 10000;
 		SessionSearch->TimeoutInSeconds = 60;
 		SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
@@ -146,14 +165,14 @@ void UTeFGameInstance::JoinServer(int32 ArrayIndex)
   }
   else
   {
-	  UE_LOG(LogTemp, Warning, TEXT("Failed to join server at index: %d"), ArrayIndex);
+	 GEngine->AddOnScreenDebugMessage(-1,2,FColor::Red,"Impossible de rejoindre");
+  	UGameplayStatics::OpenLevel(GetWorld(),"menu");
   }
 }
 void UTeFGameInstance::LeaveSession()
 {
 	if (SessionInterface.IsValid())
 	{
-		
 		SessionInterface->DestroySession(MySessionName);
 	}
 
