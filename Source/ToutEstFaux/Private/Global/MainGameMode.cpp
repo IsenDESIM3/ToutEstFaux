@@ -2,6 +2,8 @@
 
 
 #include "Global/MainGameMode.h"
+
+#include "TeFGameInstance.h"
 #include "Global/MainGameState.h"
 #include "Global/MyPlayerController.h"
 #include "Kismet/GameplayStatics.h"
@@ -75,6 +77,14 @@ void AMainGameMode::Logout(AController* Exiting)
 	AMyPlayerController* outController = Cast<AMyPlayerController>(Exiting);
 	if(outController)
 	{
+		if(outController == _listOfPlayerController[0])
+		{
+			_listOfPlayerController.Remove(outController);
+			if(UTeFGameInstance* GI = Cast<UTeFGameInstance>(GetGameInstance()))
+			{
+				GI->LeaveSession();
+			}
+		}
 		_listOfPlayerController.Remove(outController);
 	}
 }
