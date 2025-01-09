@@ -3,6 +3,7 @@
 
 #include "Gameplay/Lock.h"
 #include "Global/MainGameState.h"
+#include "Kismet/GameplayStatics.h"
 
 ALock::ALock()
 {
@@ -104,6 +105,7 @@ void ALock::CheckRotation()
 		}
 	}
 	bUnlock = true;
+	if(Unlocked) UGameplayStatics::PlaySoundAtLocation(GetWorld(),Unlocked,GetActorLocation());
 
 	if(AMainGameState* GS = Cast<AMainGameState>(GetWorld()->GetGameState()))
 	{

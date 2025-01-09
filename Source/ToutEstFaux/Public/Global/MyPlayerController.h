@@ -175,6 +175,9 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	void Multi_GetMouseXYInfo(float mousex, float mousey);
 	bool Multi_GetMouseXYInfo_Validate(float mousex, float mousey);
 	void Multi_GetMouseXYInfo_Implementation(float mousex, float mousey);
-	
-	
+
+	UPROPERTY(editAnywhere, Category="Sound")
+	USoundBase* GrabItemSound;
+	UPROPERTY(editAnywhere, Category="Sound")
+	USoundBase* PutDownItemSound;
 };

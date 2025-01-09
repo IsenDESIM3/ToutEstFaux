@@ -3,6 +3,8 @@
 
 #include "Chest.h"
 
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 AChest::AChest()
 {
@@ -35,5 +37,6 @@ void AChest::Interact()
 {
 	TopChest->SetRelativeRotation(FRotator(170, 0, 0));
 	bIsOpen = true;
+	if(Sound) UGameplayStatics::PlaySoundAtLocation(GetWorld(),Sound,GetActorLocation());
 }
 

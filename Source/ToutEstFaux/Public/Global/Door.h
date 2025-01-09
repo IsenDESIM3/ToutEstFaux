@@ -45,7 +45,8 @@ protected:
 public:	
 	void SetOpenDoor();
 	ETypeOfDoor GetTypeOfDoor();
-
+	UPROPERTY(editAnywhere, Category="Sound")
+	USoundBase* DoorUnlocked;
 
 private:
 	UPROPERTY(EditAnywhere,meta=(AllowPrivateAccess))

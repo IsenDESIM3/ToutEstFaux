@@ -5,6 +5,7 @@
 #include "Chest.h"
 #include "IPlaceable.h"
 #include "Global/ISelectable.h"
+#include "Kismet/GameplayStatics.h"
 
 void AMyPlayerController::BeginPlay()
 {
@@ -85,6 +86,7 @@ void AMyPlayerController::Grab()
 	}
 	if(selected!=nullptr && bHandEmpty)
 	{
+		if(GrabItemSound) UGameplayStatics::PlaySoundAtLocation(GetWorld(),GrabItemSound,myCharacters->itemPos->GetComponentLocation());
 		selected->Grabbed(myCharacters->itemPos);
 		selected->SetInTheHand();
 		ItemTarget = selected->GetItemTarget();
@@ -192,6 +194,7 @@ TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 	{
 		
 		AActor* target = HitResult.GetActor();
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, target->GetName());
 		if (target->Implements<UISelectable>() && myCharacters)
 		{
 			// GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, "beginning Shrink");
@@ -365,7 +368,6 @@ void AMyPlayerController::PutDown()
 			{
 				if (ItemTarget->Implements<UInteractable>())
 				{
-					GEngine->AddOnScreenDebugMessage(-1,1, FColor::Blue,"HitResult");
 					TScriptInterface<IInteractable> Target = TScriptInterface<IInteractable>(ItemTarget);
 					Target->Interact();
 					bHandEmpty = true;
@@ -384,6 +386,7 @@ void AMyPlayerController::PutDown()
 				
 				//newpos = FVector(HitResult.GetActor()->GetActorLocation().X, HitResult.GetActor()->GetActorLocation().Y, actorHeight-10);
 				newpos = FVector(HitResult.Location.X, HitResult.Location.Y, actorHeight + (HitResult.GetActor()->GetActorLocation().Z-actorHeight/2 ) - gapPosition);
+				if(PutDownItemSound) UGameplayStatics::PlaySoundAtLocation(GetWorld(),PutDownItemSound,myCharacters->itemPos->GetComponentLocation());
 				selected->Release(newpos+myCharacters->GetCameraForward(), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
 				bHandEmpty = true;
 				selected = nullptr;
