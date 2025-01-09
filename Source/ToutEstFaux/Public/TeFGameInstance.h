@@ -8,10 +8,11 @@
 #include "TeFGameInstance.generated.h"
 
 
+class IOnlineSubsystem;
 class AMenuGameMode;
 
 USTRUCT(BlueprintType)
-struct  FServerInfo
+struct  FServerInfo 
 {
 	GENERATED_BODY()
 public:
@@ -28,16 +29,9 @@ public:
 	int32 MaxPlayers;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	int32 ServerArrayIndex;
-
-	void SetPlayerCount()
-	{
-	PlayerCountStr = FString(FString::FromInt(CurrentPlayers) + "/" + FString::FromInt(MaxPlayers));
-	}
-
-
+	
 };
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FServerDel, FServerInfo, ServerListDel);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FServerSearchingDel, bool, SearchingForServer);
+
 /**
  *
  */
@@ -45,45 +39,41 @@ UCLASS()
 class TOUTESTFAUX_API UTeFGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
-
 public:
-	UTeFGameInstance();
 
-	UFUNCTION(BlueprintCallable)
+	UTeFGameInstance();
+	
+	UFUNCTION(Blueprintable)
 	void CreateServer(FString ServerName, FString HostName);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(Blueprintable,BlueprintCallable,Category="Session")
 	void FindServer();
-	UFUNCTION(BlueprintCallable)
+	
+	//UFUNCTION(Blueprintable)
 	void JoinServer(int32 ArrayIndex);
-	UFUNCTION(BlueprintCallable)
+
+	UFUNCTION(Blueprintable,BlueprintCallable,Category="Session")
 	void LeaveSession();
 
 	void SetGameMode(AMenuGameMode* GameMode);
 
-
 protected:
-	
-	FName MySessionName;
-
-	UPROPERTY(BlueprintAssignable)
-	FServerDel ServerListDel;
-
-	UPROPERTY(BlueprintAssignable)
-	FServerSearchingDel SearchingForServer;
-
+	IOnlineSubsystem* Subsystem;
 	IOnlineSessionPtr SessionInterface;
 	TSharedPtr<FOnlineSessionSearch> SessionSearch;
-
+	//TArray <FOnlineSessionSearchResult> Results;
+	
+	//Delegates
 	virtual void Init() override;
-	virtual void OnCreateSessionComplete(FName SessionName, bool Succeeded);
-	virtual void OnFindSessionsComplete(bool Succeeded);
+	virtual void OnCreateSessionComplete(FName ServerName, bool bWasSuccess);
+	virtual void OnFindSessionsComplete(bool bWasSuccess);
 	virtual void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
-	virtual void OnDestroySessionComplete(FName SessionName, bool Succeeded);
-	
-	
+	virtual void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
+
 private:
-//	FName SessionName = FName("MySessionName");
+	FName SessionName = FName("MySessionName");
+	
+	FName MySessionName;
 
 	UPROPERTY()
 	TArray<FServerInfo> AllServers{};
@@ -93,5 +83,8 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess))
 	FString _mapName = "L_Game";
+
+	IOnlineSubsystem* SubSystem;
+	
 };
 
