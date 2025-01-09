@@ -369,7 +369,7 @@ void AMyPlayerController::PutDown()
 					TScriptInterface<IInteractable> Target = TScriptInterface<IInteractable>(ItemTarget);
 					Target->Interact();
 					bHandEmpty = true;
-					selected->Release(FVector(0,0,0), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
+					selected->Release(selected->GetReleasePos(), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
 				
 					selected = nullptr;
 					ItemTarget = nullptr;

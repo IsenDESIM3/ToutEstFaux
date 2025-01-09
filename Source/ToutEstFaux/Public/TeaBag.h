@@ -13,6 +13,7 @@ UCLASS()
 class TOUTESTFAUX_API ATeaBag : public ASelect
 {
 	GENERATED_BODY()
+	ATeaBag();
 	
 public:
 	UFUNCTION()
@@ -21,6 +22,14 @@ public:
 	UFUNCTION()
 	virtual AActor* GetItemTarget() override;
 
+	UFUNCTION()
+	virtual FVector GetReleasePos() override;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AActor* TeaCup;
+
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* TeaBagMesh;
+
+
 };
