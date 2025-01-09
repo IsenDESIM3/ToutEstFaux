@@ -16,18 +16,18 @@ UTeFGameInstance::UTeFGameInstance()
 
 void UTeFGameInstance::Init()
 {
-	Super::Init();
-
-	IOnlineSubsystem* SubSystem = IOnlineSubsystem::Get();
-	if (SubSystem)
+	//Get the Session Interface
+	SubSystem= IOnlineSubsystem::Get();
+	if(SubSystem)
 	{
 		SessionInterface = SubSystem->GetSessionInterface();
-		if (SessionInterface.IsValid())
+		if(SessionInterface.IsValid())
 		{
-			SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UTeFGameInstance::OnCreateSessionComplete);
-			SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UTeFGameInstance::OnFindSessionsComplete);
-			SessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UTeFGameInstance::OnJoinSessionComplete);
-			SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this, &UTeFGameInstance::OnDestroySessionComplete);
+			//Bind Delegates Here
+			SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this,&UTeFGameInstance::OnCreateSessionComplete);
+			SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this,&UTeFGameInstance::OnFindSessionsComplete);
+			SessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this,&UTeFGameInstance::OnJoinSessionComplete);
+			SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this,&UTeFGameInstance::OnDestroySessionComplete);
 		}
 	}
 }
@@ -37,43 +37,45 @@ void UTeFGameInstance::OnCreateSessionComplete(FName InSessionName, bool Succeed
 	UE_LOG(LogTemp, Warning, TEXT("OnCreateSessionComplete: %s, Succeeded: %d"), *InSessionName.ToString(), Succeeded);
 	if (Succeeded)
 	{
-		
 		GetWorld()->ServerTravel("/Game/GameMaps/"+_mapName+"?listen");
 	}
 }
 
 void UTeFGameInstance::OnFindSessionsComplete(bool Succeeded)
 {
-	SearchingForServer.Broadcast(false);
+	
 	UE_LOG(LogTemp, Warning, TEXT("OnFindSessionsComplete, Succeeded: %d"), Succeeded);
+	//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"OnFindSessionsComplete, Succeeded: "+Succeeded?"true":"false");
 	if (Succeeded && SessionSearch.IsValid())
 	{
 	
 		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), SessionSearch->SearchResults.Num());
-		int8 ArrayIndex = -1;
+		//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Purple,"SearchResults, Server Count: "+FString::FromInt(SessionSearch->SearchResults.Num()));
+		int8 ArrayIndex = 0;
 
 		AllServers.Empty();
 		
 		for (FOnlineSessionSearchResult Result : SessionSearch->SearchResults)
 		{
-			++ArrayIndex;
-			if (!Result.IsValid())
-				continue;
-			
-			FServerInfo Info;
-			FString ServerName = "EMPTY SERVER NMAE";
-			FString HostName = "EMPTY SERVER NMAE";
-			Result.Session.SessionSettings.Get(FName("SERVER_NAME_KEY"), ServerName);
-			Result.Session.SessionSettings.Get(FName("SERVER_HOSTNAME_KEY"), HostName);
-			Info.ServerName = ServerName;
-			Info.MaxPlayers = Result.Session.SessionSettings.NumPublicConnections;
-			Info.CurrentPlayers = Info.MaxPlayers - Result.Session.NumOpenPublicConnections;
-			Info.ServerArrayIndex = ArrayIndex;
-			Info.SetPlayerCount();
+			if(Result.IsValid())
+			{
+				FServerInfo Info;
+				FString ServerName = "EMPTY SERVER NAME";
+				FString HostName = "EMPTY SERVER NAME";
+				Result.Session.SessionSettings.Get(FName("SERVER_NAME_KEY"), ServerName);
+				Result.Session.SessionSettings.Get(FName("SERVER_HOSTNAME_KEY"), HostName);
+				Info.ServerName = ServerName;
+				Info.MaxPlayers = Result.Session.SessionSettings.NumPublicConnections;
+				Info.CurrentPlayers = Info.MaxPlayers - Result.Session.NumOpenPublicConnections;
+				Info.ServerArrayIndex = ArrayIndex;
 
-			AllServers.Add(Info);
-			ServerListDel.Broadcast(Info);
-			
+				if(ServerName!="EMPTY SERVER NAME")
+				{
+					AllServers.Add(Info);
+				}
+				
+			}
+			++ArrayIndex;
 	    }
 
 		if(_gameMode)
@@ -105,13 +107,27 @@ void UTeFGameInstance::CreateServer(FString ServerName, FString HostName)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Creating Server..."));
 
+		//Create The Server Settings
 		FOnlineSessionSettings SessionSettings;
-		SessionSettings.bIsLANMatch = true;  
-		SessionSettings.bUsesPresence = true;
-		SessionSettings.NumPublicConnections = 5;
-		SessionSettings.bShouldAdvertise = true;
-		SessionSettings.bAllowJoinInProgress = true;
-		SessionSettings.bIsDedicated = false;
+		SessionSettings.bAllowJoinInProgress=true;
+		SessionSettings.bIsDedicated=false;
+		if(IOnlineSubsystem::Get()->GetSubsystemName()!= "NULL")
+			SessionSettings.bIsLANMatch=false;
+		else
+			SessionSettings.bIsLANMatch=true;
+	
+		SessionSettings.bShouldAdvertise=true;
+		SessionSettings.bUsesPresence=true;
+		SessionSettings.NumPublicConnections=2;
+
+		SessionSettings.bUsesStats=false;
+		SessionSettings.bAntiCheatProtected=false;
+		SessionSettings.bUseLobbiesIfAvailable=true;
+		SessionSettings.bUseLobbiesVoiceChatIfAvailable=false;
+		SessionSettings.bAllowInvites=true;
+
+		SessionSettings.bAllowJoinViaPresence=true;
+		SessionSettings.bAllowJoinViaPresenceFriendsOnly=false;
 
 		SessionSettings.Set(FName("SERVER_NAME_KEY"), ServerName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 		SessionSettings.Set(FName("SERVER_HOSTNAME_KEY"), HostName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
@@ -121,17 +137,23 @@ void UTeFGameInstance::CreateServer(FString ServerName, FString HostName)
 
 void UTeFGameInstance::FindServer()
 {
-	SearchingForServer.Broadcast(true);
+	
 	if (SessionInterface.IsValid())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("FindServer"));
 
+		//Search Settings
 		SessionSearch = MakeShareable(new FOnlineSessionSearch());
-		SessionSearch->bIsLanQuery = true;
-		SessionSearch->MaxSearchResults = 10000;
-		SessionSearch->TimeoutInSeconds = 60;
-		SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
 
+		if(IOnlineSubsystem::Get()->GetSubsystemName()!= "NULL")
+			SessionSearch->bIsLanQuery =false;
+		else
+			SessionSearch->bIsLanQuery =true;
+	
+		SessionSearch->MaxSearchResults=1000;//Number Of Search Session
+		SessionSearch->QuerySettings.Set(SEARCH_PRESENCE,true,EOnlineComparisonOp::Equals);
+	
+		//Find All Servers
 		SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
 	}
 }
@@ -166,9 +188,9 @@ void UTeFGameInstance::LeaveSession()
 	UE_LOG(LogTemp, Warning, TEXT("Left session and returned to main menu."));
 	
 }
-void UTeFGameInstance::OnDestroySessionComplete(FName SessionName, bool Succeeded)
+void UTeFGameInstance::OnDestroySessionComplete(FName NameSession, bool Succeeded)
 {
-	UE_LOG(LogTemp, Warning, TEXT("OnDestroySessionComplete: %s, Succeeded: %d"), *SessionName.ToString(), Succeeded);
+	//UE_LOG(LogTemp, Warning, TEXT("OnDestroySessionComplete: %s, Succeeded: %d"), *SessionName.ToString(), Succeeded);
 }
 
 
