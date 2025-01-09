@@ -3,23 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Chest.h"
 #include "Global/Select.h"
-#include "Screwdriver.generated.h"
+#include "TeaKettle.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TOUTESTFAUX_API AScrewdriver : public ASelect
+class TOUTESTFAUX_API ATeaKettle : public ASelect
 {
 	GENERATED_BODY()
 
-
 public:
-	UFUNCTION()
-	virtual void Release(FVector newpos, FRotator newrot) override;
-
 	UFUNCTION()
 	virtual AActor* GetItemTarget() override;
 
@@ -27,5 +22,6 @@ public:
 	virtual FVector GetReleasePos() override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	AChest* Target;
+	AActor* TeaCup;
+	
 };

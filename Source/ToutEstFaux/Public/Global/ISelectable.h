@@ -31,7 +31,7 @@ public:
 	virtual void NewRotation(FRotator objectRotation);
 	virtual void Clickable();
 	virtual AActor* GetActor();
-	virtual AActor* GetItemTarget(	);
+	virtual AActor* GetItemTarget();
+	virtual FVector GetReleasePos();
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
-public:
 };

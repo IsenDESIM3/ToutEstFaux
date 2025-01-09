@@ -7,6 +7,7 @@
 #include "Global/Select.h"
 #include "Global/MyPlayerController.h"
 #include "TeaBag.h"
+#include "TeaKettle.h"
 #include "TeaCup.generated.h"
 
 /**
@@ -30,9 +31,29 @@ class TOUTESTFAUX_API ATeaCup : public ASelect, public IInteractable
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AMyPlayerController* MyPlayerController;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* TeaBagLocation;
 
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* TeaCupLocation;
+
+	UPROPERTY()
+	ATeaBag* TeaBag;
+	
+	UPROPERTY(EditAnywhere)
+	UMaterialInterface* TeaCupCorrectMaterial;
+
+	UPROPERTY(EditAnywhere)
+	UMaterialInterface* TeaLiquidMaterial;
+
+	UPROPERTY(EditAnywhere)
+	UMaterialInterface* TeaLiquidBaseMaterial;
+
+	
+	
 	UFUNCTION()
 	virtual void Interact() override;
+
+	UFUNCTION()
+	virtual void Clickable() override;
 };

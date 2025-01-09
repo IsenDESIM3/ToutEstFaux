@@ -52,3 +52,8 @@ AActor* IISelectable::GetItemTarget()
 {
 	return nullptr;
 }
+
+FVector IISelectable::GetReleasePos()
+{
+	return FVector(0,0,0);
+}

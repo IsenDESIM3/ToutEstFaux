@@ -13,3 +13,8 @@ AActor* AScrewdriver::GetItemTarget()
 {
 	return Target;
 }
+
+FVector AScrewdriver::GetReleasePos()
+{
+	return FVector(-100, -100, -100);
+}

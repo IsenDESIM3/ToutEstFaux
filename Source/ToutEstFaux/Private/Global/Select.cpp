@@ -83,6 +83,11 @@ AActor* ASelect::GetItemTarget()
 	return IISelectable::GetItemTarget();
 }
 
+FVector ASelect::GetReleasePos()
+{
+	return FVector(0,0,0);
+}
+
 AActor* ASelect::GetActor()
 {
 	return this;
