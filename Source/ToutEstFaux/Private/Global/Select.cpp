@@ -83,3 +83,8 @@ AActor* ASelect::GetItemTarget()
 	return IISelectable::GetItemTarget();
 }
 
+AActor* ASelect::GetActor()
+{
+	return this;
+}
+

@@ -11,13 +11,14 @@ void ABook::Clickable()
 	if (!bIsOpen)
 	{
 		SetActorRotation(FRotator(0, 0, 0));
-		StaticMesh->SetRelativeRotation(FRotator(0, -150, 0));
+		StaticMesh->SetRelativeRotation(FRotator(0 ,0 , 0));
 		bIsOpen = !bIsOpen;
 	}
 	else
 	{
+		
 		SetActorRotation(FRotator(0, 0, 0));
-		StaticMesh->SetRelativeRotation(FRotator(0 ,0 , 0));
+		StaticMesh->SetRelativeRotation(FRotator(0, -150, 0));
 		bIsOpen = !bIsOpen;
 	}
 

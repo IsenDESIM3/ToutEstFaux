@@ -30,6 +30,7 @@ public:
 	virtual void Increase();
 	virtual void NewRotation(FRotator objectRotation);
 	virtual void Clickable();
+	virtual AActor* GetActor();
 	virtual AActor* GetItemTarget(	);
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:

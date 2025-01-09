@@ -32,6 +32,7 @@ public:
 	virtual void SetFrontCamera(FVector vector) override;
 	virtual void SetInTheHand() override;
 	virtual AActor* GetItemTarget() override;
+	virtual AActor* GetActor() override;
 	FVector inialLocation;
 	FRotator initialRotation;
 	UPROPERTY(EditAnywhere, Category="Selection Info")
