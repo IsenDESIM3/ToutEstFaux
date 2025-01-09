@@ -192,7 +192,6 @@ TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 	{
 		
 		AActor* target = HitResult.GetActor();
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, target->GetName());
 		if (target->Implements<UISelectable>() && myCharacters)
 		{
 			// GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, "beginning Shrink");
@@ -364,10 +363,9 @@ void AMyPlayerController::PutDown()
 			
 			if (HitResult.GetActor() == ItemTarget)
 			{
-				GEngine->AddOnScreenDebugMessage(-1,3,FColor::Red, HitResult.GetActor()->GetName());
-				ItemTarget = HitResult.GetActor();
 				if (ItemTarget->Implements<UInteractable>())
 				{
+					GEngine->AddOnScreenDebugMessage(-1,1, FColor::Blue,"HitResult");
 					TScriptInterface<IInteractable> Target = TScriptInterface<IInteractable>(ItemTarget);
 					Target->Interact();
 					bHandEmpty = true;

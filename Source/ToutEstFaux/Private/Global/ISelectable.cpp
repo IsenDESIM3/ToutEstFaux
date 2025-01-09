@@ -43,6 +43,11 @@ void IISelectable::Clickable()
 {
 }
 
+AActor* IISelectable::GetActor()
+{
+	return nullptr;
+}
+
 AActor* IISelectable::GetItemTarget()
 {
 	return nullptr;
