@@ -9,13 +9,13 @@
   <component name="ChangeListManager">
     <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Teletubbies/SKM_Teletubbies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Teletubbies/SKM_Teletubbies.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Teletubbies/SK_Teletubbies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Teletubbies/SK_Teletubbies.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Material_PostProcess/Materials/Instance/MI_Outline_Teletubies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Material_PostProcess/Materials/Instance/MI_Outline_Teletubies.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_DoorFrame.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_DoorFrame.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Train/Blueprint/BP_KidTrain_Track.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Train/Blueprint/BP_KidTrain_Track.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Game.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Game.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Lock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Lock.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Train.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Train.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/IPlaceable.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/ServerWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/ServerWidget.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/ObjectsWithValideSurfaces.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Screwdriver.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -67,27 +67,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Uproject.ToutEstFaux.executor": "Run",
-    "git-widget-placeholder": "change-cosplayer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Uproject.ToutEstFaux.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-TrainDeco&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\mario.bert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\mario.bert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\mario.bert\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\mario.bert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\mario.bert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\mario.bert\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ToutEstFaux" type="Uproject" factoryName="rider.uproject">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/ToutEstFaux.uproject" />
@@ -190,7 +190,6 @@
       <workItem from="1735740108424" duration="5030000" />
       <workItem from="1735806508015" duration="8277000" />
       <workItem from="1736150729087" duration="3571000" />
-      <workItem from="1736339326473" duration="4303000" />
     </task>
     <servers />
   </component>
