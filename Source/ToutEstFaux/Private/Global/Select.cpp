@@ -2,6 +2,8 @@
 
 
 #include "Global/Select.h"
+
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
@@ -48,6 +50,7 @@ void ASelect::NewRotation(FRotator objectRotation)
 void ASelect::Clickable()
 {
 	IISelectable::Clickable();
+	PlayAudio();
 }
 
 
@@ -81,6 +84,11 @@ void ASelect::SetInTheHand()
 AActor* ASelect::GetItemTarget()
 {
 	return IISelectable::GetItemTarget();
+}
+
+void ASelect::PlayAudio()
+{
+	if(Sound) UGameplayStatics::PlaySoundAtLocation(GetWorld(),Sound,GetActorLocation());
 }
 
 FVector ASelect::GetReleasePos()

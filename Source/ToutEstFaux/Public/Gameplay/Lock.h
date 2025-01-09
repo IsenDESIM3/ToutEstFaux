@@ -90,6 +90,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ChangeMat(UMaterialInstance* NewMat);
 
+	UPROPERTY(editAnywhere, Category="Sound")
+	USoundBase* Unlocked;
+
 private:
 	UPROPERTY(EditAnywhere,meta=(AllowPrivateAccess),Category="Type Of Locker")
 	ETypeOfDoor MyTypeOfLockDoor = ETypeOfDoor::E_WardrobeDoor;

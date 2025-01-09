@@ -3,6 +3,7 @@
 
 #include "Global/Door.h"
 #include "Global/MainGameState.h"
+#include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
 // Sets default values
@@ -65,6 +66,8 @@ void ADoor::BeginPlay()
 
 void ADoor::SetOpenDoor()
 {
+	if(DoorUnlocked) UGameplayStatics::PlaySoundAtLocation(GetWorld(),DoorUnlocked,GetActorLocation());
+
 	_multiplicator = -_multiplicator;
 	bIsDoorOpened=!bIsDoorOpened;
 	OnRep_DoorOpened();

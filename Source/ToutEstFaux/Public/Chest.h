@@ -35,4 +35,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bIsOpen = false;
+	UPROPERTY(editAnywhere, Category="Sound")
+	USoundBase* Sound;
 };

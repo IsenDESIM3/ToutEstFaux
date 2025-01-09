@@ -32,6 +32,7 @@ public:
 	virtual void SetFrontCamera(FVector vector) override;
 	virtual void SetInTheHand() override;
 	virtual AActor* GetItemTarget() override;
+	virtual void PlayAudio();
 	virtual FVector GetReleasePos() override;
 	virtual AActor* GetActor() override;
 	FVector inialLocation;
@@ -41,5 +42,7 @@ public:
 	
 	UPROPERTY(EditDefaultsOnly, Category="Selection Info")
 	float GrabbedScale=0.4f;
+	UPROPERTY(editAnywhere, Category="Sound")
+	USoundBase* Sound;
 
 };
