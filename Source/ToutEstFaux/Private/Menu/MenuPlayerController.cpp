@@ -3,3 +3,9 @@
 
 #include "Menu/MenuPlayerController.h"
 
+#include "TeFGameInstance.h"
+
+void AMenuPlayerController::OnPossess(APawn* InPawn)
+{
+	Super::OnPossess(InPawn);
+}

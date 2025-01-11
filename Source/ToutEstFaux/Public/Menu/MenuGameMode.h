@@ -50,4 +50,6 @@ public:
 
 	UPROPERTY()
 	UTeFGameInstance* _gameInstance=nullptr;
+
+	
 };

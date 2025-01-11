@@ -16,6 +16,7 @@ void AMyPlayerController::SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLo
 {
 	if(EIC)
 	{
+		LastMapping=defaultMappingContext;
 		EIC->BindAction(interaction,ETriggerEvent::Started, this , &AMyPlayerController::Server_Interactor);
 		EIC->BindAction(mouseSelection,ETriggerEvent::Started, this , &AMyPlayerController::Server_Grab);
 		EIC->BindAction(holdingRotation,ETriggerEvent::Started, this , &AMyPlayerController::Server_HoldingKey);
@@ -23,11 +24,38 @@ void AMyPlayerController::SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLo
 		EIC->BindAction(holdingRotation,ETriggerEvent::Canceled, this , &AMyPlayerController::Server_StopHoldingKey);
 		EIC->BindAction(clicInteraction,ETriggerEvent::Started, this , &AMyPlayerController::Server_ClicInInteraction);
 		EIC->BindAction(releaseInteraction,ETriggerEvent::Started,this,&AMyPlayerController::Server_PutDown);
+		EIC->BindAction(menuInteraction,ETriggerEvent::Started,this,&AMyPlayerController::OpenCloseMenu);
 	}
 
 	_subsystem=Subsystem;
 	
 	
+}
+
+void AMyPlayerController::ChangeMenuMode(bool bNeedToChange)
+{
+	if(WidgetUse)
+	{
+		_subsystem->ClearAllMappings();
+		if(bNeedToChange)
+		{
+			_subsystem->AddMappingContext(MenuMappingContext, 0);
+			WidgetUse->ChangeView(false);
+			bShowMouseCursor=true;
+			bIsMenuOpen=false;
+		}
+		else
+		{
+			_subsystem->AddMappingContext(LastMapping, 0);
+			WidgetUse->ChangeView(true);
+			if(LastMapping!=interactionMappingContext)
+			{
+				bShowMouseCursor=false;
+			}
+			bIsMenuOpen=true;
+		
+		}
+	}
 }
 
 
@@ -40,14 +68,14 @@ void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 		
 		if(bIsOpen)
 		{
-			
 			_subsystem->AddMappingContext(interactionMappingContext, 0);
+			LastMapping=interactionMappingContext;
 			bShowMouseCursor=true;
 		}
 		else
 		{
-			
 			_subsystem->AddMappingContext(defaultMappingContext,0);
+			LastMapping=defaultMappingContext;
 			bShowMouseCursor=false;
 		}
 	}
@@ -321,6 +349,17 @@ void AMyPlayerController::SetCanInteract()
 	bCanInteract=true;
 }
 
+void AMyPlayerController::OpenCloseMenu()
+{
+	if(bCantChangeMapping)
+	{
+	    bCantChangeMapping=false;
+		ChangeMenuMode(bIsMenuOpen);
+		GetWorldTimerManager().SetTimer(SwapMappingTimerHandle,this,&AMyPlayerController::SetCanChangeMapping,0.2f);
+	}
+	
+}
+
 
 bool AMyPlayerController::Server_PutDown_Validate()
 {
@@ -409,6 +448,7 @@ void AMyPlayerController::PutDown()
 void AMyPlayerController::SetWidget(UWidget_Interaction* newWidget)
 {
 	WidgetUse = newWidget;
+	WidgetUse->SetPlayerController(this);
 }
 
 void AMyPlayerController::OnPossess(APawn* InPawn)

@@ -2,9 +2,12 @@
 
 
 #include "Global/MainGameMode.h"
+
+#include "TeFGameInstance.h"
 #include "Global/MainGameState.h"
 #include "Global/MyPlayerController.h"
 #include "Kismet/GameplayStatics.h"
+
 
 void AMainGameMode::BeginPlay()
 {
@@ -77,6 +80,9 @@ void AMainGameMode::Logout(AController* Exiting)
 	{
 		_listOfPlayerController.Remove(outController);
 	}
+
+	GetWorld()->ServerTravel("/Game/GameMaps/Menu?listen");
+	
 }
 
 

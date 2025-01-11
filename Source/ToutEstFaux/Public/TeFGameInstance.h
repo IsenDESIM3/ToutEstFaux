@@ -53,9 +53,12 @@ UFUNCTION(Blueprintable)
 	void JoinServer(int32 ArrayIndex);
 
 	UFUNCTION(Blueprintable,BlueprintCallable,Category="Session")
-	void LeaveSession();
+	void LeaveSession(bool bBackToLoby);
+	
 
 	void SetGameMode(AMenuGameMode* GameMode);
+
+	bool bNeedToRefresh=false;
 
 protected:
 	IOnlineSubsystem* SubSystem;

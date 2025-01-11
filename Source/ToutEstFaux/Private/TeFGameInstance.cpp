@@ -37,6 +37,7 @@ void UTeFGameInstance::OnCreateSessionComplete(FName InSessionName, bool Succeed
 	UE_LOG(LogTemp, Warning, TEXT("OnCreateSessionComplete: %s, Succeeded: %d"), *InSessionName.ToString(), Succeeded);
 	if (Succeeded)
 	{
+		
 		GetWorld()->ServerTravel("/Game/GameMaps/"+_mapName+"?listen");
 	}
 }
@@ -96,7 +97,9 @@ void UTeFGameInstance::OnJoinSessionComplete(FName InSessionName, EOnJoinSession
 		FString ConnectString = "";
 		SessionInterface->GetResolvedConnectString(InSessionName, ConnectString);
 		if (ConnectString !="")
+		{
 			PController->ClientTravel(ConnectString, ETravelType::TRAVEL_Absolute);
+		}
 		
 	}
 }
@@ -131,6 +134,9 @@ void UTeFGameInstance::CreateServer(FString ServerName, FString HostName)
 
 		SessionSettings.Set(FName("SERVER_NAME_KEY"), ServerName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 		SessionSettings.Set(FName("SERVER_HOSTNAME_KEY"), HostName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
+
+		bNeedToRefresh=true;
+		
 		SessionInterface->CreateSession(0, FName("MySessionName"), SessionSettings);
 	}
 }
@@ -163,6 +169,7 @@ void UTeFGameInstance::JoinServer(int32 ArrayIndex)
   FOnlineSessionSearchResult Result = SessionSearch->SearchResults[ArrayIndex];
   if (Result.IsValid())
   {
+  		bNeedToRefresh=true;
 	  UE_LOG(LogTemp, Warning, TEXT("Joining server at index: %d"), ArrayIndex);
 	  SessionInterface->JoinSession(0, MySessionName, Result);
   }
@@ -171,23 +178,26 @@ void UTeFGameInstance::JoinServer(int32 ArrayIndex)
 	  UE_LOG(LogTemp, Warning, TEXT("Failed to join server at index: %d"), ArrayIndex);
   }
 }
-void UTeFGameInstance::LeaveSession()
+void UTeFGameInstance::LeaveSession(bool bBackToLoby)
 {
 	if (SessionInterface.IsValid())
 	{
-		
 		SessionInterface->DestroySession(MySessionName);
 	}
 
-	
-	if (APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+	if(bBackToLoby)
 	{
-		PlayerController->ClientTravel("Game/Assets/Multijoueur/Menu", ETravelType::TRAVEL_Absolute);
-	}
+		if (APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+		{
+			bNeedToRefresh=false;
+			PlayerController->ClientTravel("/Game/GameMaps/L_Menu?listen", ETravelType::TRAVEL_Absolute);
+		}
 
-	UE_LOG(LogTemp, Warning, TEXT("Left session and returned to main menu."));
+		UE_LOG(LogTemp, Warning, TEXT("Left session and returned to main menu."));
+	}
 	
 }
+
 void UTeFGameInstance::OnDestroySessionComplete(FName NameSession, bool Succeeded)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("OnDestroySessionComplete: %s, Succeeded: %d"), *SessionName.ToString(), Succeeded);

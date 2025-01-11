@@ -62,6 +62,7 @@ public:
 	//Call when a player quit the game
 	virtual void Logout(AController* Exiting) override;
 	virtual void BeginPlay() override;
+
 	
 private:
 	
@@ -71,6 +72,9 @@ private:
 	//Controllers
 	UPROPERTY()
 	TArray<class AMyPlayerController*> _listOfPlayerController;
+
+	UPROPERTY()
+	TArray<class AMyPlayerController*> _listOfController;
 
 	UPROPERTY(EditDefaultsOnly,meta=(AllowPrivateAccess))
 	TSubclassOf<AMyCharacters> _characterClass=nullptr;

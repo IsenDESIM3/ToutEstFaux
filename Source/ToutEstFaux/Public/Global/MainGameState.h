@@ -24,6 +24,8 @@ public:
 	
 	void OpenDoor(ETypeOfDoor Type);
 	void SetDoor(ADoor* newDoor);
+
+	void LeaveGame();
 	
 private :
 	UPROPERTY()
