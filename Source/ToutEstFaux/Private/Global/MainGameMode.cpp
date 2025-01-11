@@ -3,7 +3,8 @@
 
 #include "Global/MainGameMode.h"
 
-#include "TeFGameInstance.h"
+
+#include "Gameplay/MyCharacters.h"
 #include "Global/MainGameState.h"
 #include "Global/MyPlayerController.h"
 #include "Kismet/GameplayStatics.h"
@@ -12,13 +13,19 @@
 void AMainGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-
 	if(AMainGameState* GS = Cast<AMainGameState>(UGameplayStatics::GetGameState(GetWorld())))
 	{
 		GS->SetGameMode(this);
 	}
 }
 
+
+
+
+void AMainGameMode::EndGame()
+{
+	GEngine->AddOnScreenDebugMessage(-1,10,FColor::Green,"GAME IS FINISH");
+}
 
 
 FTeletubbiesMatData AMainGameMode::GetTeletubbiesRightData(ETeletubbies TeletubbiesType)
@@ -68,6 +75,11 @@ void AMainGameMode::OnPostLogin(AController* NewPlayer)
 
 		NewPlayer->Possess(NewCharacter);
 	}
+
+	
+		
+	
+	
 	
 }
 

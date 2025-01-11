@@ -9,23 +9,19 @@
   <component name="ChangeListManager">
     <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/BP_TeaCup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/BP_TeaCup.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/BP_TeaKettle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/BP_TeaKettle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/BP_TeaTest.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/BP_TeaTest.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Tea/BoxTea/Model/BoxTea.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Tea/BoxTea/Model/BoxTea.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Tea/TeaBag/Materials/MI_TeaBagBlue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Tea/TeaBag/Materials/MI_TeaBagBlue.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Tea/TeaBag/Materials/M_TeaBag.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Tea/TeaBag/Materials/M_TeaBag.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Tea/TeaBag/Materials/M_TeaBagColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Tea/TeaBag/Materials/M_TeaBagColor.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Widgets/WB_DefaultMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Widgets/WB_DefaultMode.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/ISelectable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/ISelectable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Global/GS_MainGameState.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Global/GS_MainGameState.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/MyCharacters.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/MyCharacters.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Widget_Interaction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Widget_Interaction.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameState.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyPlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Interactable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Interactable.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeaBag.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeaBag.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeaCup.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeaCup.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/ISelectable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/ISelectable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Interactable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Interactable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/TeaBag.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/TeaBag.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/TeaCup.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/TeaCup.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/MyCharacters.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/MyCharacters.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Widget_Interaction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Widget_Interaction.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MyPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MyPlayerController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +34,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Figurine.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/Plinth.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/EndZone.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Lock.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Train.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Door.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -55,6 +52,7 @@
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Plinth.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/EndZone.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Lock.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/MyCharacters.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Train.h" root0="FORCE_HIGHLIGHTING" />
@@ -82,7 +80,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Uproject.ToutEstFaux.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature-InGameMenu&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-ending&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -207,6 +205,8 @@
       <workItem from="1736435424182" duration="519000" />
       <workItem from="1736492740135" duration="11343000" />
       <workItem from="1736582807665" duration="7738000" />
+      <workItem from="1736599032794" duration="332000" />
+      <workItem from="1736599387333" duration="7911000" />
     </task>
     <servers />
   </component>

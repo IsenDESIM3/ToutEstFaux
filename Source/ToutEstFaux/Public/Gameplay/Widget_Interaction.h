@@ -25,6 +25,11 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent)
 	void ChargementScreen();
+
+	UFUNCTION(BlueprintNativeEvent)
+	void Credit();
+
+	void ShowWaitUi();
 	
 protected:
 	UPROPERTY(meta=(BindWidget))
@@ -34,6 +39,9 @@ protected:
 	UHorizontalBox* HB_Menu;
 
 	UPROPERTY(meta=(BindWidget))
+	UHorizontalBox* HB_End;
+
+	UPROPERTY(meta=(BindWidget))
 	UButton* Btn_Play;
 
 	UPROPERTY(meta=(BindWidget))
@@ -41,6 +49,9 @@ protected:
 
 	UPROPERTY(meta=(BindWidget))
 	UButton* Btn_Leave;
+
+	UPROPERTY(meta=(BindWidget))
+	UButton* Btn_Quit;
 
 private:
 

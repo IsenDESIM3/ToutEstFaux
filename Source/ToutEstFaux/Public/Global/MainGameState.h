@@ -29,6 +29,11 @@ public:
 	void SetPhotoFrame(APhotoFrame* NewPhotoFrame);
 
 	void LeaveGame();
+
+	void PlayerFinsih(AMyPlayerController* PlayerController,AActor* NewView);
+
+	void AddWidget(UWidget_Interaction* NewWidget);
+	
 	
 private :
 	UPROPERTY()
@@ -45,6 +50,18 @@ private :
 	APhotoFrame* PhotoFrame;
 
 	FTimerHandle ChangePhotoTimerHandle;
-	
+
+	void CheckIfEveryOneFinish();
+	void SetupListOfPlayerController();
+
+	TArray<AMyPlayerController*> PCs;
+
+	UPROPERTY(EditDefaultsOnly,meta=(AllowPrivateAccess))
+	TSubclassOf<AMyPlayerController>PcClass;
+
+	UPROPERTY()
+	TArray<UWidget_Interaction*> Widgets{};
+
+	void End();
 	
 };

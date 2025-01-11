@@ -6,16 +6,16 @@
 #include "GameFramework/PlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
-#include "Gameplay/MyCharacters.h"
 #include "Global/Select.h"
 #include "Gameplay/Widget_Interaction.h"
 #include "MyPlayerController.generated.h"
 
+class AMyCharacters;
 /**
  * 
  */
 UCLASS()
-class TOUTESTFAUX_API AMyPlayerController : public APlayerController 
+class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
@@ -24,8 +24,10 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	
 	protected:
 	virtual void BeginPlay() override;
-	
+
 	public:
+	void End();
+	
 	UFUNCTION(BlueprintCallable)
 	void SwitchMappingContext(bool bIsOpen);
 	UFUNCTION(BlueprintCallable)
@@ -84,13 +86,16 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	
 	
 	virtual void OnPossess(APawn* InPawn) override;
+	virtual void OnUnPossess() override;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TScriptInterface<IISelectable> selected;
 
 	UPROPERTY()
 	UEnhancedInputLocalPlayerSubsystem* _subsystem;
 
-	
+	//End Game
+	void SetFinish(bool bFinish);
+	bool GetFinish();
 
 	//Anti Spam 
 	bool bCantChangeMapping=true;
@@ -190,4 +195,6 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	USoundBase* PutDownItemSound;
 
 	void PlayAudio(USoundBase* AudioToPlay);
+
+	bool bDidIFinish = false;
 };
