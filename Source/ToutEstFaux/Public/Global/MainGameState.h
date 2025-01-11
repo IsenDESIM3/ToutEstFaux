@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameStateBase.h"
 #include "MainGameMode.h"
+#include "Cosplayer/PhotoFrame.h"
 #include "MainGameState.generated.h"
 
 /**
@@ -25,6 +26,8 @@ public:
 	void OpenDoor(ETypeOfDoor Type);
 	void SetDoor(ADoor* newDoor);
 
+	void SetPhotoFrame(APhotoFrame* NewPhotoFrame);
+
 	void LeaveGame();
 	
 private :
@@ -38,7 +41,10 @@ private :
 	UPROPERTY()
 	TArray<ADoor*> _Doors{};
 
-	
+	UPROPERTY()
+	APhotoFrame* PhotoFrame;
+
+	FTimerHandle ChangePhotoTimerHandle;
 	
 	
 };

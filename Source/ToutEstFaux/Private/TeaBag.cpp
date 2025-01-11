@@ -12,10 +12,22 @@
 
 	}
 
+void ATeaBag::BeginPlay()
+{
+	Super::BeginPlay();
+		
+		BoxPos = GetActorLocation();
+}
+
 
 void ATeaBag::Release(FVector newpos, FRotator newrot)
 {
 	Super::Release(newpos, newrot);
+}
+
+bool ATeaBag::GetIfINeedToBeDestroy()
+{
+	return true;
 }
 
 AActor* ATeaBag::GetItemTarget()
@@ -25,5 +37,5 @@ AActor* ATeaBag::GetItemTarget()
 
 FVector ATeaBag::GetReleasePos()
 {
-	return Super::GetReleasePos();
+	return BoxPos;
 }

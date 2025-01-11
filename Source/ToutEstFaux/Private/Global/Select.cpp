@@ -50,7 +50,7 @@ void ASelect::NewRotation(FRotator objectRotation)
 void ASelect::Clickable()
 {
 	IISelectable::Clickable();
-	PlayAudio();
+	PlayAudio(Sound);
 }
 
 
@@ -86,9 +86,12 @@ AActor* ASelect::GetItemTarget()
 	return IISelectable::GetItemTarget();
 }
 
-void ASelect::PlayAudio()
+void ASelect::PlayAudio(USoundBase* SoundToPlay)
 {
-	if(Sound) UGameplayStatics::PlaySoundAtLocation(GetWorld(),Sound,GetActorLocation());
+	if(SoundToPlay)
+	{
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(),SoundToPlay,GetActorLocation());
+	}
 }
 
 FVector ASelect::GetReleasePos()

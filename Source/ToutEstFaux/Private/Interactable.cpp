@@ -8,3 +8,8 @@ void IInteractable::Interact()
 {
 	
 }
+
+bool IInteractable::bCanInteract()
+{
+	return true;
+}

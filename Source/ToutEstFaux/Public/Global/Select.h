@@ -32,7 +32,7 @@ public:
 	virtual void SetFrontCamera(FVector vector) override;
 	virtual void SetInTheHand() override;
 	virtual AActor* GetItemTarget() override;
-	virtual void PlayAudio();
+	virtual void PlayAudio(USoundBase* SoundToPlay);
 	virtual FVector GetReleasePos() override;
 	virtual AActor* GetActor() override;
 	FVector inialLocation;

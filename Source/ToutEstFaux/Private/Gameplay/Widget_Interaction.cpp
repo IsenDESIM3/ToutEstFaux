@@ -60,7 +60,7 @@ void UWidget_Interaction::Leave()
 {
 	ChargementScreen();
 	
-	GetWorld()->ServerTravel("/Game/GameMaps/L_Menu?listen");
+	//GetWorld()->ServerTravel("/Game/GameMaps/L_Menu?listen");
 	
 	UTeFGameInstance* _gameInstance= Cast<UTeFGameInstance>(GetGameInstance());
 	if(_gameInstance)
