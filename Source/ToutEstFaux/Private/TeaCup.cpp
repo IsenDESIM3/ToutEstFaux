@@ -37,24 +37,34 @@ void ATeaCup::Interact()
 			
 		}
 	}
-
+	
 	if (Cast<ATeaKettle>(MyPlayerController->selected->GetActor()))
 	{
-		bIsFilled = true;
+		if(TeaBag)
+		{
+			bIsFilled = true;
+			
+			if(PutWaterSound)
+			{
+				PlayAudio(PutWaterSound);
+			}
+			
 
-		if (TeaBag->Tags[1] == "Green")
-		{
-			TeaCupLocation->SetMaterial(1, TeaCupCorrectMaterial);
-			TeaCupLocation->SetMaterial(2, TeaLiquidMaterial);
-			TeaBagLocation->SetStaticMesh(nullptr);
-			TeaBag = nullptr;
+			if (TeaBag->Tags[1] == "Green")
+			{
+				TeaCupLocation->SetMaterial(1, TeaCupCorrectMaterial);
+				TeaCupLocation->SetMaterial(2, TeaLiquidMaterial);
+				TeaBagLocation->SetStaticMesh(nullptr);
+				TeaBag = nullptr;
+			}
+			else
+			{
+				TeaCupLocation->SetMaterial(2, TeaLiquidMaterial);
+				TeaBagLocation->SetStaticMesh(nullptr);
+				TeaBag = nullptr;
+			}
 		}
-		else
-		{
-			TeaCupLocation->SetMaterial(2, TeaLiquidMaterial);
-			TeaBagLocation->SetStaticMesh(nullptr);
-			TeaBag = nullptr;
-		}
+		
 	}
 	
 	IInteractable::Interact();
@@ -64,6 +74,11 @@ void ATeaCup::Clickable()
 {
 	if (bIsFilled)
 	{
+		if(DrinkSound)
+		{
+			PlayAudio(DrinkSound);
+		}
+		
 		TeaCupLocation->SetMaterial(2, TeaLiquidBaseMaterial);
 		bHasTeaBag = false;
 		bIsFilled = false;
@@ -72,3 +87,9 @@ void ATeaCup::Clickable()
 	}
 	Super::Clickable();
 }
+
+bool ATeaCup::bCanInteract()
+{
+	return TeaBag ? false : true;
+}
+

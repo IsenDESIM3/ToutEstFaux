@@ -114,7 +114,11 @@ void AMyPlayerController::Grab()
 	}
 	if(selected!=nullptr && bHandEmpty)
 	{
-		if(GrabItemSound) UGameplayStatics::PlaySoundAtLocation(GetWorld(),GrabItemSound,myCharacters->itemPos->GetComponentLocation());
+		if(GrabItemSound)
+		{
+			PlayAudio(GrabItemSound);
+		}
+		
 		selected->Grabbed(myCharacters->itemPos);
 		selected->SetInTheHand();
 		ItemTarget = selected->GetItemTarget();
@@ -251,6 +255,8 @@ void AMyPlayerController::Multi_GetMouseXYInfo_Implementation(float mousex, floa
 {
 	GetMouseXYInfo(mousex,mousey);
 }
+
+
 
 void AMyPlayerController::GetMouseXYInfo(float mousex, float mousey)
 {
@@ -393,7 +399,6 @@ void AMyPlayerController::PutDown()
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(GetPawn());
 	FVector newpos;
-
 	
 
 	if(!bHandEmpty)
@@ -408,12 +413,21 @@ void AMyPlayerController::PutDown()
 				if (ItemTarget->Implements<UInteractable>())
 				{
 					TScriptInterface<IInteractable> Target = TScriptInterface<IInteractable>(ItemTarget);
-					Target->Interact();
-					bHandEmpty = true;
-					selected->Release(selected->GetReleasePos(), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
+					
+					if(Target->bCanInteract() || !selected->GetIfINeedToBeDestroy())
+					{
+						Target->Interact();
+					
+						if(selected->GetIfINeedToBeDestroy())
+						{
+							bHandEmpty = true;
+							selected->Release(selected->GetReleasePos(), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
 				
-					selected = nullptr;
-					ItemTarget = nullptr;
+							selected = nullptr;
+							ItemTarget = nullptr;
+						}
+					}
+					
 				}
 				
 			}
@@ -423,24 +437,16 @@ void AMyPlayerController::PutDown()
 				float actorHeight = Target->getActorHeight();
 				float gapPosition = Target->getGapPosition();
 				
-				//newpos = FVector(HitResult.GetActor()->GetActorLocation().X, HitResult.GetActor()->GetActorLocation().Y, actorHeight-10);
 				newpos = FVector(HitResult.Location.X, HitResult.Location.Y, actorHeight + (HitResult.GetActor()->GetActorLocation().Z-actorHeight/2 ) - gapPosition);
-				if(PutDownItemSound) UGameplayStatics::PlaySoundAtLocation(GetWorld(),PutDownItemSound,myCharacters->itemPos->GetComponentLocation());
 				selected->Release(newpos+myCharacters->GetCameraForward(), FRotator(0,myCharacters->GetControlRotation().Yaw,0));
 				bHandEmpty = true;
 				selected = nullptr;
 				ItemTarget = nullptr;
+
+				if(PutDownItemSound)
+					PlayAudio(PutDownItemSound);
 			}
-			// 	
-			// if(HitResult.Distance<500.f)
-			// {
-			// 	GEngine->AddOnScreenDebugMessage(-1,3,FColor::Green,"Selected n'est pas nul");
-			// 	newpos = HitResult.Location;
-			// 	selected->Release(newpos);
-			// 	bHandEmpty = true;
-			// 	selected = nullptr;
-			// 	ItemTarget = nullptr;
-			// }
+			
 		}
 	}
 }
@@ -476,4 +482,13 @@ FVector2D AMyPlayerController::GetGameResolution()
 	Result.X /= 2;
 	Result.Y /= 2;
 	return Result;
+}
+
+void AMyPlayerController::PlayAudio(USoundBase* AudioToPlay)
+{
+	if(myCharacters)
+	{
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(),AudioToPlay,myCharacters->GetActorLocation());
+	}
+	
 }

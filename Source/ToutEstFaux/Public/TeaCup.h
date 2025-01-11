@@ -22,38 +22,45 @@ class TOUTESTFAUX_API ATeaCup : public ASelect, public IInteractable
 	ATeaCup();
 
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY()
 	bool bIsFilled = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY()
 	bool bHasTeaBag = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite)
 	AMyPlayerController* MyPlayerController;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	UStaticMeshComponent* TeaBagLocation;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	UStaticMeshComponent* TeaCupLocation;
 
 	UPROPERTY()
 	ATeaBag* TeaBag;
 	
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	UMaterialInterface* TeaCupCorrectMaterial;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	UMaterialInterface* TeaLiquidMaterial;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	UMaterialInterface* TeaLiquidBaseMaterial;
-
-	
 	
 	UFUNCTION()
 	virtual void Interact() override;
 
 	UFUNCTION()
 	virtual void Clickable() override;
+
+	virtual bool bCanInteract() override;
+
+
+private:
+	UPROPERTY(EditDefaultsOnly, Category="Sound")
+	USoundBase* PutWaterSound;
+	UPROPERTY(EditDefaultsOnly, Category="Sound")
+	USoundBase* DrinkSound;
 };

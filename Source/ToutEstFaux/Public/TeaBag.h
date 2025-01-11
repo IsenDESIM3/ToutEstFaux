@@ -14,10 +14,15 @@ class TOUTESTFAUX_API ATeaBag : public ASelect
 {
 	GENERATED_BODY()
 	ATeaBag();
+
+	virtual void BeginPlay() override;
 	
 public:
 	UFUNCTION()
 	virtual void Release(FVector newpos, FRotator newrot) override;
+
+	UFUNCTION()
+	virtual bool GetIfINeedToBeDestroy() override;
 
 	UFUNCTION()
 	virtual AActor* GetItemTarget() override;
@@ -32,4 +37,6 @@ public:
 	UStaticMeshComponent* TeaBagMesh;
 
 
+private:
+	FVector BoxPos {0,0,0};
 };

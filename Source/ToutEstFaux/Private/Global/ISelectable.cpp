@@ -55,5 +55,10 @@ AActor* IISelectable::GetItemTarget()
 
 FVector IISelectable::GetReleasePos()
 {
-	return FVector(0,0,0);
+	return FVector(0,0,-100);
+}
+
+bool IISelectable::GetIfINeedToBeDestroy()
+{
+	return false;
 }

@@ -188,4 +188,6 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	USoundBase* GrabItemSound;
 	UPROPERTY(editAnywhere, Category="Sound")
 	USoundBase* PutDownItemSound;
+
+	void PlayAudio(USoundBase* AudioToPlay);
 };

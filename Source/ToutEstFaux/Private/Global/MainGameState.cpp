@@ -35,6 +35,11 @@ void AMainGameState::CheckIfCosplayerEnigmaFinish()
 			}
 			bIsCosplayerEnigmaFinish=true;
 			OpenDoor(ETypeOfDoor::E_NormalDoor);
+
+			if(PhotoFrame)
+			{
+				GetWorldTimerManager().SetTimer(ChangePhotoTimerHandle,PhotoFrame,&APhotoFrame::ChangeMat,2.f);
+			}
 		}
 	}
 }
@@ -54,6 +59,11 @@ void AMainGameState::OpenDoor(ETypeOfDoor Type)
 void AMainGameState::SetDoor(ADoor* newDoor)
 {
 	_Doors.AddUnique(newDoor);
+}
+
+void AMainGameState::SetPhotoFrame(APhotoFrame* NewPhotoFrame)
+{
+	PhotoFrame=NewPhotoFrame;
 }
 
 void AMainGameState::LeaveGame()
