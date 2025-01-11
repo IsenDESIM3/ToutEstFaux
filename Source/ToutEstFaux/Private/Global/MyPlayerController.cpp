@@ -4,12 +4,21 @@
 #include "Global/MyPlayerController.h"
 #include "Chest.h"
 #include "IPlaceable.h"
+#include "Gameplay/MyCharacters.h"
 #include "Global/ISelectable.h"
 #include "Kismet/GameplayStatics.h"
 
 void AMyPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void AMyPlayerController::End()
+{
+	if(WidgetUse)
+	{
+		WidgetUse->Credit();
+	}
 }
 
 void AMyPlayerController::SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLocalPlayerSubsystem* Subsystem)
@@ -466,6 +475,18 @@ void AMyPlayerController::OnPossess(APawn* InPawn)
 	
 }
 
+void AMyPlayerController::OnUnPossess()
+{
+	Super::OnUnPossess();
+
+	if(_subsystem)
+	{
+		_subsystem->ClearAllMappings();
+	}
+	
+}
+
+
 void AMyPlayerController::SetCanChangeMapping()
 {
 	bCantChangeMapping=true;
@@ -491,4 +512,18 @@ void AMyPlayerController::PlayAudio(USoundBase* AudioToPlay)
 		UGameplayStatics::PlaySoundAtLocation(GetWorld(),AudioToPlay,myCharacters->GetActorLocation());
 	}
 	
+}
+
+void AMyPlayerController::SetFinish(bool bFinish)
+{
+	bDidIFinish = bFinish;
+	if(WidgetUse)
+	{
+		WidgetUse->ShowWaitUi();
+	}
+}
+
+bool AMyPlayerController::GetFinish()
+{
+	return bDidIFinish;
 }

@@ -5,12 +5,13 @@
 #include "CoreMinimal.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
+#include "Global/PlayerInterface.h"
 #include "MyCharacters.generated.h"
 
 class UWidget_Interaction;
 
 UCLASS()
-class TOUTESTFAUX_API AMyCharacters : public ACharacter
+class TOUTESTFAUX_API AMyCharacters : public ACharacter , public IPlayerInterface
 {
 	GENERATED_BODY()
 
@@ -21,6 +22,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	virtual AMyPlayerController* GetPlayerController() override;
 public:
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* itemPos;
@@ -41,5 +44,7 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UWidget_Interaction> defaultWidget= nullptr;
 
+	UPROPERTY()
+	AMyPlayerController* MyPc=nullptr;
 	
 };

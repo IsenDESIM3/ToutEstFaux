@@ -15,6 +15,7 @@ void UWidget_Interaction::NativeConstruct()
 	Btn_Play->OnClicked.AddDynamic(this,&UWidget_Interaction::Play);
 	Btn_Options->OnClicked.AddDynamic(this,&UWidget_Interaction::Option);
 	Btn_Leave->OnClicked.AddDynamic(this,&UWidget_Interaction::Leave);
+	Btn_Quit->OnClicked.AddDynamic(this,&UWidget_Interaction::Leave);
 	
 }
 
@@ -68,4 +69,15 @@ void UWidget_Interaction::Leave()
 		_gameInstance->LeaveSession(true);
 	}
 	
+}
+
+void UWidget_Interaction::Credit_Implementation()
+{
+}
+
+void UWidget_Interaction::ShowWaitUi()
+{
+	HB_End->SetVisibility(ESlateVisibility::Visible);
+	HB_Game->SetVisibility(ESlateVisibility::Collapsed);
+	HB_Menu->SetVisibility(ESlateVisibility::Collapsed);
 }

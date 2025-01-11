@@ -4,6 +4,7 @@
 #include "Gameplay/MyCharacters.h"
 
 #include "EnhancedInputComponent.h"
+#include "Global/MainGameState.h"
 #include "Global/MyPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -23,6 +24,11 @@ AMyCharacters::AMyCharacters()
 void AMyCharacters::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+AMyPlayerController* AMyCharacters::GetPlayerController()
+{
+	return MyPc;
 }
 
 FVector AMyCharacters::GetCameraLocation()
@@ -57,7 +63,8 @@ void AMyCharacters::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	UEnhancedInputLocalPlayerSubsystem* Subsystem =
 		LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
 	check(Subsystem);
-	
+
+	MyPc = PC;
 	PC->myCharacters=this;
 	PC->SetInput(EIC,Subsystem);
 	
@@ -69,6 +76,11 @@ void AMyCharacters::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	{
 		WidgetUse->AddToViewport(0);
 		PC->SetWidget(WidgetUse);
+
+		if(AMainGameState* GS = Cast<AMainGameState>(GetWorld()->GetGameState()))
+		{
+			
+		}
 	}
 	
 }
