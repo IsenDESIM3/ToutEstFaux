@@ -19,7 +19,6 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-
 	UPROPERTY()
 	UWidget_Interaction* WidgetUse = nullptr;
 	
@@ -52,7 +51,7 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 
 	void SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLocalPlayerSubsystem* Subsystem);
 	
-	
+	void ChangeMenuMode(bool bNeedToChange);
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
 	FVector2D Result = FVector2D( 1, 1 );
@@ -65,6 +64,8 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputMappingContext* interactionMappingContext;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputMappingContext* MenuMappingContext;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* mouseSelection;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* holdingRotation;
@@ -74,6 +75,8 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	UInputAction* interaction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* releaseInteraction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* menuInteraction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Reference, meta=(AllowPrivateAccess = "true"))
 	AMyCharacters* myCharacters;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Reference, meta=(AllowPrivateAccess = "true"))
@@ -98,6 +101,11 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 	FTimerHandle InteractTimerHandle;
 	void SetCanInteract();
 
+	//LastMapping
+	UInputMappingContext* LastMapping;
+	UFUNCTION()
+	void OpenCloseMenu();
+	bool bIsMenuOpen=true;
 
 	//Online
 	//Grab

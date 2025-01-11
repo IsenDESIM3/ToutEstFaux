@@ -2,8 +2,6 @@
 
 
 #include "Menu/MenuGameMode.h"
-
-#include "GameFramework/PlayerStart.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
@@ -26,8 +24,10 @@ void AMenuGameMode::OnPostLogin(AController* NewPlayer)
 	if(_gameInstance)
 	{
 		_gameInstance->SetGameMode(this);
+		_gameInstance->LeaveSession(_gameInstance->bNeedToRefresh);
 	}
 }
+
 
 void AMenuGameMode::CreateServer(FString ServerName, FString HostName)
 {

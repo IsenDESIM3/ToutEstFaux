@@ -56,3 +56,11 @@ void AMainGameState::SetDoor(ADoor* newDoor)
 	_Doors.AddUnique(newDoor);
 }
 
+void AMainGameState::LeaveGame()
+{
+	if(GameMode)
+	{
+		GetWorld()->ServerTravel("/Game/GameMaps/Menu?listen");
+	}
+}
+

@@ -13,5 +13,5 @@ UCLASS()
 class TOUTESTFAUX_API AMenuPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
+	virtual void OnPossess(APawn* InPawn) override;
 };

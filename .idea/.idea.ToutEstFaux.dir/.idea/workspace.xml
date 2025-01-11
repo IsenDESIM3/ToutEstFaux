@@ -11,25 +11,35 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Materials/M_Wood_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_DoorWardrobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_DoorWardrobe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Wardrobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Bedroom/Mesh/SM_Wardrobe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_Wardrobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Objects/BP_Wardrobe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_Figurine.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Teletubbies/SKM_Teletubbies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Teletubbies/SKM_Teletubbies.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Teletubbies/SK_Teletubbies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Mesh/Teletubbies/SK_Teletubbies.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_Grub.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/HouseItems/Mesh/SM_Grub.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Material_PostProcess/Materials/Instance/MI_Outline_Teletubies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Material_PostProcess/Materials/Instance/MI_Outline_Teletubies.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Materials/Train/M_Wagoon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Materials/Train/M_Wagoon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Global/PC_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Global/PC_Player.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/BluePrints/Widgets/WB_DefaultMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/BluePrints/Widgets/WB_DefaultMode.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Images/Point.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Images/Point.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_DefaultMappingContext.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_DefaultMappingContext.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_InteractionMappingContext.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_InteractionMappingContext.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Menu/Global/GM_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Menu/Global/GM_Menu.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Assets/Menu/Widget/WB_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Menu/Widget/WB_Menu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Models/Chest/SM_ChestBottom.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Models/Chest/SM_ChestBottom.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Models/Chest/SM_ChestTop.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Models/Chest/SM_ChestTop.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/ServerSlot.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Multijoueur/Menu.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_Physics.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_Physics.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_PhysicsAsset.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_PhysicsAsset.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPWeapon/Mesh/SK_FPGun_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_Pickup_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_Pickup_Rifle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_Weapon_Component.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_Weapon_Component.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Global/GM_MainGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Global/GM_MainGameMode.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Chest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Chest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Widget_Interaction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Gameplay/Widget_Interaction.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MainGameState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyPlayerController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuPlayerController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuWidget.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Widget_Interaction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Gameplay/Widget_Interaction.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MainGameState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MyPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Global/MyPlayerController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Menu/MenuGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Menu/MenuGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Menu/MenuPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Menu/MenuPlayerController.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/TeFGameInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/TeFGameInstance.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,11 +61,11 @@
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/MyPlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Global/Select.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/IPlaceable.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/IPlaceable.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/MenuWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Menu/ServerWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/ObjectsWithValideSurfaces.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/ObjectsWithValideSurfaces.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/Screwdriver.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Private/TeFGameInstance.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/Figurine.h" root0="FORCE_HIGHLIGHTING" />
@@ -87,7 +97,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Uproject.ToutEstFaux.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Fixbug-SetNewMap&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-InGameMenu&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -208,6 +218,9 @@
       <workItem from="1736415919061" duration="1432000" />
       <workItem from="1736419204050" duration="694000" />
       <workItem from="1736424448055" duration="1868000" />
+      <workItem from="1736430739609" duration="4505000" />
+      <workItem from="1736435424182" duration="519000" />
+      <workItem from="1736492740135" duration="11343000" />
     </task>
     <servers />
   </component>

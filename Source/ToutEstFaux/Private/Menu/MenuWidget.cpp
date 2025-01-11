@@ -123,6 +123,7 @@ void UMenuWidget::CreateSession()
 	if(_menuGameMode)
 	{
 		_menuGameMode->CreateServer(ETB_ServerName->GetText().ToString(),ETB_HostName->GetText().ToString());
+		ChargementScreen();
 	}
 }
 
