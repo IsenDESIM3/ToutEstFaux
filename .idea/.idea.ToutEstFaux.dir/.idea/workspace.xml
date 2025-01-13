@@ -7,7 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="" />
+    <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_TeletubbiesPhotoFrame.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_TeletubbiesPhotoFrame.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_DefaultMappingContext.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_DefaultMappingContext.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Blueprints/BP_Lock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Blueprints/BP_Lock.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/SM_upper_lock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Objects/SM_upper_lock.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Menu/Widget/WB_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Menu/Widget/WB_Menu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Tea/Kettle/Models/SM_TeaKettle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Tea/Kettle/Models/SM_TeaKettle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Menu.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Chest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Chest.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +76,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Uproject.ToutEstFaux.executor": "Run",
-    "git-widget-placeholder": "Feature-PhotoFrame",
+    "git-widget-placeholder": "fixBug-FixCollider",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -197,6 +208,7 @@
       <workItem from="1736752876885" duration="2290000" />
       <workItem from="1736757085086" duration="6530000" />
       <workItem from="1736765238637" duration="1546000" />
+      <workItem from="1736774583168" duration="1042000" />
     </task>
     <servers />
   </component>
