@@ -14,10 +14,15 @@ void UMenuWidget::NativeConstruct()
 	VB_CreateMenu->SetVisibility(ESlateVisibility::Collapsed);
 	VB_ServerMenu->SetVisibility(ESlateVisibility::Visible);
 	VB_ListOfServer->SetVisibility(ESlateVisibility::Collapsed);
+	VB_Option->SetVisibility(ESlateVisibility::Collapsed);
+
+	VB_Mapping->ClearChildren();
 	
 	Btn_Quit->OnClicked.AddDynamic(this,&UMenuWidget::QuitTheGame);
 	Btn_Play->OnClicked.AddDynamic(this,&UMenuWidget::Play);
 	Btn_Back->OnClicked.AddDynamic(this,&UMenuWidget::Back);
+	Btn_Options->OnClicked.AddDynamic(this,&UMenuWidget::Option);
+	Btn_BackOption->OnClicked.AddDynamic(this,&UMenuWidget::SaveInput);
 
 	Btn_CreateServer->OnClicked.AddDynamic(this,&UMenuWidget::OpenCreateMenu);
 	Btn_Refresh->OnClicked.AddDynamic(this,&UMenuWidget::RefreshServer);
@@ -38,6 +43,11 @@ void UMenuWidget::AddServerSlot(UWidget* NewWidget)
 	}
 	
 	VB_ListOfServer->AddChild(NewWidget);
+}
+
+void UMenuWidget::AddInputSlot(UWidget* NewWidget)
+{
+	VB_Mapping->AddChild(NewWidget);
 }
 
 void UMenuWidget::ShowUnshowRefreshButton(bool bShow)
@@ -69,6 +79,18 @@ void UMenuWidget::QuitTheGame()
 void UMenuWidget::Play()
 {
 	ChangeMenu();
+}
+
+void UMenuWidget::Option()
+{
+	if(_menuGameMode && !bAlreadyHaveInput)
+	{
+		_menuGameMode->ShowInput();
+		bAlreadyHaveInput=true;
+	}
+
+	VB_Option->SetVisibility(ESlateVisibility::Visible);
+	VB_Main->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UMenuWidget::Back()
@@ -125,6 +147,12 @@ void UMenuWidget::CreateSession()
 		_menuGameMode->CreateServer(ETB_ServerName->GetText().ToString(),ETB_HostName->GetText().ToString());
 		ChargementScreen();
 	}
+}
+
+void UMenuWidget::SaveInput()
+{
+	VB_Main->SetVisibility(ESlateVisibility::Visible);
+	VB_Option->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UMenuWidget::CleanListOfServers()

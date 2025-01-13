@@ -78,8 +78,11 @@ void AMainGameState::LeaveGame()
 
 void AMainGameState::PlayerFinsih(AMyPlayerController* PlayerController,AActor* NewView)
 {
-	PlayerController->UnPossess();
-	PlayerController->SetViewTargetWithBlend(NewView,0,VTBlend_Linear);
+	PlayerController->ClearInput();
+	if(NewView)
+	{
+		PlayerController->SetViewTargetWithBlend(NewView,0,VTBlend_Linear);
+	}
 	PlayerController->bShowMouseCursor=true;
 	PlayerController->SetFinish(true);
 
@@ -91,6 +94,20 @@ void AMainGameState::PlayerFinsih(AMyPlayerController* PlayerController,AActor* 
 void AMainGameState::AddWidget(UWidget_Interaction* NewWidget)
 {
 	Widgets.AddUnique(NewWidget);
+}
+
+void AMainGameState::AddKlaket(AKlakette* NewKlaket)
+{
+	Klaket=NewKlaket;
+}
+
+void AMainGameState::ShowKlakets()
+{
+	if(Klaket)
+	{
+		Klaket->Spawn();
+	}
+	
 }
 
 

@@ -4,6 +4,7 @@
 #include "Menu/MenuGameMode.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "EnhancedActionKeyMapping.h"
 
 void AMenuGameMode::OnPostLogin(AController* NewPlayer)
 {
@@ -74,6 +75,34 @@ void AMenuGameMode::ReceiveServers(TArray<FServerInfo> AllServers)
 	}
 
 	_menuWidget->ShowUnshowRefreshButton(true);
+}
+
+void AMenuGameMode::ShowInput()
+{
+	if(_playerController && _menuWidget)
+	{
+		if(!_playerController->GetKey().IsEmpty())
+		{
+			for(FEnhancedActionKeyMapping Input : _playerController->GetKey())
+			{
+				UMappingUI* MappingSlot = CreateWidget<UMappingUI>(_playerController,_mappingSlotClass);
+
+				if(MappingSlot)
+				{
+					MappingSlot->SetWidget(Input.GetDisplayName(),Input.Key,this);
+					_menuWidget->AddInputSlot(MappingSlot);
+				}
+			}
+		}
+	}
+}
+
+void AMenuGameMode::ChangeInput(FInputChord NewInput,FName Name)
+{
+	if(_playerController)
+	{
+		_playerController->UpdateInput(NewInput,Name);
+	}
 }
 
 void AMenuGameMode::QuitGame()

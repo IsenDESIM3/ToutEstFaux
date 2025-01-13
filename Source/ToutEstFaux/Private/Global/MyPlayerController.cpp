@@ -21,6 +21,14 @@ void AMyPlayerController::End()
 	}
 }
 
+void AMyPlayerController::ClearInput()
+{
+	if(_subsystem)
+	{
+		_subsystem->ClearAllMappings();
+	}
+}
+
 void AMyPlayerController::SetInput(UEnhancedInputComponent* EIC,UEnhancedInputLocalPlayerSubsystem* Subsystem)
 {
 	if(EIC)
@@ -68,7 +76,7 @@ void AMyPlayerController::ChangeMenuMode(bool bNeedToChange)
 }
 
 
-void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
+void AMyPlayerController::SwitchMappingContext(bool bIsOpen,bool bMouseCursor)
 {
 	
 	if(_subsystem)
@@ -79,7 +87,7 @@ void AMyPlayerController::SwitchMappingContext(bool bIsOpen)
 		{
 			_subsystem->AddMappingContext(interactionMappingContext, 0);
 			LastMapping=interactionMappingContext;
-			bShowMouseCursor=true;
+			bShowMouseCursor=bMouseCursor;
 		}
 		else
 		{
@@ -176,7 +184,7 @@ void AMyPlayerController::Interactor()
 		selected = Raycast();
 		if(selected!=nullptr)
 		{
-			SwitchMappingContext(true);
+			SwitchMappingContext(true,selected->GetIfShowMouseCursor());
 			selected->Shrink();
 			selected->SetFrontCamera(ItemPosition);
 		}
@@ -185,7 +193,7 @@ void AMyPlayerController::Interactor()
 	{
 		if(bHandEmpty)
 		{
-			SwitchMappingContext(false);
+			SwitchMappingContext(false,false);
 			selected->Increase();
 			selected = nullptr;
 		}
@@ -199,7 +207,7 @@ void AMyPlayerController::Interactor()
 				if(!bInputSwitched)
 				{
 					
-					SwitchMappingContext(true);
+					SwitchMappingContext(true,selected->GetIfShowMouseCursor());
 					selected->SetFrontCamera(ItemPosition);
 					bInputSwitched = !bInputSwitched;
 					
@@ -207,7 +215,7 @@ void AMyPlayerController::Interactor()
 				else
 				{
 					
-					SwitchMappingContext(false);
+					SwitchMappingContext(false,false);
 					selected->SetInTheHand();
 					bInputSwitched = !bInputSwitched;
 				}
@@ -235,7 +243,7 @@ TScriptInterface<IISelectable> AMyPlayerController::Raycast()
 	{
 		
 		AActor* target = HitResult.GetActor();
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, target->GetName());
+		//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, target->GetName());
 		if (target->Implements<UISelectable>() && myCharacters)
 		{
 			// GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, "beginning Shrink");
@@ -324,7 +332,6 @@ void AMyPlayerController::Multi_StopHoldingKey_Implementation()
 void AMyPlayerController::StopHoldingKey()
 {
 	bCanRotate = false;
-	
 }
 
 bool AMyPlayerController::Server_ClicInInteraction_Validate()

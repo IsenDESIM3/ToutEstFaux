@@ -3,6 +3,8 @@
 
 #include "TeaCup.h"
 
+#include "Global/MainGameState.h"
+
 
 ATeaCup::ATeaCup()
 {
@@ -33,7 +35,7 @@ void ATeaCup::Interact()
 			TeaBagLocation->SetStaticMesh(TeaBag->TeaBagMesh->GetStaticMesh());
 			TeaBagLocation->SetMaterial(0, TeaBag->TeaBagMesh->GetMaterial(0));
 			bHasTeaBag = true;
-			GEngine->AddOnScreenDebugMessage(-1,1, FColor::Red, TeaBag->GetName());
+			//GEngine->AddOnScreenDebugMessage(-1,1, FColor::Red, TeaBag->GetName());
 			
 		}
 	}
@@ -56,6 +58,8 @@ void ATeaCup::Interact()
 				TeaCupLocation->SetMaterial(2, TeaLiquidMaterial);
 				TeaBagLocation->SetStaticMesh(nullptr);
 				TeaBag = nullptr;
+
+				ShowKlaket();
 			}
 			else
 			{
@@ -91,5 +95,18 @@ void ATeaCup::Clickable()
 bool ATeaCup::bCanInteract()
 {
 	return TeaBag ? false : true;
+}
+
+void ATeaCup::ShowKlaket()
+{
+	if(!bIsKlaketUp)
+	{
+		if(AMainGameState* GS = Cast<AMainGameState>(GetWorld()->GetGameState()))
+		{
+			GS->ShowKlakets();
+			bIsKlaketUp=true;
+		}
+	}
+	
 }
 

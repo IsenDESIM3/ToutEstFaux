@@ -27,9 +27,11 @@ class TOUTESTFAUX_API AMyPlayerController : public APlayerController
 
 	public:
 	void End();
+
+	void ClearInput();
 	
 	UFUNCTION(BlueprintCallable)
-	void SwitchMappingContext(bool bIsOpen);
+	void SwitchMappingContext(bool bIsOpen,bool bMouseCursor);
 	UFUNCTION(BlueprintCallable)
 	void Grab();
 	UFUNCTION(BlueprintCallable)

@@ -104,3 +104,8 @@ AActor* ASelect::GetActor()
 	return this;
 }
 
+bool ASelect::GetIfShowMouseCursor()
+{
+	return bNeedToShowMouseCursor;
+}
+

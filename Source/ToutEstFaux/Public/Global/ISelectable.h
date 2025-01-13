@@ -34,5 +34,6 @@ public:
 	virtual AActor* GetItemTarget();
 	virtual FVector GetReleasePos();
 	virtual bool GetIfINeedToBeDestroy();
+	virtual bool GetIfShowMouseCursor();
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 };

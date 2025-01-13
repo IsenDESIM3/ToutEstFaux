@@ -6,6 +6,7 @@
 #include "GameFramework/GameStateBase.h"
 #include "MainGameMode.h"
 #include "Cosplayer/PhotoFrame.h"
+#include "Gameplay/Klakette.h"
 #include "MainGameState.generated.h"
 
 /**
@@ -33,6 +34,10 @@ public:
 	void PlayerFinsih(AMyPlayerController* PlayerController,AActor* NewView);
 
 	void AddWidget(UWidget_Interaction* NewWidget);
+
+	void AddKlaket(AKlakette* NewKlaket);
+
+	void ShowKlakets();
 	
 	
 private :
@@ -61,6 +66,9 @@ private :
 
 	UPROPERTY()
 	TArray<UWidget_Interaction*> Widgets{};
+
+	UPROPERTY()
+	AKlakette* Klaket;
 
 	void End();
 	

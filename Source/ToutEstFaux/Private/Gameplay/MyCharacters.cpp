@@ -2,7 +2,7 @@
 
 
 #include "Gameplay/MyCharacters.h"
-
+#include "EnhancedActionKeyMapping.h"
 #include "EnhancedInputComponent.h"
 #include "Global/MainGameState.h"
 #include "Global/MyPlayerController.h"
@@ -45,7 +45,6 @@ FVector AMyCharacters::GetCameraForward()
 void AMyCharacters::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
@@ -63,13 +62,15 @@ void AMyCharacters::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	UEnhancedInputLocalPlayerSubsystem* Subsystem =
 		LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
 	check(Subsystem);
-
+	
 	MyPc = PC;
 	PC->myCharacters=this;
 	PC->SetInput(EIC,Subsystem);
 	
 	Subsystem->ClearAllMappings();
 	Subsystem->AddMappingContext(PC->defaultMappingContext, 0);
+
+	
 
 	UWidget_Interaction* WidgetUse = CreateWidget<UWidget_Interaction>(PC, defaultWidget);
 	if(WidgetUse)

@@ -35,6 +35,7 @@ public:
 	virtual void PlayAudio(USoundBase* SoundToPlay);
 	virtual FVector GetReleasePos() override;
 	virtual AActor* GetActor() override;
+	virtual bool GetIfShowMouseCursor() override;
 	FVector inialLocation;
 	FRotator initialRotation;
 	UPROPERTY(EditAnywhere, Category="Selection Info")
@@ -44,5 +45,8 @@ public:
 	float GrabbedScale=0.4f;
 	UPROPERTY(editAnywhere, Category="Sound")
 	USoundBase* Sound;
+
+	UPROPERTY(EditDefaultsOnly, Category="Selection Info")
+	bool bNeedToShowMouseCursor=false;
 
 };

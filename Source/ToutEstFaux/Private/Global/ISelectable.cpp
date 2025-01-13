@@ -62,3 +62,8 @@ bool IISelectable::GetIfINeedToBeDestroy()
 {
 	return false;
 }
+
+bool IISelectable::GetIfShowMouseCursor()
+{
+	return false;
+}

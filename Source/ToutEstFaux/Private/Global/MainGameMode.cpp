@@ -63,7 +63,7 @@ void AMainGameMode::OnPostLogin(AController* NewPlayer)
 	if(newController)
 	{
 		_listOfPlayerController.AddUnique(newController);
-		GEngine->AddOnScreenDebugMessage(-1,2,FColor::Yellow,"Nouveau Controller");
+		//GEngine->AddOnScreenDebugMessage(-1,2,FColor::Yellow,"Nouveau Controller");
 	}
 
 	AActor* PlayerStart = FindPlayerStart(NewPlayer,FString::FromInt(_listOfPlayerController.Num()-1));

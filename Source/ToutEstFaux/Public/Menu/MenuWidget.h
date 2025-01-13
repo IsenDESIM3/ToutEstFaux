@@ -39,6 +39,12 @@ protected:
 	UVerticalBox* VB_ListOfServer;
 
 	UPROPERTY(meta=(BindWidget))
+	UVerticalBox* VB_Mapping;
+
+	UPROPERTY(meta=(BindWidget))
+	UVerticalBox* VB_Option;
+
+	UPROPERTY(meta=(BindWidget))
 	UButton* Btn_Play;
 
 	UPROPERTY(meta=(BindWidget))
@@ -59,6 +65,9 @@ protected:
 	UPROPERTY(meta=(BindWidget))
 	UButton* Btn_Create;
 
+	UPROPERTY(meta=(BindWidget))
+	UButton* Btn_BackOption;
+
 	UPROPERTY(meta=(BindWidget),BlueprintReadOnly)
 	UEditableText* ETB_HostName;
 
@@ -68,9 +77,12 @@ protected:
 	UPROPERTY(meta=(BindWidget))
 	UCircularThrobber* CT_Chargement;
 
+
 public:
 	void SetMenuGameMode(AMenuGameMode* GameMode);
 	void AddServerSlot(UWidget* NewWidget);
+
+	void AddInputSlot(UWidget* NewWidget);
 
 	void ShowUnshowRefreshButton(bool bShow);
 
@@ -84,6 +96,9 @@ private:
 
 	UFUNCTION()
 	void Play();
+
+	UFUNCTION()
+	void Option();
 
 	UFUNCTION()
 	void Back();
@@ -100,8 +115,13 @@ private:
 	UFUNCTION()
 	void CreateSession();
 
+	UFUNCTION()
+	void SaveInput();
+
 	void CleanListOfServers();
 
 	UPROPERTY()
 	AMenuGameMode* _menuGameMode=nullptr;
+
+	bool bAlreadyHaveInput=false;
 };

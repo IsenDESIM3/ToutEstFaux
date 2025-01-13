@@ -63,4 +63,10 @@ private:
 	USoundBase* PutWaterSound;
 	UPROPERTY(EditDefaultsOnly, Category="Sound")
 	USoundBase* DrinkSound;
+
+	bool bIsKlaketUp=false;
+
+	void ShowKlaket();
+
+
 };
