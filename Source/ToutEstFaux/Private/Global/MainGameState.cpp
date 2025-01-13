@@ -40,7 +40,7 @@ void AMainGameState::CheckIfCosplayerEnigmaFinish()
 
 			if(PhotoFrame)
 			{
-				GetWorldTimerManager().SetTimer(ChangePhotoTimerHandle,PhotoFrame,&APhotoFrame::ChangeMat,2.f);
+				GetWorldTimerManager().SetTimer(ChangePhotoTimerHandle,PhotoFrame,&APhotoFrame::Server_ChangeMat,2.f);
 			}
 		}
 	}

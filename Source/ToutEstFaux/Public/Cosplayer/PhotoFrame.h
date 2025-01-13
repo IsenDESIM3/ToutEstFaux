@@ -17,7 +17,11 @@ class TOUTESTFAUX_API APhotoFrame : public ASelect
 public:
 	APhotoFrame();
 	virtual void BeginPlay() override;
-	void ChangeMat();
+	
+	UFUNCTION(Server,Reliable,WithValidation)
+	void Server_ChangeMat();
+	bool Server_ChangeMat_Validate();
+	void Server_ChangeMat_Implementation();
 
 protected:
 	
@@ -27,5 +31,13 @@ protected:
 private:
 	UPROPERTY(EditDefaultsOnly,meta=(AllowPrivateAccess))
 	UMaterialInstance* SolutionMaterial;
+
+	UFUNCTION(NetMulticast,Reliable,WithValidation)
+	void Multi_ChangeMat();
+	bool Multi_ChangeMat_Validate();
+	void Multi_ChangeMat_Implementation();
+	
+	void ChangeMat();
+
 	
 };

@@ -21,11 +21,33 @@ void APhotoFrame::BeginPlay()
 	}
 }
 
+bool APhotoFrame::Server_ChangeMat_Validate()
+{
+	return true;
+}
+
+void APhotoFrame::Server_ChangeMat_Implementation()
+{
+	Multi_ChangeMat();
+}
+
+bool APhotoFrame::Multi_ChangeMat_Validate()
+{
+	return true;
+}
+
+void APhotoFrame::Multi_ChangeMat_Implementation()
+{
+	ChangeMat();
+}
+
 void APhotoFrame::ChangeMat()
 {
 	if(SolutionMaterial)
 	{
+	
 		PhotoFrameMeshComponent->SetMaterial(0,SolutionMaterial);
 	}
+	
 	
 }
