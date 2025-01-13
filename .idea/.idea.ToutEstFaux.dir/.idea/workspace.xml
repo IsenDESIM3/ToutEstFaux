@@ -7,13 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_TeletubbiesPhotoFrame.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_TeletubbiesPhotoFrame.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/PhotoFrame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Cosplayer/PhotoFrame.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/PhotoFrame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Public/Cosplayer/PhotoFrame.h" afterDir="false" />
-    </list>
+    <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +196,7 @@
       <workItem from="1736683366001" duration="11206000" />
       <workItem from="1736752876885" duration="2290000" />
       <workItem from="1736757085086" duration="6530000" />
-      <workItem from="1736765238637" duration="761000" />
+      <workItem from="1736765238637" duration="1546000" />
     </task>
     <servers />
   </component>
