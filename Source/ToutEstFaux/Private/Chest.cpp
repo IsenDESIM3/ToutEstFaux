@@ -36,7 +36,10 @@ void AChest::Tick(float DeltaTime)
 void AChest::Interact()
 {
 	TopChest->SetRelativeRotation(FRotator(120, 0, 0));
+	if(Sound && !bIsOpen)
+	{
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(),Sound,GetActorLocation());
+	}
 	bIsOpen = true;
-	if(Sound) UGameplayStatics::PlaySoundAtLocation(GetWorld(),Sound,GetActorLocation());
 }
 
