@@ -65,6 +65,7 @@ void ASelect::Release(FVector newpos, FRotator newrot)
 {
 	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);		
 	SetActorScale3D(GetActorScale()/GrabbedScale);
+	newpos+=FVector(0,0,PutDiff);
 	SetActorLocation(newpos);
 	SetActorRotation(newrot);
 }

@@ -43,6 +43,8 @@ public:
 	
 	UPROPERTY(EditDefaultsOnly, Category="Selection Info")
 	float GrabbedScale=0.4f;
+	UPROPERTY(EditDefaultsOnly, Category="Selection Info")
+	float PutDiff=0.0f;
 	UPROPERTY(editAnywhere, Category="Sound")
 	USoundBase* Sound;
 
