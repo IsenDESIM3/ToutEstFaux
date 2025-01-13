@@ -54,7 +54,10 @@ void UWidget_Interaction::Play()
 
 void UWidget_Interaction::Option()
 {
-	GEngine->AddOnScreenDebugMessage(-1,2,FColor::Purple,"Il fait beau");
+	if(GrubSound)
+	{
+		UGameplayStatics::PlaySound2D(GetWorld(),GrubSound,3);
+	}
 }
 
 void UWidget_Interaction::Leave()

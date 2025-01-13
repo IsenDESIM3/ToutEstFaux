@@ -68,6 +68,7 @@ private:
 
 	UPROPERTY()
 	AMyPlayerController* _MyController=nullptr;
-	
-	
+
+	UPROPERTY(EditDefaultsOnly,Category="Sound",meta=(AllowPrivateAccess))
+	USoundBase* GrubSound=nullptr;
 };

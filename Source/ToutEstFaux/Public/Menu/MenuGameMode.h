@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MappingUI.h"
 #include "MenuPlayerController.h"
 #include "MenuWidget.h"
 #include "ServerWidget.h"
@@ -33,6 +34,10 @@ public:
 	UFUNCTION()
 	void ReceiveServers(TArray<FServerInfo> AllServers);
 
+	void ShowInput();
+
+	void ChangeInput(FInputChord NewInput,FName Name);
+
 	UFUNCTION()
 	void QuitGame();
 	
@@ -51,5 +56,8 @@ public:
 	UPROPERTY()
 	UTeFGameInstance* _gameInstance=nullptr;
 
+private:
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UMappingUI> _mappingSlotClass=nullptr;
 	
 };

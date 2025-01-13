@@ -29,6 +29,6 @@ public:
 
 	virtual float getGapPosition() override;
 
-	UPROPERTY(EditDefaultsOnly,Category="Placeable Info")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Placeable Info")
 	float GapPosition=0;
 };
