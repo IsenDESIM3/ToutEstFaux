@@ -100,7 +100,6 @@ void AFigurine::Clickable()
 
 void AFigurine::Release(FVector newpos, FRotator newrot)
 {
-	newpos+=FVector(0,0,10);
 	Super::Release(newpos, newrot);
 }
 
