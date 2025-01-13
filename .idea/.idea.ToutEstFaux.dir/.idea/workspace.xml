@@ -9,15 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="63df965f-18c6-4c7f-9f1d-f395910878c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ToutEstFaux.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_TeletubbiesPhotoFrame.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Cosplayers/Blueprints/BP_TeletubbiesPhotoFrame.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_DefaultMappingContext.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Inputs/IMC_DefaultMappingContext.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Blueprints/BP_Lock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Blueprints/BP_Lock.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Lock/Objects/SM_upper_lock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Lock/Objects/SM_upper_lock.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Menu/Widget/WB_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Menu/Widget/WB_Menu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Tea/Kettle/Models/SM_TeaKettle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Tea/Kettle/Models/SM_TeaKettle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Level1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/GameMaps/L_Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameMaps/L_Menu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Chest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ToutEstFaux/Private/Chest.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,27 +62,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Uproject.ToutEstFaux.executor": "Run",
-    "git-widget-placeholder": "fixBug-FixCollider",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Uproject.ToutEstFaux.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fixBug-FixCollider&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\mario.bert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\mario.bert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\mario.bert\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\mario.bert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\mario.bert\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\mario.bert\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ToutEstFaux" type="Uproject" factoryName="rider.uproject">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/ToutEstFaux.uproject" />
@@ -208,7 +199,7 @@
       <workItem from="1736752876885" duration="2290000" />
       <workItem from="1736757085086" duration="6530000" />
       <workItem from="1736765238637" duration="1546000" />
-      <workItem from="1736774583168" duration="1042000" />
+      <workItem from="1736774583168" duration="1044000" />
     </task>
     <servers />
   </component>
